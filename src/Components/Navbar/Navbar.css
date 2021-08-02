@@ -1,0 +1,187 @@
+.Navitems {
+  display: flex;
+  position: relative;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 13px;
+  box-sizing: border-box;
+  max-width: 1240px;
+  width: 100%;
+}
+
+.Navlogo {
+  cursor: pointer;
+  height: 20px;
+  vertical-align: middle;
+}
+
+.Navmenu {
+  display: flex;
+  list-style: none;
+  align-items: center;
+  width: fit-content;
+  padding: 0;
+}
+
+.Navitem-container {
+  display: block;
+  margin-left: 20px;
+}
+
+.nav-links {
+  text-decoration: none;
+  color: #546e7a;
+  padding-top: 0.5rem;
+  margin-left: 20px;
+}
+
+.nav-links:hover {
+  color: black;
+  transition: all 0.5s ease-in-out;
+}
+
+.NavmenuRight {
+  display: flex;
+  list-style: none;
+  text-align: center;
+  align-items: center;
+  width: fit-content;
+  box-sizing: border-box;
+}
+
+.NavitemRight-container {
+  margin-right: 25px;
+  z-index: 1;
+}
+
+Button {
+  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, PingFang SC,
+    Hiragino Sans GB, Microsoft YaHei, Helvetica Neue, Helvetica, Arial,
+    sans-serif, Apple Color Emoji, Segoe UI Em;
+}
+
+.storeButton {
+  padding: 0px;
+  font-size: 13px;
+  text-transform: none;
+  color: #f9a825;
+}
+
+.storeButton:hover {
+  color: #f07318;
+  background-color: white;
+  transition: all 0.3s ease-in-out;
+}
+
+.premiumButton {
+  display: inline-flex;
+  justify-content: center;
+  padding: 0px;
+  font-size: 12px;
+  text-transform: none;
+  color: #f9a825;
+  border-color: #f9a825;
+  padding-left: 7px;
+  padding-right: 7px;
+  background-origin: padding-box;
+  background-position-x: 0;
+  background-position-y: 0;
+  border-radius: 3px;
+  height: 24px;
+}
+
+.premiumButton:hover {
+  color: white;
+  background-color: #f9a825;
+  transition: all 0.3s ease-in-out;
+}
+
+.btnrighticon {
+  color: #90a4ae;
+  padding: 0px;
+}
+
+.btnrighticon:hover {
+  color: #546e7a;
+  background-color: white;
+  transition: all 0.3s ease-in-out;
+}
+
+.btnrighticon-2 {
+  color: #90a4ae;
+  border: none;
+  background-color: inherit;
+  cursor: pointer;
+  padding: 0px;
+  margin-top: 2px;
+}
+
+.btnrighticon-2:hover {
+  color: #546e7a;
+  background-color: white;
+  transition: all 0.3s ease-in-out;
+}
+
+.notifycard {
+  height: 380px;
+  overflow-y: scroll;
+  overflow-x: none;
+  width: 500px;
+}
+
+.notifylist {
+  list-style: none;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+.notifyitem {
+  position: relative;
+  height: 74px;
+  width: 460px;
+  padding-left: 0px;
+  padding-right: 40px;
+}
+
+.contestnotify {
+  position: relative;
+  padding-top: 10px;
+}
+
+.timenotify {
+  position: relative;
+  margin-left: 335px;
+  text-decoration: none;
+  padding-top: 10px;
+}
+
+.linknotify {
+  position: absolute;
+  margin-top: 40px;
+}
+
+.profile-items {
+  text-align: left;
+  width: 270px;
+}
+
+.profile-menu {
+  display: flex;
+  flex-direction: column;
+  grid-gap: 20px;
+  list-style: none;
+  padding: 15px;
+}
+
+.profile-links {
+  text-decoration: none;
+  color: #546e7a;
+  font-size: 14px;
+}
+
+.dropdown-menu {
+  overflow-x: none;
+}
+
+.dropdown-item {
+}

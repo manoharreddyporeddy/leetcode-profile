@@ -1,0 +1,227 @@
+.top {
+  display: flex;
+  flex-wrap: wrap;
+  margin-left: -12px;
+}
+
+.rating-container {
+  padding: 0px;
+  height: 191.6px;
+  min-width: 238px;
+  display: block;
+  box-sizing: border-box;
+  background-attachment: scroll;
+  background-origin: padding-box;
+  background-position-x: 0;
+  background-position-y: 0;
+  background-size: auto;
+  flex-basis: 0%;
+  flex-grow: 1;
+  flex-shrink: 1;
+  margin-bottom: 15px;
+  margin-left: 12px;
+  position: relative;
+  transition-delay: 0;
+  transition-duration: 0.3s;
+  transition-property: all;
+  transition-timing-function: ease;
+  border-radius: 8px;
+}
+
+.paper {
+  margin: auto;
+  padding: 12px;
+  min-width: 214.663px;
+  height: 167.6px;
+  border-radius: 8px;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 2px 0px,
+    rgba(0, 0, 0, 0.08) 0px 2px 8px 0px;
+}
+
+.heatmap-container {
+  width: 100%;
+  height: fit-content;
+}
+
+.heatmap-card {
+  height: 100%;
+  width: 100%;
+  padding: 0px;
+}
+
+.heatmap-title {
+  height: 27.8px;
+  padding-bottom: 0px;
+  padding-top: 9px;
+  padding-left: 12px;
+  padding-right: 12px;
+}
+
+.heatmap {
+  padding: 12px;
+}
+
+.recent-container {
+  margin-top: 15px;
+}
+
+.recent-container2 {
+  margin-bottom: 15px;
+}
+
+.recent-title {
+  padding-left: 12px;
+  padding-right: 12px;
+  padding-top: 9px;
+  align-items: center;
+  justify-content: center;
+  height: 27.8px;
+}
+
+.recent-list {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+.recent-content {
+  text-decoration: none;
+  padding-top: 12px;
+  padding-bottom: 12px;
+  display: flex;
+  flex-basis: 0%;
+  flex-grow: 1;
+  flex-shrink: 1;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.recent-icons {
+  display: flex;
+  width: 100px;
+  min-width: 100px;
+  right: 0;
+}
+
+.rec {
+  display: flex;
+}
+
+.recent-icons2 {
+  display: flex;
+  flex-basis: 0%;
+  flex-grow: 1;
+  flex-shrink: 1;
+  align-items: center;
+  margin-right: 10px;
+  color: rgb(119, 119, 119);
+  text-align: left;
+}
+
+.submission-icons {
+  display: flex;
+  min-width: 141.738px;
+  right: 0;
+}
+
+.JBadge {
+  display: block;
+  background-color: rgb(64, 196, 255);
+  border-radius: 10px;
+  font-size: 12px;
+  font-weight: 700;
+  padding-bottom: 1px;
+  padding-top: 1px;
+  padding-left: 7px;
+  padding-right: 7px;
+  outline-color: white;
+  color: rgb(255, 255, 255);
+  text-align: center;
+  vertical-align: middle;
+  white-space: nowrap;
+}
+
+.SBadge {
+  background-color: rgb(76, 175, 80);
+  border-radius: 10px;
+  font-size: 12px;
+  font-weight: 700;
+  padding-bottom: 1px;
+  padding-top: 1px;
+  padding-left: 7px;
+  padding-right: 7px;
+  outline-color: white;
+  color: rgb(255, 255, 255);
+}
+
+.card1 {
+  padding: 0px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.contest-rating {
+  font-weight: 500;
+  font-size: 12px;
+  color: rgba(60, 60, 67, 0.6);
+}
+
+.contest-rating::after {
+  content: "\a";
+  white-space: pre;
+}
+
+.problems-container {
+  display: flex;
+  justify-content: space-between;
+}
+
+.pie-container {
+  height: 108px;
+  margin-top: 12px;
+  margin-bottom: 15px;
+}
+
+.leftcorner {
+  width: fit-content;
+  height: 20.4px;
+}
+
+.middle {
+  float: left;
+}
+
+.rightcorner {
+  float: right;
+}
+
+p {
+  margin: 0px;
+}
+
+.BadgeImg-container {
+  display: flex;
+  justify-content: center;
+  height: 90px;
+  padding: 0px;
+}
+
+.BadgeImg {
+  height: 72px;
+  opacity: 0.3;
+}
+
+.highcharts-container {
+  position: relative;
+  overflow: visible;
+  width: 100%;
+  height: 90px;
+  padding: 0px;
+  text-align: left;
+  line-height: normal;
+}
+
+.highcharts-root {
+  font-family: Lucida Grande, Lucida Sans Unicode, Arial, Helvetica, sans-serif;
+  font-size: 12px;
+}

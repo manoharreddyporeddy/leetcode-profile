@@ -1,0 +1,75 @@
+body {
+  display: block;
+  margin: 0;
+  color: rgba(0, 0, 0, 0.65);
+  font-size: 14px;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC",
+    "Hiragino Sans GB", "Microsoft YaHei", "Helvetica Neue", Helvetica, Arial,
+    sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  font-variant: tabular-nums;
+}
+
+.nav-container {
+  display: flex;
+  align-items: stretch;
+  background-color: rgb(255, 255, 255);
+  border-bottom-color: rgb(238, 238, 238);
+  border-bottom-style: solid;
+  border-bottom-width: 1px;
+  color: rgba(0, 0, 0, 0.65);
+  height: 44px;
+  justify-content: center;
+}
+
+.profile-container {
+  display: flex;
+  box-sizing: border-box;
+  background-attachment: scroll;
+  background-color: rgb(245, 245, 245);
+  background-origin: padding-box;
+  background-position-x: 0;
+  background-position-y: 0;
+  background-size: auto;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  justify-content: center;
+}
+
+.profile-container2 {
+  position: relative;
+  display: flex;
+  max-width: 1170px;
+  flex-wrap: wrap;
+  box-sizing: border-box;
+}
+
+.right-container {
+  display: block;
+  box-sizing: border-box;
+  flex-basis: 0%;
+  flex-grow: 1;
+  flex-shrink: 1;
+  width: 100%;
+  max-width: 770px;
+  margin-left: 15px;
+  margin-right: 15px;
+}
+
+.left-container {
+  display: block;
+  max-width: 370px;
+  min-width: 250px;
+  width: 100%;
+  margin-left: 15px;
+  margin-right: 15px;
+  box-sizing: border-box;
+}
+
+.bottom-container {
+  max-width: 1200px;
+  display: block;
+  color: rgba(0, 0, 0, 0.65);
+  background-color: white;
+  margin: 0 auto;
+  padding: 0 20px;
+}

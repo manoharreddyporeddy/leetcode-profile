@@ -1,0 +1,112 @@
+.StarList {
+  position: absolute;
+  width: 70%;
+  display: flex;
+  direction: ltr;
+  margin-top: 0px;
+  margin-left: 0px;
+  height: 20px;
+  padding: 0px;
+  overflow: hidden;
+}
+
+.StarListB {
+  position: absolute;
+  display: flex;
+  direction: ltr;
+  margin-top: 0px;
+  margin-left: 0px;
+  height: 20px;
+  padding: 0px;
+}
+
+.Starcard {
+  padding: 0px;
+  margin: 0px;
+  width: 100px;
+  display: block;
+  padding-bottom: 0px;
+}
+
+.star-container {
+  display: block;
+  position: relative;
+  height: 20px;
+}
+
+.halfstar {
+  outline-color: wheat;
+}
+
+.li {
+  float: left;
+  margin: 2px;
+  color: #f9a825;
+  height: 16px;
+  width: 16px;
+}
+
+.li2 {
+  float: left;
+  margin: 2px;
+  color: #e0e0e0;
+  height: 16px;
+  width: 16px;
+}
+
+.li3 {
+  color: linear-gradient(90deg, #f9a825 50%, #e0e0e0 50%);
+}
+
+.Github-container {
+  display: flex;
+  margin-left: 12.5px;
+}
+
+.profile-details {
+  border-top: 1px solid rgb(224, 224, 224);
+  margin-top: 15px;
+}
+
+.Chip {
+  display: block;
+  align-items: center;
+  border-radius: 10px;
+  background-color: rgb(76, 175, 80);
+  padding-right: 7px;
+  padding-left: 7px;
+  font-weight: 700;
+  text-align: center;
+  vertical-align: middle;
+  color: rgb(255, 255, 255);
+  font-size: 12px;
+}
+
+.Card1 {
+  padding-bottom: 12px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.contributions-title {
+  padding-left: 12px;
+  padding-right: 12px;
+  padding-top: 9px;
+  align-items: center;
+  justify-content: center;
+  height: 27.8px;
+}
+
+.Card {
+  padding: 0px;
+  margin: auto;
+  display: block;
+  background-color: white;
+  border-radius: 8px;
+  margin-bottom: 15px;
+}
+
+.second {
+  position: absolute;
+}
