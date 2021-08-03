@@ -1,138 +1,31 @@
-import React, { useState } from "react";
-import { Link } from "react-router-dom";
-import { makeStyles } from "@material-ui/core/styles";
-import Grid from "@material-ui/core/Grid";
-import Paper from "@material-ui/core/Paper";
+import React from "react";
 import Card from "@material-ui/core/Card";
 import Typography from "@material-ui/core/Typography";
-import Chip from "@material-ui/core/Chip";
 import "./Leftbar.css";
-import Button from "@material-ui/core/Button";
 import Divider from "@material-ui/core/Divider";
-import { CardContent, CardHeader, CardMedia, Tooltip } from "@material-ui/core";
+import { Tooltip } from "@material-ui/core";
 import StarIcon from "@material-ui/icons/Star";
 
-const useStyles = makeStyles((theme) => ({
-  root: {
-    flexGrow: 1
-  },
-
-  paper: {
-    padding: "0px",
-    margin: "auto",
-    width: "370px",
-    height: "235.4px",
-    backgroundColor: "white",
-    borderRadius: "7px"
-  },
-
-  paper2: {
-    padding: "0px",
-    margin: "auto",
-    width: "370px",
-    height: "173.2px",
-    backgroundColor: "white",
-    borderRadius: "7px"
-  },
-
-  cover: {
-    width: "80px",
-    height: "80px",
-    margin: "12px",
-    borderRadius: "5px"
-  },
-
-  card1: {
-    padding: "0px",
-    display: "flex",
-    flexDirection: "column",
-    marginLeft: "15px",
-    marginRight: "4px"
-  },
-
-  card4: {
-    display: "flex",
-    padding: "12px",
-    paddingLeft: "0px",
-    paddingRight: "0px",
-    alignItems: "center"
-  },
-
-  card2: {
-    paddingTop: "12px",
-    paddingLeft: "2px"
-  },
-
-  card3: {
-    padding: "0px",
-    display: "flex",
-    alignItems: "center"
-  },
-
-  media: {
-    width: 104
-  },
-
-  details: {
-    display: "flex",
-    flexDirection: "row"
-  },
-
-  star: {
-    padding: "0px",
-    marginL: "0px",
-    width: "16px",
-    height: "16px"
-  },
-
-  github: {
-    marginTop: "12px",
-    color: "rgba(0, 0, 0, 0.65)"
-  },
-
-  icon: {
-    marginRight: "5px",
-    color: "rgba(0, 0, 0, 0.65)"
-  },
-
-  divider: {
-    width: "347px",
-    marginLeft: "12px"
-  },
-
-  chip: {
-    fontWeight: 600,
-    backgroundColor: "rgb(76, 175, 80)",
-    color: "white"
-  },
-
-  underline: {
-    textDecoration: "none",
-    color: "#1890ff"
-  }
-}));
-
 export default function App() {
-  const classes = useStyles();
-
   return (
     <>
-      <Card className="Card" direction="row">
-        <div className="contributions-title">
+      <Card className="profileCardContainer" direction="row">
+        <div className="cardTitle">
           <div style={{ fontWeight: 600 }}>Basic Profile</div>
         </div>
 
         <Divider />
+
         <div style={{ padding: "12px" }}>
-          <div className={classes.details}>
+          <div className="profileDetailsContainer">
             <img
               src="https://assets.leetcode.com/users/pgmreddy/avatar_1590316229.png"
               alt="Profile"
               style={{ height: "80px", borderRadius: "6px" }}
             />
 
-            <div className={classes.card1}>
-              <div className={classes.card3}>
+            <div className="profileDetailsTextbox">
+              <div className="profileNameID">
                 <Typography
                   variant="h7"
                   style={{
@@ -145,7 +38,7 @@ export default function App() {
                 </Typography>
               </div>
 
-              <div className={classes.card3}>
+              <div className="profileNameID">
                 <Typography
                   variant="subtitle1"
                   style={{ fontSize: "14px", color: "rgba(0, 0, 0, 0.65)" }}
@@ -168,48 +61,76 @@ export default function App() {
                 </Tooltip>
               </div>
 
-              <div className="Starcard">
-                <Tooltip title="Ranking: 5474" arrow>
-                  <div className="star-container">
-                    <div className="StarListB">
-                      <div>
-                        <StarIcon className="li2" />
-                      </div>
-                      <div>
-                        <StarIcon className="li2" />
-                      </div>
-                      <div>
-                        <StarIcon className="li2" />
-                      </div>
-                      <div>
-                        <StarIcon className="li2" />
-                      </div>
-                      <div>
-                        <StarIcon className="li2" />
-                      </div>
+              <Tooltip title="Ranking: 5474" arrow>
+                <div className="ratingContainer">
+                  <div className="ratingListBackground">
+                    <div>
+                      <StarIcon
+                        style={{ height: "0.9rem", width: "0.9rem" }}
+                        className="ratingStarBackground ratingStarBase"
+                      />
                     </div>
-                    <div className="StarList">
-                      <div>
-                        <StarIcon className="li" />
-                      </div>
-                      <div>
-                        <StarIcon className="li" />
-                      </div>
-                      <div>
-                        <StarIcon className="li" />
-                      </div>
-                      <div>
-                        <StarIcon className="li" />
-                      </div>
-                      <div>
-                        <StarIcon className="li" />
-                      </div>
+                    <div>
+                      <StarIcon
+                        style={{ height: "0.9rem", width: "0.9rem" }}
+                        className="ratingStarBackground ratingStarBase"
+                      />
+                    </div>
+                    <div>
+                      <StarIcon
+                        style={{ height: "0.9rem", width: "0.9rem" }}
+                        className="ratingStarBackground ratingStarBase"
+                      />
+                    </div>
+                    <div>
+                      <StarIcon
+                        style={{ height: "0.9rem", width: "0.9rem" }}
+                        className="ratingStarBackground ratingStarBase"
+                      />
+                    </div>
+                    <div>
+                      <StarIcon
+                        style={{ height: "0.9rem", width: "0.9rem" }}
+                        className="ratingStarBackground ratingStarBase"
+                      />
                     </div>
                   </div>
-                </Tooltip>
-              </div>
+                  <div className="ratingList">
+                    <div>
+                      <StarIcon
+                        style={{ height: "0.9rem", width: "0.9rem" }}
+                        className="ratingStar ratingStarBase"
+                      />
+                    </div>
+                    <div>
+                      <StarIcon
+                        style={{ height: "0.9rem", width: "0.9rem" }}
+                        className="ratingStar ratingStarBase"
+                      />
+                    </div>
+                    <div>
+                      <StarIcon
+                        style={{ height: "0.9rem", width: "0.9rem" }}
+                        className="ratingStar ratingStarBase"
+                      />
+                    </div>
+                    <div>
+                      <StarIcon
+                        style={{ height: "0.9rem", width: "0.9rem" }}
+                        className="ratingStar ratingStarBase"
+                      />
+                    </div>
+                    <div>
+                      <StarIcon
+                        style={{ height: "0.9rem", width: "0.9rem" }}
+                        className="ratingStar ratingStarBase"
+                      />
+                    </div>
+                  </div>
+                </div>
+              </Tooltip>
             </div>
-            <div className="Github-container">
+            <div className="githubContainer">
               <a
                 rel="noopener noreferrer"
                 href="https://github.com/manoharreddyporeddy"
@@ -218,7 +139,7 @@ export default function App() {
                   viewBox="0 0 24 24"
                   width="32px"
                   height="32px"
-                  className={classes.github}
+                  className="githubIcon"
                   fill="currentColor"
                 >
                   <path
@@ -229,16 +150,16 @@ export default function App() {
               </a>
             </div>
           </div>
-          <div className="profile-details">
+          <div className="linkLocationWrapper">
             <div
-              className={classes.card4}
+              className="linkLocationContainer"
               style={{ borderBottom: "1px solid #e8e8e8" }}
             >
               <svg
                 viewBox="0 0 24 24"
                 width="14px"
                 height="14px"
-                className={classes.icon}
+                style={{ marginRight: "5px", color: "rgba(0, 0, 0, 0.65)" }}
                 fill="currentColor"
               >
                 <path
@@ -266,18 +187,21 @@ export default function App() {
                   rel="noopener noreferrer"
                   href="https://leetcode.com/discuss/topic/910825"
                   target="_blank"
-                  className={classes.underline}
+                  style={{ textDecoration: "none", color: "#1890ff" }}
                 >
                   https://leetcode.com/discuss/topic/910825
                 </a>
               </Typography>
             </div>
-            <div className={classes.card4} style={{ paddingBottom: "0px" }}>
+            <div
+              className="linkLocationContainer"
+              style={{ paddingBottom: "0px" }}
+            >
               <svg
                 viewBox="0 0 24 24"
                 width="14px"
                 height="14px"
-                className={classes.icon}
+                style={{ marginRight: "5px", color: "rgba(0, 0, 0, 0.65)" }}
                 fill="currentColor"
               >
                 <path
@@ -312,13 +236,16 @@ export default function App() {
         </div>
       </Card>
 
-      <Card className="Card" direction="row">
-        <div className="contributions-title">
+      <Card className="profileCardContainer" direction="row">
+        <div className="cardTitle">
           <div style={{ fontWeight: 600 }}>Contributions</div>
         </div>
         <Divider />
         <div style={{ padding: "12px" }}>
-          <div className="Card1" style={{ borderBottom: "1px solid #e8e8e8" }}>
+          <div
+            className="cardItem"
+            style={{ borderBottom: "1px solid #e8e8e8" }}
+          >
             <div
               style={{
                 fontWeight: 400,
@@ -329,7 +256,7 @@ export default function App() {
             >
               <svg
                 aria-hidden="true"
-                className={classes.icon}
+                style={{ marginRight: "5px", color: "rgba(0, 0, 0, 0.65)" }}
                 data-icon="gift"
                 data-prefix="fas"
                 viewBox="0 0 512 512"
@@ -341,8 +268,8 @@ export default function App() {
               </svg>
               <span>Points</span>
             </div>
-            <span className="Chip">1011</span>
-            {/* <Chip
+            <span className="chip">1011</span>
+            {/* <chip
                 size="small"
                 height="18px"
                 label="981"
@@ -351,7 +278,7 @@ export default function App() {
               /> */}
           </div>
           <div
-            className="Card1"
+            className="cardItem"
             style={{ borderBottom: "1px solid #e8e8e8", paddingTop: "12px" }}
           >
             <div
@@ -364,9 +291,9 @@ export default function App() {
             >
               <svg
                 viewBox="0 0 24 24"
-                width="1em"
-                height="1em"
-                className={classes.icon}
+                width="14px"
+                height="14px"
+                style={{ marginRight: "5px", color: "rgba(0, 0, 0, 0.65)" }}
                 fill="currentColor"
               >
                 <path
@@ -376,10 +303,10 @@ export default function App() {
               </svg>
               Problems
             </div>
-            <span className="Chip">0</span>
+            <span className="chip">0</span>
           </div>
           <div
-            className="Card1"
+            className="cardItem"
             style={{ paddingTop: "12px", paddingBottom: "0px" }}
           >
             <div
@@ -392,35 +319,35 @@ export default function App() {
             >
               <svg
                 aria-hidden="true"
-                className={classes.icon}
+                style={{ marginRight: "5px", color: "rgba(0, 0, 0, 0.65)" }}
                 data-icon="gift"
                 data-prefix="fas"
                 viewBox="0 0 512 512"
-                width="1em"
-                height="1em"
+                width="14px"
+                height="14px"
                 fill="currentColor"
               >
                 <path d="M32 448c0 17.7 14.3 32 32 32h160V320H32v128zm256 32h160c17.7 0 32-14.3 32-32V320H288v160zm192-320h-42.1c6.2-12.1 10.1-25.5 10.1-40 0-48.5-39.5-88-88-88-41.6 0-68.5 21.3-103 68.3-34.5-47-61.4-68.3-103-68.3-48.5 0-88 39.5-88 88 0 14.5 3.8 27.9 10.1 40H32c-17.7 0-32 14.3-32 32v80c0 8.8 7.2 16 16 16h480c8.8 0 16-7.2 16-16v-80c0-17.7-14.3-32-32-32zm-326.1 0c-22.1 0-40-17.9-40-40s17.9-40 40-40c19.9 0 34.6 3.3 86.1 80h-86.1zm206.1 0h-86.1c51.4-76.5 65.7-80 86.1-80 22.1 0 40 17.9 40 40s-17.9 40-40 40z"></path>
               </svg>
               Testcases
             </div>
-            <span className="Chip">11</span>
+            <span className="chip">11</span>
           </div>
         </div>
       </Card>
 
-      <Card className="Card" direction="row">
-        <div className="contributions-title">
+      <Card className="profileCardContainer" direction="row">
+        <div className="cardTitle">
           <span style={{ fontWeight: 600 }}>Discuss</span>
         </div>
         <Divider />
-        <div className="Card1" style={{ padding: "12px" }}>
+        <div className="cardItem" style={{ padding: "12px" }}>
           <Typography variant="h7" style={{ fontWeight: 400 }}>
             <svg
               viewBox="0 0 24 24"
-              width="1em"
-              height="1em"
-              className={classes.icon}
+              width="14px"
+              height="14px"
+              style={{ marginRight: "5px", color: "rgba(0, 0, 0, 0.65)" }}
               fill="currentColor"
             >
               <path
@@ -430,7 +357,7 @@ export default function App() {
             </svg>
             Reputation
           </Typography>
-          <span className="Chip">2708</span>
+          <span className="chip">2708</span>
         </div>
       </Card>
     </>

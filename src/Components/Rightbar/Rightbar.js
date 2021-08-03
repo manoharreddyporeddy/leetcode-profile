@@ -1,51 +1,21 @@
-import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import React from "react";
 import "./Rightbar.css";
-import { makeStyles } from "@material-ui/core/styles";
-import Grid from "@material-ui/core/Grid";
-import Paper from "@material-ui/core/Paper";
-import Typography from "@material-ui/core/Typography";
-import Button from "@material-ui/core/Button";
-import Container from "@material-ui/core/Container";
 import Card from "@material-ui/core/Card";
-import { CardContent, CardHeader, CardMedia } from "@material-ui/core";
 import Divider from "@material-ui/core/Divider";
-import Highcharts from "highcharts";
-import HighchartsReact from "highcharts-react-official";
-import Highchart from "./utils/highchart";
-import Heatmap from "./utils/heatmap";
+import Highchart from "./highchart";
+import Heatmap from "./heatmap";
 import { Recentposts } from "./Recentposts";
 import { Submissions } from "./Submissions";
-import Chart from "./utils/Percentage_circle";
-
-const percentage = 66;
-
-const useStyles = makeStyles((theme) => ({
-  root: {
-    flexGrow: 1,
-    width: "100%"
-  },
-  card1: {
-    padding: "0px",
-    height: "45.2px"
-  },
-  card2: {
-    padding: "0px",
-    alignItems: "center",
-    justifyContent: "center"
-  }
-}));
+import Chart from "./Percentage_circle";
 
 export default function App() {
-  const classes = useStyles();
-
   return (
     <>
-      <div className="top">
-        <div className="rating-container">
-          <Card className="paper">
-            <div className={classes.card1}>
-              <span className="contest-rating">Contest Rating</span>
+      <div className="threeCardsContainer">
+        <div className="topCardContainer">
+          <Card className="topCard">
+            <div style={{ padding: "0px", height: "45.2px" }}>
+              <span className="topCardHeading">Contest Rating</span>
               <span style={{ fontSize: "22px", fontWeight: "600" }}>
                 {" "}
                 1,618
@@ -53,12 +23,12 @@ export default function App() {
               <span style={{ fontSize: "12px", fontWeight: "600" }}>pt</span>
             </div>
 
-            <div className="highcharts-container">
+            <div>
               <Highchart />
             </div>
 
-            <div className="card1">
-              <div className="leftcorner">
+            <div className="topCardContent">
+              <div>
                 <p style={{ fontSize: "12px", color: "rgba(60, 60, 67, 0.6)" }}>
                   Ranking
                 </p>
@@ -72,9 +42,8 @@ export default function App() {
                   34,094
                 </p>
               </div>
-              <div className="rightcorner">
+              <div>
                 <p
-                  className=""
                   style={{
                     fontSize: "12px",
                     color: "rgba(60, 60, 67, 0.6)"
@@ -83,11 +52,11 @@ export default function App() {
                   Attended
                 </p>
                 <p
-                  className="rightcorner"
                   style={{
                     fontSize: "14px",
                     color: "rgba(38, 38, 38, 0.75)",
-                    fontWeight: "600"
+                    fontWeight: "600",
+                    float: "right"
                   }}
                 >
                   30
@@ -96,22 +65,22 @@ export default function App() {
             </div>
           </Card>
         </div>
-        <div className="rating-container">
-          <Card className="paper">
-            <div className="problems-container">
-              <div className={classes.card1}>
-                <span className="contest-rating">Problems Solved</span>
+        <div className="topCardContainer">
+          <Card className="topCard">
+            <div style={{ display: "flex", justifyContent: "space-between" }}>
+              <div style={{ padding: "0px", height: "45.2px" }}>
+                <span className="topCardHeading">Problems Solved</span>
                 <span style={{ fontSize: "22px", fontWeight: "600" }}>
                   {" "}
                   840
                 </span>
               </div>
-              <div className="pie-container">
+              <div className="pieContainer">
                 <Chart />
               </div>
             </div>
-            <div className="card1">
-              <div className="leftcorner">
+            <div className="topCardContent">
+              <div>
                 <p style={{ fontSize: "12px", color: "rgb(67, 160, 71)" }}>
                   Easy
                 </p>
@@ -162,9 +131,8 @@ export default function App() {
                   </span>
                 </p>
               </div>
-              <div className="rightcorner">
+              <div>
                 <p
-                  className="middle"
                   style={{
                     fontSize: "12px",
                     color: "rgb(233, 30, 99)"
@@ -195,11 +163,11 @@ export default function App() {
             </div>
           </Card>
         </div>
-        <div className="rating-container">
-          <Card className="paper">
-            <div className={classes.card1}>
+        <div className="topCardContainer">
+          <Card className="topCard">
+            <div style={{ padding: "0px", height: "45.2px" }}>
               <div>
-                <span className="contest-rating">
+                <span className="topCardHeading">
                   Badges
                   <span
                     style={{
@@ -215,15 +183,15 @@ export default function App() {
                 </span>
               </div>
             </div>
-            <div className="BadgeImg-container">
+            <div className="badgeImgContainer">
               <img
                 src="https://leetcode.com/static/images/badges/dcc-2021-8.png"
                 alt="Jul LeetCoding Challenge"
-                className="BadgeImg"
+                height="72px"
               />
             </div>
-            <div className="card1">
-              <div className="leftcorner">
+            <div className="topCardContent">
+              <div>
                 <p style={{ fontSize: "12px", color: "rgba(60, 60, 67, 0.6)" }}>
                   Upcoming Badge
                 </p>
@@ -241,35 +209,37 @@ export default function App() {
           </Card>
         </div>
       </div>
-      <div className="heatmap-container">
-        <Card className="heatmap-card" direction="row">
-          <div className="heatmap-title">
+      <div>
+        <Card>
+          <div className="cardHeader">
             <div style={{ fontWeight: 600 }}>
               1781 submissions in the last year
             </div>
           </div>
           <Divider />
-          <div className="heatmap">
+          <div className="heatmapContainer">
             <Heatmap />
           </div>
         </Card>
       </div>
-      <div className="recent-container">
-        <Card className="recent-container2" direction="row">
-          <div className="recent-title">
+      <div>
+        <Card style={{ margin: "15px 0px" }}>
+          <div className="cardHeader">
             <div style={{ fontWeight: 600 }}>Recent Posts</div>
           </div>
           <Divider />
           <div style={{ paddingLeft: "12px", paddingRight: "12px" }}>
-            <ul className="recent-list">
+            <ul
+              style={{ listStyleType: "none", margin: "0px", padding: "0px" }}
+            >
               {Recentposts.map((item, index) => {
                 return (
                   <li key={index}>
                     <a
-                      className="recent-content"
+                      className="postsSubmissionsListItems"
                       href="https://leetcode.com/problems/number-of-provinces/discuss/1346298/547-graph-dfs"
                     >
-                      <span className="rec">
+                      <span style={{ display: "flex" }}>
                         <span
                           style={{
                             fontWeight: "700",
@@ -288,8 +258,8 @@ export default function App() {
                           {item.time}
                         </span>
                       </span>
-                      <span class="recent-icons">
-                        <span class="recent-icons2">
+                      <span style={{ display: "flex", minWidth: "100px" }}>
+                        <span class="postsSubmissionsIcon">
                           <svg
                             viewBox="0 0 24 24"
                             width="14px"
@@ -304,7 +274,7 @@ export default function App() {
                           </svg>
                           {item.like}
                         </span>
-                        <span class="recent-icons2">
+                        <span class="postsSubmissionsIcon">
                           <svg
                             aria-hidden="true"
                             data-icon="comments"
@@ -321,7 +291,7 @@ export default function App() {
                         </span>
                       </span>
                     </a>
-                    <Divider className={classes.divider} />
+                    <Divider />
                   </li>
                 );
               })}
@@ -414,22 +384,24 @@ export default function App() {
           </div>
         </Card>
       </div>
-      <div className="submissions-container">
-        <Card className="submissions-container2" direction="row">
-          <div className="recent-title">
+      <div style={{ marginBottom: "15px" }}>
+        <Card>
+          <div className="cardHeader">
             <div style={{ fontWeight: 600 }}>Most Recent Submissions</div>
           </div>
           <Divider />
           <div style={{ paddingLeft: "12px", paddingRight: "12px" }}>
-            <ul className="recent-list">
+            <ul
+              style={{ listStyleType: "none", margin: "0px", padding: "0px" }}
+            >
               {Submissions.map((item, index) => {
                 return (
                   <li key={index}>
                     <a
-                      className="recent-content"
+                      className="postsSubmissionsListItems"
                       href="https://leetcode.com/problems/number-of-provinces/discuss/1346298/547-graph-dfs"
                     >
-                      <span className="rec">
+                      <span style={{ display: "flex" }}>
                         <span
                           style={{
                             fontWeight: "700",
@@ -448,22 +420,22 @@ export default function App() {
                           {item.time}
                         </span>
                       </span>
-                      <span class="submission-icons">
+                      <span style={{ display: "flex", minWidth: "141.738px" }}>
                         <span
-                          class="recent-icons2"
+                          class="postsSubmissionsIcon"
                           style={{ marginRight: "4px" }}
                         >
-                          <span class="JBadge">JavaScript</span>
+                          <span class="langBadge">JavaScript</span>
                         </span>
                         <span
-                          class="recent-icons2"
+                          class="postsSubmissionsIcon"
                           style={{ marginRight: "0px" }}
                         >
-                          <span class="SBadge">Accepted</span>
+                          <span class="statusBadge">Accepted</span>
                         </span>
                       </span>
                     </a>
-                    <Divider className={classes.divider} />
+                    <Divider />
                   </li>
                 );
               })}

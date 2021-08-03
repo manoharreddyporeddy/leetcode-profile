@@ -1,0 +1,132 @@
+p {
+  margin: 0px;
+}
+
+.threeCardsContainer {
+  display: flex;
+  flex-wrap: wrap;
+  margin-left: -12px;
+}
+
+.topCardContainer {
+  padding: 0px;
+  height: 191.6px;
+  min-width: 238px;
+  display: block;
+  flex-basis: 0%;
+  flex-grow: 1;
+  flex-shrink: 1;
+  margin-bottom: 15px;
+  margin-left: 12px;
+  position: relative;
+  transition-delay: 0;
+  transition-duration: 0.3s;
+  transition-property: all;
+  transition-timing-function: ease;
+  border-radius: 8px;
+}
+
+.topCard {
+  margin: auto;
+  padding: 12px;
+  min-width: 214.663px;
+  height: 167.6px;
+  border-radius: 8px;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 2px 0px,
+    rgba(0, 0, 0, 0.08) 0px 2px 8px 0px;
+}
+
+.topCardHeading {
+  font-weight: 500;
+  font-size: 12px;
+  color: rgba(60, 60, 67, 0.6);
+}
+
+.topCardHeading::after {
+  content: "\a";
+  white-space: pre;
+}
+
+.topCardContent {
+  padding: 0px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.pieContainer {
+  height: 108px;
+  margin-top: 12px;
+  margin-bottom: 15px;
+}
+
+.badgeImgContainer {
+  display: flex;
+  justify-content: center;
+  height: 90px;
+  padding: 0px;
+  opacity: 0.3;
+}
+
+.cardHeader {
+  height: 27.8px;
+  padding-bottom: 0px;
+  padding-top: 9px;
+  padding-left: 12px;
+  padding-right: 12px;
+}
+
+.heatmapContainer {
+  padding: 12px;
+}
+
+.postsSubmissionsListItems {
+  text-decoration: none;
+  padding-top: 12px;
+  padding-bottom: 12px;
+  display: flex;
+  flex-basis: 0%;
+  flex-grow: 1;
+  flex-shrink: 1;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.postsSubmissionsIcon {
+  display: flex;
+  flex-basis: 0%;
+  flex-grow: 1;
+  flex-shrink: 1;
+  align-items: center;
+  margin-right: 10px;
+  color: rgb(119, 119, 119);
+  text-align: left;
+}
+
+.langBadge {
+  display: block;
+  background-color: rgb(64, 196, 255);
+  border-radius: 10px;
+  font-size: 12px;
+  font-weight: 700;
+  padding-bottom: 1px;
+  padding-top: 1px;
+  padding-left: 7px;
+  padding-right: 7px;
+  outline-color: white;
+  color: rgb(255, 255, 255);
+  text-align: center;
+  white-space: nowrap;
+}
+
+.statusBadge {
+  background-color: rgb(76, 175, 80);
+  border-radius: 10px;
+  font-size: 12px;
+  font-weight: 700;
+  padding-bottom: 1px;
+  padding-top: 1px;
+  padding-left: 7px;
+  padding-right: 7px;
+  outline-color: white;
+  color: rgb(255, 255, 255);
+}

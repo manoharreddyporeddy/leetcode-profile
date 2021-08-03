@@ -1,28 +1,30 @@
-.root {
+.bottomContainer {
   border-top: 1px solid #eeeeee;
   font-size: 12px;
   padding: 15px 0;
   width: 100%;
 }
 
-.item-container {
+.itemContainer {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
   margin-top: -8px;
 }
 
-.item-container2 {
+.leftItemWrapper {
   display: block;
   flex: 1 1 auto;
   margin-top: 8px;
 }
 
-.left-items {
+.leftItemContainer {
   display: flex;
+  flex-wrap: wrap;
+  margin-top: -8px;
 }
 
-.bottom {
+.leftItemList {
   display: flex;
   flex-wrap: wrap;
   list-style: none;
@@ -30,19 +32,25 @@
   margin: 0;
 }
 
-.listitem {
+.leftListItem {
   display: flex;
   margin-top: 8px;
   align-items: center;
 }
 
-.listitem2 {
+.leftListItem::after {
+  border-right: 1px solid #e0e0e0;
+  content: "";
+  height: 10px;
+}
+
+.privacyButton {
   display: flex;
   margin-top: 8px;
   align-items: center;
 }
 
-.btnleft {
+.leftButtons {
   color: #424242;
   margin-left: 10.5px;
   margin-right: 10.5px;
@@ -50,32 +58,21 @@
   text-decoration: none;
 }
 
-.btnleft:hover {
+.leftButtons:hover {
   text-decoration: underline;
 }
 
-.listitem::after {
-  border-right: 1px solid #e0e0e0;
-  content: "";
-  height: 10px;
-}
-
-.region {
+.regionLink {
   display: block;
   text-decoration: none;
   margin-top: 8px;
 }
 
-img {
-  vertical-align: middle;
-  border-style: none;
-}
-
-.region-text {
+.regionLinkText {
   color: #424242;
 }
 
-.region-text:hover {
+.regionLinkText:hover {
   text-decoration: underline;
   text-decoration-color: #1890ff;
 }

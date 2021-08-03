@@ -1,0 +1,134 @@
+.profileCardContainer {
+  padding: 0px;
+  margin: auto;
+  display: block;
+  background-color: white;
+  border-radius: 8px;
+  margin-bottom: 15px;
+}
+
+.cardTitle {
+  padding-left: 12px;
+  padding-right: 12px;
+  padding-top: 9px;
+  align-items: center;
+  justify-content: center;
+  height: 27.8px;
+}
+
+.profileDetailsContainer {
+  display: flex;
+  flex-direction: row;
+}
+
+.profileDetailsTextbox {
+  padding: 0px;
+  display: flex;
+  flex-direction: column;
+  margin-left: 15px;
+  margin-right: 4px;
+}
+
+.profileNameID {
+  padding: 0px;
+  display: flex;
+  align-items: center;
+}
+
+.ratingContainer {
+  display: block;
+
+  /* border: #f9a825 1px solid; */
+
+  width: 140px;
+  /* height: 100px; */
+
+  padding: 0px;
+  margin: 0px;
+  padding-bottom: 0px;
+
+  display: block;
+  position: relative;
+}
+
+.ratingList {
+  position: absolute;
+  display: flex;
+
+  width: 40%;
+
+  direction: ltr;
+  margin-top: 0px;
+  margin-left: 0px;
+  padding: 0px;
+  overflow: hidden;
+}
+
+.ratingListBackground {
+  position: absolute;
+  display: flex;
+  direction: ltr;
+
+  margin-top: 0px;
+  margin-left: 0px;
+
+  padding: 0px;
+}
+
+.ratingStarBase {
+  float: left;
+  /* margin: 2px; */
+  height: 0.8rem;
+  width: 0.8rem;
+}
+
+.ratingStarBackground {
+  color: #e0e0e0;
+}
+
+.ratingStar {
+  color: #f9a825;
+}
+
+.githubContainer {
+  display: flex;
+  margin-left: 12.5px;
+}
+
+.githubIcon {
+  margin-top: 12px;
+  color: rgba(0, 0, 0, 0.65);
+}
+
+.linkLocationWrapper {
+  border-top: 1px solid rgb(224, 224, 224);
+  margin-top: 15px;
+}
+
+.linkLocationContainer {
+  display: flex;
+  padding: 12px;
+  padding-left: 0px;
+  padding-right: 0px;
+  align-items: center;
+}
+
+.cardItem {
+  padding-bottom: 12px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.chip {
+  display: block;
+  align-items: center;
+  border-radius: 10px;
+  background-color: rgb(76, 175, 80);
+  padding-right: 7px;
+  padding-left: 7px;
+  font-weight: 700;
+  text-align: center;
+  color: rgb(255, 255, 255);
+  font-size: 12px;
+}
