@@ -1,4 +1,4 @@
-.popup {
+.popupBackground {
   position: fixed;
   top: 0;
   left: 0;
@@ -11,14 +11,29 @@
   z-index: 1;
 }
 
-.popup-inner {
+.popupForeground {
   position: relative;
   width: 570px;
   height: 595px;
   background-color: white;
 }
 
-.popup-inner .close {
+.header {
+  height: 20px;
+  background-color: rgba(0, 0, 0, 0.025);
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+
+.header h2 {
+  margin: 0;
+  font-weight: 400;
+  font-size: 20px;
+  color: rgba(0, 0, 0, 0.85);
+}
+
+.exitButton {
   position: absolute;
   top: 16px;
   right: 16px;
@@ -27,22 +42,7 @@
   cursor: pointer;
 }
 
-.popup-inner .header h2 {
-  margin: 0;
-  font-weight: 400;
-  font-size: 20px;
-  color: rgba(0, 0, 0, 0.85);
-}
-
-.popup-inner .header {
-  height: 20px;
-  background-color: rgba(0, 0, 0, 0.025);
-  justify-content: center;
-  align-items: center;
-  padding: 20px;
-}
-
-.popup-inner .button .playButton {
+.playgroundButton {
   height: 56px;
   background-color: white;
   width: 100%;
@@ -56,12 +56,12 @@
   align-items: center;
 }
 
-.popup-inner .button .playButton:hover {
+.playgroundButton:hover {
   color: rgba(0, 0, 0, 0.85);
   transition: 0.3s ease-in-out;
 }
 
-.btn-logo {
+.buttonArrow {
   margin-left: 390px;
   fill: currentColor;
 }
@@ -71,7 +71,12 @@
   padding-bottom: 0px;
 }
 
-.console2 {
+.contentWrapper {
+  padding: 20px;
+  padding-bottom: 0px;
+}
+
+.consoleApplicationContent {
   display: grid;
   grid-template-columns: repeat(3, auto);
   justify-content: center;
@@ -79,11 +84,7 @@
   padding-top: 5px;
 }
 
-.console3 {
-  padding-top: 5px;
-}
-
-.new {
+.newPlayground {
   border-style: dashed;
   border-color: #90a4ae;
   border-width: 1px;
@@ -95,12 +96,7 @@
   cursor: pointer;
 }
 
-.plus2:hover {
-  color: rgba(0, 0, 0, 0.65);
-  transition: 0.18s color ease-in-out;
-}
-
-.plus2 {
+.plusImg {
   /* height: 100px; */
   font-size: 24px;
   color: #90a4ae;
@@ -109,12 +105,24 @@
   text-align: center;
 }
 
+.plusImg:hover {
+  color: rgba(0, 0, 0, 0.65);
+  transition: 0.18s color ease-in-out;
+}
+
+.itemHeader {
+  height: 30px;
+  width: 150px;
+  text-align: center;
+  align-items: center;
+}
+
 /* .plus2 {
   margin-left: 63px;
   padding-top: 38px;
 } */
 
-.apps {
+.consoleApplicationItems {
   height: 98px;
   width: 148px;
   box-shadow: none;
@@ -124,11 +132,4 @@ h3 {
   font-size: 16px;
   font-weight: 400;
   color: #757575;
-}
-
-.console-header {
-  height: 30px;
-  width: 150px;
-  text-align: center;
-  align-items: center;
 }

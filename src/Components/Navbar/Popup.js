@@ -1,15 +1,18 @@
-import React, { useState } from "react";
+import React from "react";
 import "./Popup.css";
 import Divider from "@material-ui/core/Divider";
 import Card from "@material-ui/core/Card";
 
 function Popup(props) {
   return props.trigger ? (
-    <div className="popup">
-      <div className="popup-inner">
+    <div className="popupBackground">
+      <div className="popupForeground">
         <div className="header">
           <h2> Playground </h2>
-          <button className="close" onClick={() => props.setTrigger(false)}>
+          <button
+            className="exitButton"
+            onClick={() => props.setTrigger(false)}
+          >
             <svg
               viewBox="0 0 24 24"
               width="20px"
@@ -24,15 +27,15 @@ function Popup(props) {
             </svg>
           </button>
         </div>
-        <div className="button">
-          <button className="playButton">
+        <div>
+          <button className="playgroundButton">
             {" "}
             My Playgrounds{" "}
             <svg
               viewBox="0 0 24 24"
               width="20px"
               height="20px"
-              className="btn-logo"
+              className="buttonArrow"
             >
               <path
                 fill-rule="evenodd"
@@ -42,15 +45,15 @@ function Popup(props) {
           </button>
           <Divider />
         </div>
-        <div className="content">
+        <div>
           <div className="console1">
             <h3> Console Application </h3>
-            <div className="console2">
+            <div className="consoleApplicationContent">
               <div>
-                <Card className="new">
-                  <div className="plus2">+</div>
+                <Card className="newPlayground">
+                  <div className="plusImg">+</div>
                 </Card>
-                <div className="console-header">
+                <div className="itemHeader">
                   <div
                     style={{
                       marginTop: "10px",
@@ -63,7 +66,7 @@ function Popup(props) {
                 </div>
               </div>
               <div>
-                <Card className="apps">
+                <Card className="consoleApplicationItems">
                   <a href="https://leetcode.com/playground/new/linked-list">
                     <img
                       src="https://leetcode.com/static/images/playground/card-linked-list.jpg"
@@ -72,7 +75,7 @@ function Popup(props) {
                     />
                   </a>
                 </Card>
-                <div className="console-header">
+                <div className="itemHeader">
                   <div
                     style={{
                       marginTop: "10px",
@@ -85,7 +88,7 @@ function Popup(props) {
                 </div>
               </div>
               <div>
-                <Card className="apps">
+                <Card className="consoleApplicationItems">
                   <a href="https://leetcode.com/playground/new/binary-tree">
                     <img
                       src="https://leetcode.com/static/images/playground/card-binary-tree.jpg"
@@ -94,7 +97,7 @@ function Popup(props) {
                     />
                   </a>
                 </Card>
-                <div className="console-header">
+                <div className="itemHeader">
                   <div
                     style={{
                       marginTop: "10px",
@@ -111,8 +114,8 @@ function Popup(props) {
 
           <div className="console1">
             <h3> Frontend </h3>
-            <div className="console3">
-              <Card className="apps">
+            <div style={{ paddingTop: "5px" }}>
+              <Card className="consoleApplicationItems">
                 <a href="https://leetcode.com/playground/new/react">
                   <img
                     src="https://leetcode.com/static/images/playground/card-react.png"
@@ -121,7 +124,7 @@ function Popup(props) {
                   />
                 </a>
               </Card>
-              <div className="console-header">
+              <div className="itemHeader">
                 <div
                   style={{
                     marginTop: "10px",

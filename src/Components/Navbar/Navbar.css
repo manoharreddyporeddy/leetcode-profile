@@ -1,31 +1,108 @@
-.Navitems {
+/* Button {
+  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, PingFang SC,
+    Hiragino Sans GB, Microsoft YaHei, Helvetica Neue, Helvetica, Arial,
+    sans-serif, Apple Color Emoji, Segoe UI Em;
+} */
+
+.navContainer {
   display: flex;
   position: relative;
   justify-content: space-between;
   align-items: center;
   font-size: 13px;
-  box-sizing: border-box;
   max-width: 1240px;
+  box-sizing: border-box;
   width: 100%;
 }
 
-.Navlogo {
-  cursor: pointer;
-  height: 20px;
-  vertical-align: middle;
-}
-
-.Navmenu {
+.leftItemList {
   display: flex;
+  flex-wrap: nowrap;
   list-style: none;
   align-items: center;
   width: fit-content;
   padding: 0;
 }
 
-.Navitem-container {
+.leetcodeLogo {
   display: block;
   margin-left: 20px;
+  cursor: pointer;
+  height: 20px;
+}
+
+.storeButton {
+  padding: 0px;
+  font-size: 13px;
+  text-transform: none;
+  color: #f9a825;
+  margin-left: 20px;
+}
+
+.storeButton000:hover,
+.storeButton:hover {
+  color: #f07318;
+  background-color: white;
+  transition: all 0.3s ease-in-out;
+}
+
+.rightItemList {
+  display: flex;
+  list-style: none;
+  text-align: center;
+  align-items: center;
+  width: fit-content;
+  box-sizing: border-box;
+}
+
+ul.rightItemList li {
+  margin-right: 25px;
+  z-index: 1;
+}
+
+.premiumButton {
+  justify-content: center;
+  padding: 0px;
+  font-size: 12px;
+  text-transform: none;
+  color: #f9a825;
+  border-color: #f9a825;
+  padding-left: 7px;
+  padding-right: 7px;
+  border-radius: 3px;
+  height: 24px;
+}
+
+.premiumButton:hover {
+  color: white;
+  background-color: #f9a825;
+  transition: all 0.3s ease-in-out;
+}
+
+.newplaygroundButton {
+  color: #90a4ae;
+  padding: 0px;
+}
+
+.newplaygroundButton:hover {
+  color: #546e7a;
+  background-color: white;
+  transition: all 0.3s ease-in-out;
+}
+
+.alertprofileButtons {
+  color: #90a4ae;
+  border: none;
+  background-color: inherit;
+  cursor: pointer;
+  padding: 0px;
+  margin-top: 2px;
+}
+
+.alertprofileButtons:hover {
+  color: #546e7a;
+  background-color: white;
+  transition: all 0.3s ease-in-out;
 }
 
 .nav-links {
@@ -40,102 +117,20 @@
   transition: all 0.5s ease-in-out;
 }
 
-.NavmenuRight {
-  display: flex;
-  list-style: none;
-  text-align: center;
-  align-items: center;
-  width: fit-content;
-  box-sizing: border-box;
-}
-
-.NavitemRight-container {
-  margin-right: 25px;
-  z-index: 1;
-}
-
-Button {
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, PingFang SC,
-    Hiragino Sans GB, Microsoft YaHei, Helvetica Neue, Helvetica, Arial,
-    sans-serif, Apple Color Emoji, Segoe UI Em;
-}
-
-.storeButton {
-  padding: 0px;
-  font-size: 13px;
-  text-transform: none;
-  color: #f9a825;
-}
-
-.storeButton:hover {
-  color: #f07318;
-  background-color: white;
-  transition: all 0.3s ease-in-out;
-}
-
-.premiumButton {
-  display: inline-flex;
-  justify-content: center;
-  padding: 0px;
-  font-size: 12px;
-  text-transform: none;
-  color: #f9a825;
-  border-color: #f9a825;
-  padding-left: 7px;
-  padding-right: 7px;
-  background-origin: padding-box;
-  background-position-x: 0;
-  background-position-y: 0;
-  border-radius: 3px;
-  height: 24px;
-}
-
-.premiumButton:hover {
-  color: white;
-  background-color: #f9a825;
-  transition: all 0.3s ease-in-out;
-}
-
-.btnrighticon {
-  color: #90a4ae;
-  padding: 0px;
-}
-
-.btnrighticon:hover {
-  color: #546e7a;
-  background-color: white;
-  transition: all 0.3s ease-in-out;
-}
-
-.btnrighticon-2 {
-  color: #90a4ae;
-  border: none;
-  background-color: inherit;
-  cursor: pointer;
-  padding: 0px;
-  margin-top: 2px;
-}
-
-.btnrighticon-2:hover {
-  color: #546e7a;
-  background-color: white;
-  transition: all 0.3s ease-in-out;
-}
-
-.notifycard {
+.notificationCard {
   height: 380px;
   overflow-y: scroll;
   overflow-x: none;
   width: 500px;
 }
 
-.notifylist {
+.notificaitonList {
   list-style: none;
   padding-left: 20px;
   padding-right: 20px;
 }
 
-.notifyitem {
+.notificaitonListItem {
   position: relative;
   height: 74px;
   width: 460px;
@@ -143,29 +138,29 @@ Button {
   padding-right: 40px;
 }
 
-.contestnotify {
+.notificaitonItemTitle {
   position: relative;
   padding-top: 10px;
 }
 
-.timenotify {
+.notificaitonItemTime {
   position: relative;
   margin-left: 335px;
   text-decoration: none;
   padding-top: 10px;
 }
 
-.linknotify {
+.notificationItemLink {
   position: absolute;
   margin-top: 40px;
 }
 
-.profile-items {
+.profileMenu {
   text-align: left;
   width: 270px;
 }
 
-.profile-menu {
+.profileMenuList {
   display: flex;
   flex-direction: column;
   grid-gap: 20px;
@@ -173,15 +168,8 @@ Button {
   padding: 15px;
 }
 
-.profile-links {
+.profileItems {
   text-decoration: none;
   color: #546e7a;
   font-size: 14px;
-}
-
-.dropdown-menu {
-  overflow-x: none;
-}
-
-.dropdown-item {
 }

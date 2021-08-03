@@ -1,47 +1,37 @@
-import React, { useState, useEffect, useRef } from "react";
-import { LeftMenu } from "./Menuitems";
-import { Profileitems } from "./Profileitems";
-import Button from "@material-ui/core/Button";
 import "./Navbar.css";
-import Popup from "./Popup";
-import MenuListComposition from "./Dropdown";
-import IconButton from "@material-ui/core/IconButton";
-import Tooltip from "@material-ui/core/Tooltip";
-import StarOutlineIcon from "@material-ui/icons/StarOutline";
-import StoreIcon from "@material-ui/icons/Store";
-import Grow from "@material-ui/core/Grow";
-import Popper from "@material-ui/core/Popper";
+
+import React from "react";
+
+import Button from "@material-ui/core/Button";
 import ClickAwayListener from "@material-ui/core/ClickAwayListener";
+import Grow from "@material-ui/core/Grow";
+import IconButton from "@material-ui/core/IconButton";
 import MenuItem from "@material-ui/core/MenuItem";
 import MenuList from "@material-ui/core/MenuList";
-import { makeStyles } from "@material-ui/core/styles";
 import Paper from "@material-ui/core/Paper";
-import Dropdown from "react-bootstrap/Dropdown";
-import DropdownButton from "react-bootstrap/DropdownButton";
+import Popper from "@material-ui/core/Popper";
+import StarOutlineIcon from "@material-ui/icons/StarOutline";
+import StoreIcon from "@material-ui/icons/Store";
+import Tooltip from "@material-ui/core/Tooltip";
 import { Divider } from "@material-ui/core";
 
-const useStyles = makeStyles((theme) => ({
-  root: {
-    display: "flex"
-  },
+import Dropdown from "react-bootstrap/Dropdown";
 
-  paper: {
-    marginRight: theme.spacing(2)
-  }
-}));
+import Popup from "./Popup";
+import { LeftMenu } from "./Menuitems";
+import { Profileitems } from "./Profileitems";
 
 export default function Navbar() {
-  const classes = useStyles();
   const [buttonPopup, setbuttonPopup] = React.useState(false);
   const [open, setOpen] = React.useState(false);
   const anchorRef = React.useRef(null);
-  const [drop, setdrop] = React.useState(false);
+  const [drop, setDrop] = React.useState(false);
 
   const handleToggle = () => {
     setOpen((prevOpen) => !prevOpen);
   };
 
-  const handleClose = (event) => {
+  const handleClose = () => {
     // if (anchorRef.current && anchorRef.current.contains(event.target)) {
     //   return;
     // }
@@ -77,25 +67,26 @@ export default function Navbar() {
   // });
 
   return (
-    <div className="Navitems">
-      <ul className="Navmenu">
-        <li className="Navitem-container">
+    <div className="navContainer">
+      <ul className="leftItemList">
+        <li>
           <a href="https://leetcode.com/">
             <img
-              className="Navlogo"
+              className="leetcodeLogo"
               src="https://assets.leetcode.com/static_assets/public/webpack_bundles/images/logo-dark.e99485d9b.svg"
               alt="Logo"
             />
           </a>
         </li>
         {LeftMenu.map((item, index) => {
-          return { index } === 2 ? (
-            <li key={index} className="Navitem-container">
-              <a className={item.cName} href={item.url} onClick={handleToggle}>
-                {item.title}
-              </a>
-            </li>
-          ) : (
+          return (
+            // { index } === 2 ? (
+            //   <li key={index}>
+            //     <a className={item.cName} href={item.url} onClick={handleToggle}>
+            //       {item.title}
+            //     </a>
+            //   </li>
+            // ) : (
             <li key={index}>
               <a className={item.cName} href={item.url}>
                 {item.title}
@@ -103,16 +94,24 @@ export default function Navbar() {
             </li>
           );
         })}
-        <li className="Navitem-container">
+        <li>
           <Button
-            className="storeButton"
             ref={anchorRef}
-            aria-controls={open ? "menu-list-grow" : undefined}
-            aria-haspopup="true"
+            // aria-controls={open ? "menu-list-grow" : undefined}
+            // aria-haspopup="true"
+            // className="storeButton"
+            style={{
+              height: "18px",
+              padding: "0px",
+              fontSize: "13px",
+              textTransform: "none",
+              color: "#f9a825",
+              marginLeft: "20px"
+            }}
             onClick={handleToggle}
           >
-            {" "}
-            <StoreIcon style={{ height: "18px" }} /> Store{" "}
+            <StoreIcon className="storeButton" style={{ height: "18px" }} />
+            Store
           </Button>
           <Popper
             open={open}
@@ -120,6 +119,7 @@ export default function Navbar() {
             role={undefined}
             transition
             disablePortal
+            style={{ zIndex: 1 }}
           >
             {({ TransitionProps, placement }) => (
               <Grow
@@ -157,21 +157,33 @@ export default function Navbar() {
         </li>
       </ul>
 
-      <ul className="NavmenuRight">
-        <li className="NavitemRight-container">
+      <ul className="rightItemList">
+        <li>
           <Button
             variant="outlined"
-            className="premiumButton"
-            onClick={() => setdrop(true)}
+            // className="premiumButton"
+            style={{
+              justifyContent: "center",
+              padding: "0px",
+              fontSize: "12px",
+              textTransform: "none",
+              color: "#f9a825",
+              borderColor: "#f9a825",
+              paddingLeft: "7px",
+              paddingRight: "7px",
+              borderRadius: "3px",
+              height: "24px"
+            }}
+            onClick={() => setDrop(true)}
           >
             <StarOutlineIcon style={{ height: "14px", width: "14px" }} />{" "}
             Premium{" "}
           </Button>
         </li>
-        <li className="NavitemRight-container">
+        <li>
           <Tooltip title="New Playground" arrow>
             <IconButton
-              className="btnrighticon"
+              className="newplaygroundButton"
               disableRipple
               onClick={() => setbuttonPopup(true)}
             >
@@ -189,12 +201,12 @@ export default function Navbar() {
             </IconButton>
           </Tooltip>
         </li>
-        <li className="NavitemRight-container">
+        <li>
           <Dropdown>
             <Dropdown.Toggle
               variant="success"
               id="dropdown-basic"
-              className="btnrighticon-2"
+              className="alertprofileButtons"
             >
               <svg
                 viewBox="0 0 24 24"
@@ -210,11 +222,11 @@ export default function Navbar() {
             </Dropdown.Toggle>
 
             <Dropdown.Menu>
-              <Dropdown.Item href="#/action-1" className="dropdown-menu">
-                <Paper className="notifycard">
-                  <ul className="notifylist">
-                    <li className="notifyitem">
-                      <div className="contestnotify">
+              <Dropdown.Item href="#/action-1">
+                <Paper className="notificationCard">
+                  <ul className="notificaitonList">
+                    <li className="notificaitonListItem">
+                      <div className="notificaitonItemTitle">
                         <svg
                           viewBox="0 0 24 24"
                           width="18px"
@@ -229,16 +241,18 @@ export default function Navbar() {
                         </svg>{" "}
                         Contest
                       </div>
-                      <div className="timenotify">July 08, 2021 4:50 AM</div>
-                      <div className="linknotify">
+                      <div className="notificaitonItemTime">
+                        July 08, 2021 4:50 AM
+                      </div>
+                      <div className="notificationItemLink">
                         {" "}
                         Biweekly Contest 56 and Weekly Contest 249 are
                         approaching.{" "}
                       </div>
                     </li>
                     <Divider />
-                    <li className="notifyitem">
-                      <div className="contestnotify">
+                    <li className="notificaitonListItem">
+                      <div className="notificaitonItemTitle">
                         <svg
                           viewBox="0 0 24 24"
                           width="18px"
@@ -253,15 +267,17 @@ export default function Navbar() {
                         </svg>{" "}
                         Contest
                       </div>
-                      <div className="timenotify">July 01, 2021 4:50 AM</div>
-                      <div className="linknotify">
+                      <div className="notificaitonItemTime">
+                        July 01, 2021 4:50 AM
+                      </div>
+                      <div className="notificationItemLink">
                         {" "}
                         Weekly Contest 248 is approaching.{" "}
                       </div>
                     </li>
                     <Divider />
-                    <li className="notifyitem">
-                      <div className="contestnotify">
+                    <li className="notificaitonListItem">
+                      <div className="notificaitonItemTitle">
                         <svg
                           viewBox="0 0 24 24"
                           width="18px"
@@ -276,16 +292,18 @@ export default function Navbar() {
                         </svg>{" "}
                         Contest
                       </div>
-                      <div className="timenotify">June 24, 2021 4:53 AM</div>
-                      <div className="linknotify">
+                      <div className="notificaitonItemTime">
+                        June 24, 2021 4:53 AM
+                      </div>
+                      <div className="notificationItemLink">
                         {" "}
                         Biweekly Contest 55 and Weekly Contest 247 are
                         approaching.{" "}
                       </div>
                     </li>
                     <Divider />
-                    <li className="notifyitem">
-                      <div className="contestnotify">
+                    <li className="notificaitonListItem">
+                      <div className="notificaitonItemTitle">
                         <svg
                           viewBox="0 0 24 24"
                           width="18px"
@@ -300,15 +318,17 @@ export default function Navbar() {
                         </svg>{" "}
                         Contest
                       </div>
-                      <div className="timenotify">June 17, 2021 4:48 AM</div>
-                      <div className="linknotify">
+                      <div className="notificaitonItemTime">
+                        June 17, 2021 4:48 AM
+                      </div>
+                      <div className="notificationItemLink">
                         {" "}
                         Weekly Contest 246 is approaching.{" "}
                       </div>
                     </li>
                     <Divider />
-                    <li className="notifyitem">
-                      <div className="contestnotify">
+                    <li className="notificaitonListItem">
+                      <div className="notificaitonItemTitle">
                         <svg
                           viewBox="0 0 24 24"
                           width="1em"
@@ -322,15 +342,17 @@ export default function Navbar() {
                         </svg>
                         LeetCoin Reward
                       </div>
-                      <div className="timenotify">June 10, 2021 6:57 PM</div>
-                      <div className="linknotify">
+                      <div className="notificaitonItemTime">
+                        June 10, 2021 6:57 PM
+                      </div>
+                      <div className="notificationItemLink">
                         {" "}
                         Weekly Contest 248 is approaching.{" "}
                       </div>
                     </li>
                     <Divider />
-                    <li className="notifyitem">
-                      <div className="contestnotify">
+                    <li className="notificaitonListItem">
+                      <div className="notificaitonItemTitle">
                         <svg
                           viewBox="0 0 24 24"
                           width="18px"
@@ -345,15 +367,17 @@ export default function Navbar() {
                         </svg>{" "}
                         Contest
                       </div>
-                      <div className="timenotify">July 01, 2021 4:50 AM</div>
-                      <div className="linknotify">
+                      <div className="notificaitonItemTime">
+                        July 01, 2021 4:50 AM
+                      </div>
+                      <div className="notificationItemLink">
                         {" "}
                         Weekly Contest 248 is approaching.{" "}
                       </div>
                     </li>
                     <Divider />
-                    <li className="notifyitem">
-                      <div className="contestnotify">
+                    <li className="notificaitonListItem">
+                      <div className="notificaitonItemTitle">
                         <svg
                           viewBox="0 0 24 24"
                           width="18px"
@@ -368,8 +392,10 @@ export default function Navbar() {
                         </svg>{" "}
                         Contest
                       </div>
-                      <div className="timenotify">July 01, 2021 4:50 AM</div>
-                      <div className="linknotify">
+                      <div className="notificaitonItemTime">
+                        July 01, 2021 4:50 AM
+                      </div>
+                      <div className="notificationItemLink">
                         {" "}
                         Weekly Contest 248 is approaching.{" "}
                       </div>
@@ -392,12 +418,12 @@ export default function Navbar() {
             </Dropdown.Menu>
           </Dropdown>
         </li>
-        <li className="NavitemRight-container">
+        <li>
           <Dropdown>
             <Dropdown.Toggle
               variant="success"
               id="dropdown-basic"
-              className="btnrighticon-2"
+              className="alertprofileButtons"
             >
               <svg
                 viewBox="0 0 24 24"
@@ -411,17 +437,12 @@ export default function Navbar() {
                 ></path>
               </svg>
             </Dropdown.Toggle>
-            <Dropdown.Menu className="profile-items">
+            <Dropdown.Menu className="profileMenu">
               <Paper>
-                <ul className="profile-menu">
+                <ul className="profileMenuList">
                   <li>
-                    <a href="/subscribe?ref=um_pl" class="">
-                      <svg
-                        viewBox="0 0 24 24"
-                        width="24px"
-                        height="24px"
-                        class=""
-                      >
+                    <a href="/subscribe?ref=um_pl">
+                      <svg viewBox="0 0 24 24" width="24px" height="24px">
                         <path
                           fill-rule="evenodd"
                           d="M17 3c1.1 0 2 .9 2 2v16l-7-3-7 3 .01-16c0-1.1.89-2 1.99-2h10zm-5 10.43L14.472 15l-.656-2.96L16 10.048l-2.876-.256L12 7l-1.124 2.792L8 10.048l2.184 1.992L9.528 15 12 13.43z"
@@ -429,7 +450,7 @@ export default function Navbar() {
                       </svg>
                     </a>
                     <a
-                      className="profile-links"
+                      className="profileItems"
                       href="https://leetcode.com/akshayvarmamit/"
                     >
                       {" "}
@@ -440,13 +461,8 @@ export default function Navbar() {
                   {Profileitems.map((item, index) => {
                     return (
                       <li key={index}>
-                        <a href="/subscribe?ref=um_pl" class="">
-                          <svg
-                            viewBox="0 0 24 24"
-                            width="24px"
-                            height="24px"
-                            class=""
-                          >
+                        <a href="/subscribe?ref=um_pl">
+                          <svg viewBox="0 0 24 24" width="24px" height="24px">
                             <path fill-rule="evenodd" d={item.svg}></path>
                           </svg>
                         </a>
