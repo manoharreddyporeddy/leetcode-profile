@@ -2,7 +2,9 @@ export const LeftMenu = [
   {
     title: "Explore",
     url: "https://leetcode.com/explore/",
-    cName: "nav-links"
+    cName: "nav-links",
+    c2Name: "linkChip",
+    c3Name: "exploreBtn"
   },
 
   {
@@ -14,7 +16,9 @@ export const LeftMenu = [
   {
     title: "Interview",
     url: "",
-    cName: "nav-links"
+    cName: "nav-links",
+    c2Name: "linkChip",
+    c3Name: "interviewBtn"
   },
 
   {

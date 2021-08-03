@@ -16,6 +16,20 @@
   height: 27.8px;
 }
 
+.editProfile {
+  border: 0px;
+  border-radius: 3px;
+  box-shadow: rgb(38 50 56 / 20%) 0px 0px 0px 1px inset;
+  padding: 0px 7px;
+  height: 24px;
+  float: right;
+  align-items: center;
+  cursor: pointer;
+  color: rgb(69, 90, 100);
+  background: rgb(250, 250, 250);
+  font-size: 12px;
+}
+
 .profileDetailsContainer {
   display: flex;
   flex-direction: row;

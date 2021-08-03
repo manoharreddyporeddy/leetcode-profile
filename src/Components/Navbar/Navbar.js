@@ -1,4 +1,5 @@
 import "./Navbar.css";
+import { makeStyles } from "@material-ui/core/styles";
 
 import React from "react";
 
@@ -21,7 +22,30 @@ import Popup from "./Popup";
 import { LeftMenu } from "./Menuitems";
 import { Profileitems } from "./Profileitems";
 
+const useStyles = makeStyles((theme) => ({
+  navbarContainer: {
+    display: "flex",
+    position: "relative",
+    justifyContent: "space-between",
+    alignItems: "center",
+    fontSize: "13px",
+    maxWidth: "1240px",
+    width: "100%"
+  },
+
+  linksList: {
+    display: "flex",
+    flexWrap: "nowrap",
+    listStyle: "none",
+    alignItems: "center",
+    width: "fit-content",
+    padding: "0"
+  }
+}));
+
 export default function Navbar() {
+  const classes = useStyles();
+
   const [buttonPopup, setbuttonPopup] = React.useState(false);
   const [open, setOpen] = React.useState(false);
   const anchorRef = React.useRef(null);
@@ -67,12 +91,12 @@ export default function Navbar() {
   // });
 
   return (
-    <div className="navContainer">
-      <ul className="leftItemList">
+    <div className={classes.navbarContainer}>
+      <ul className={classes.linksList}>
         <li>
           <a href="https://leetcode.com/">
             <img
-              className="leetcodeLogo"
+              style={{ marginLeft: "20px", cursor: "pointer", height: "20px" }}
               src="https://assets.leetcode.com/static_assets/public/webpack_bundles/images/logo-dark.e99485d9b.svg"
               alt="Logo"
             />
@@ -80,15 +104,11 @@ export default function Navbar() {
         </li>
         {LeftMenu.map((item, index) => {
           return (
-            // { index } === 2 ? (
-            //   <li key={index}>
-            //     <a className={item.cName} href={item.url} onClick={handleToggle}>
-            //       {item.title}
-            //     </a>
-            //   </li>
-            // ) : (
             <li key={index}>
-              <a className={item.cName} href={item.url}>
+              <a
+                className={item.cName + " " + item.c2Name + " " + item.c3Name}
+                href={item.url}
+              >
                 {item.title}
               </a>
             </li>

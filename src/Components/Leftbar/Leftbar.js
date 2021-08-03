@@ -10,8 +10,9 @@ export default function App() {
   return (
     <>
       <Card className="profileCardContainer" direction="row">
-        <div className="cardTitle">
-          <div style={{ fontWeight: 600 }}>Basic Profile</div>
+        <div className="cardTitle" style={{ paddingBottom: "0.3rem" }}>
+          <span style={{ fontWeight: 600 }}>Basic Profile</span>
+          <button className="editProfile">Edit Profile</button>
         </div>
 
         <Divider />
