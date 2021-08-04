@@ -4,11 +4,15 @@ import Card from "@material-ui/core/Card";
 import Divider from "@material-ui/core/Divider";
 import Highchart from "./highchart";
 import Heatmap from "./heatmap";
-import { Recentposts } from "./Recentposts";
-import { Submissions } from "./Submissions";
 import Chart from "./Percentage_circle";
 
+import { userData } from "./data/pgmreddy";
+// import { userData } from "./data/akshay";
+
 export default function App() {
+  const recentPosts = userData.recentPosts;
+  const recentSubmissions = userData.recentSubmissions;
+
   return (
     <>
       <div className="threeCardsContainer">
@@ -232,7 +236,7 @@ export default function App() {
             <ul
               style={{ listStyleType: "none", margin: "0px", padding: "0px" }}
             >
-              {Recentposts.map((item, index) => {
+              {recentPosts.map((item, index) => {
                 return (
                   <li key={index}>
                     <a
@@ -394,7 +398,7 @@ export default function App() {
             <ul
               style={{ listStyleType: "none", margin: "0px", padding: "0px" }}
             >
-              {Submissions.map((item, index) => {
+              {recentSubmissions.map((item, index) => {
                 return (
                   <li key={index}>
                     <a

@@ -1,4 +1,4 @@
-export const Submissions = [
+export const recentSubmissions = [
   {
     title: "Vowel Spellchecker",
     time: "an hours ago",
