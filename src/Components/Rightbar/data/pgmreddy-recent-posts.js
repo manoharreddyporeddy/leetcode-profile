@@ -1,4 +1,4 @@
-export const Recentposts = [
+export const recentPosts = [
   {
     title:
       "966 - Return matched word - same, ignore-cased one, vowels replaced one, or empty string",
