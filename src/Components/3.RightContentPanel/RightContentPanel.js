@@ -1,5 +1,5 @@
 import React from "react";
-import "./Rightbar.css";
+import "./RightContentPanel.css";
 import Card from "@material-ui/core/Card";
 import Divider from "@material-ui/core/Divider";
 import Highchart from "./highchart";

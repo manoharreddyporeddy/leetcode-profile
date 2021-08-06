@@ -14,30 +14,67 @@ import Popper from "@material-ui/core/Popper";
 import StarOutlineIcon from "@material-ui/icons/StarOutline";
 import StoreIcon from "@material-ui/icons/Store";
 import Tooltip from "@material-ui/core/Tooltip";
-import { Divider } from "@material-ui/core";
 
-import Popup from "./Popup";
-import { LeftMenu } from "./Menuitems";
-import { Profileitems } from "./Profileitems";
+import Popup from "./Navbar_Components/Popup";
+import { linksList } from "./data/navbarItems";
+import { iconLinks } from "./data/navbarItems";
 
 const useStyles = makeStyles((theme) => ({
   navbarContainer: {
     display: "flex",
-    position: "relative",
     justifyContent: "space-between",
-    alignItems: "center",
     fontSize: "13px",
-    maxWidth: "1240px",
+    maxWidth: "1230px",
     width: "100%"
   },
 
-  linksList: {
+  navLinksList: {
     display: "flex",
     flexWrap: "nowrap",
-    listStyle: "none",
     alignItems: "center",
-    width: "fit-content",
+    listStyle: "none",
     padding: "0"
+  },
+
+  storeButton: {
+    height: "18px",
+    padding: "0px",
+    marginLeft: "15px",
+    fontSize: "13px",
+    textTransform: "none",
+    color: "#f9a825",
+
+    "&:hover": {
+      color: "#f07318",
+      backgroundColor: "white",
+      transition: "all 0.3s ease-in-out"
+    }
+  },
+
+  premiumButton: {
+    padding: "1px 7px",
+    fontSize: "12px",
+    marginRight: "12px",
+    textTransform: "none",
+    color: "#f9a825",
+    borderColor: "#f9a825",
+    borderRadius: "3px",
+
+    "&:hover": {
+      color: "white",
+      backgroundColor: "#f9a825",
+      transition: "all 0.3s ease-in-out"
+    }
+  },
+
+  navIcons: {
+    color: "#90a4ae",
+
+    "&:hover": {
+      color: "#546e7a",
+      backgroundColor: "white",
+      transition: "all 0.3s ease-in-out"
+    }
   }
 }));
 
@@ -90,7 +127,7 @@ export default function Navbar() {
 
   return (
     <div className={classes.navbarContainer}>
-      <ul className={classes.linksList}>
+      <ul className={classes.navLinksList}>
         <li>
           <a href="https://leetcode.com/">
             <img
@@ -100,11 +137,13 @@ export default function Navbar() {
             />
           </a>
         </li>
-        {LeftMenu.map((item, index) => {
+        {linksList.map((item, index) => {
           return (
             <li key={index}>
               <a
-                className={item.cName + " " + item.c2Name + " " + item.c3Name}
+                className={
+                  item.cName + " " + item.afterCName + " " + item.contentCName
+                }
                 href={item.url}
               >
                 {item.title}
@@ -114,21 +153,12 @@ export default function Navbar() {
         })}
         <li>
           <Button
+            disableTouchRipple
             ref={anchorRef}
-            // aria-controls={open ? "menu-list-grow" : undefined}
-            // aria-haspopup="true"
-            // className="storeButton"
-            style={{
-              height: "18px",
-              padding: "0px",
-              fontSize: "13px",
-              textTransform: "none",
-              color: "#f9a825",
-              marginLeft: "20px"
-            }}
+            className={classes.storeButton}
             onClick={handleToggle}
           >
-            <StoreIcon className="storeButton" style={{ height: "18px" }} />
+            <StoreIcon style={{ height: "18px" }} />
             Store
           </Button>
           <Popper
@@ -175,80 +205,42 @@ export default function Navbar() {
         </li>
       </ul>
 
-      <ul className="rightItemList">
+      <ul className={classes.navLinksList}>
         <li>
           <Button
             variant="outlined"
-            // className="premiumButton"
-            style={{
-              justifyContent: "center",
-              padding: "0px",
-              fontSize: "12px",
-              textTransform: "none",
-              color: "#f9a825",
-              borderColor: "#f9a825",
-              paddingLeft: "7px",
-              paddingRight: "7px",
-              borderRadius: "3px",
-              height: "24px"
-            }}
+            className={classes.premiumButton}
             onClick={() => setDrop(true)}
           >
             <StarOutlineIcon style={{ height: "14px", width: "14px" }} />{" "}
             Premium{" "}
           </Button>
         </li>
-        <li>
-          <Tooltip title="New Playground" arrow>
-            <IconButton
-              className="newplaygroundButton"
-              disableRipple
-              onClick={() => setbuttonPopup(true)}
-            >
-              <svg
-                viewBox="0 0 24 24"
-                width="22px"
-                height="22px"
-                fill="currentColor"
+
+        {iconLinks.map((item, index) => {
+          var title = { title } === "newplayground" ? true : false;
+          return (
+            <li>
+              <IconButton
+                className={classes.navIcons}
+                disableRipple
+                onClick={() => setbuttonPopup(false)}
               >
-                <path
-                  fill-rule="evenodd"
-                  d="M21 5H3v14h9v2H1V3h22v7h-2V5zm-3 11v-3h2v3h3v2h-3v3h-2v-3h-3v-2h3zM6 8l7 4.001L6 16v-2.303l2.969-1.696L6 10.303V8z"
-                ></path>
-              </svg>
-            </IconButton>
-          </Tooltip>
-        </li>
-        <li>
-          <IconButton className="alertprofileButtons">
-            <svg
-              viewBox="0 0 24 24"
-              width="22px"
-              height="22px"
-              fill="currentColor"
-            >
-              <path
-                fill-rule="evenodd"
-                d="M18 16v-5c0-3.07-1.64-5.64-4.5-6.32V4c0-.83-.67-1.5-1.5-1.5s-1.5.67-1.5 1.5v.68C7.63 5.36 6 7.92 6 11v5l-2 2v1h16v-1l-2-2zm-6 6c1.1 0 2-.9 2-2h-4a2 2 0 0 0 2 2z"
-              ></path>
-            </svg>
-          </IconButton>
-        </li>
-        <li>
-          <IconButton className="alertprofileButtons">
-            <svg
-              viewBox="0 0 24 24"
-              width="22px"
-              height="22px"
-              fill="currentColor"
-            >
-              <path
-                fill-rule="evenodd"
-                d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 3c1.66 0 3 1.34 3 3s-1.34 3-3 3-3-1.34-3-3 1.34-3 3-3zm0 14.2a7.2 7.2 0 0 1-6-3.22c.03-1.99 4-3.08 6-3.08 1.99 0 5.97 1.09 6 3.08a7.2 7.2 0 0 1-6 3.22z"
-              ></path>
-            </svg>
-          </IconButton>
-        </li>
+                <svg
+                  viewBox={item.viewBox}
+                  width={item.width}
+                  height={item.height}
+                  fill="currentColor"
+                >
+                  <path d={item.path_d}></path>
+                </svg>
+              </IconButton>
+            </li>
+          );
+        })}
+        {/* 
+          <Tooltip title="New Playground" arrow>
+          </Tooltip>*/}
       </ul>
       <Popup trigger={buttonPopup} setTrigger={setbuttonPopup}></Popup>
     </div>

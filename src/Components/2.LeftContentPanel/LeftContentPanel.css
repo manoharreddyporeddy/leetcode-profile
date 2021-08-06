@@ -1,18 +1,10 @@
-.profileCardContainer {
-  padding: 0px;
-  margin: auto;
-  display: block;
-  background-color: white;
+.profileCard {
   border-radius: 8px;
   margin-bottom: 15px;
 }
 
 .cardTitle {
-  padding-left: 12px;
-  padding-right: 12px;
-  padding-top: 9px;
-  align-items: center;
-  justify-content: center;
+  padding: 0.5625rem 0.75rem 0rem;
   height: 27.8px;
 }
 
@@ -32,7 +24,6 @@
 
 .profileDetailsContainer {
   display: flex;
-  flex-direction: row;
 }
 
 .profileDetailsTextbox {
@@ -44,9 +35,6 @@
 }
 
 .profileNameID {
-  padding: 0px;
-  display: flex;
-  align-items: center;
 }
 
 .ratingContainer {
@@ -58,10 +46,8 @@
   /* height: 100px; */
 
   padding: 0px;
-  margin: 0px;
-  padding-bottom: 0px;
+  margin: 5px 0px;
 
-  display: block;
   position: relative;
 }
 
@@ -69,9 +55,10 @@
   position: absolute;
   display: flex;
 
-  width: 40%;
+  width: 50.5%;
 
   direction: ltr;
+  gap: 5px;
   margin-top: 0px;
   margin-left: 0px;
   padding: 0px;
@@ -85,6 +72,7 @@
 
   margin-top: 0px;
   margin-left: 0px;
+  gap: 5px;
 
   padding: 0px;
 }
@@ -114,17 +102,31 @@
   color: rgba(0, 0, 0, 0.65);
 }
 
-.linkLocationWrapper {
+.linkAndLocationWrapper {
   border-top: 1px solid rgb(224, 224, 224);
   margin-top: 15px;
 }
 
-.linkLocationContainer {
+.linkContainer {
   display: flex;
-  padding: 12px;
-  padding-left: 0px;
-  padding-right: 0px;
+  padding: 12px 0px;
   align-items: center;
+  border-bottom: 1px solid #e8e8e8;
+}
+
+.locationContainer {
+  display: flex;
+  padding: 12px 0px 0px;
+  align-items: center;
+}
+
+.webLink {
+  text-decoration: none;
+  color: #1890ff;
+}
+.location {
+  color: rgba(0, 0, 0, 0.65);
+  margin-left: 230px;
 }
 
 .cardItem {

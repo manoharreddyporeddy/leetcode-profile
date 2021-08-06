@@ -1,0 +1,39 @@
+.navLinks {
+  text-decoration: none;
+  color: #546e7a;
+  padding-top: 0.5rem;
+  margin-left: 20px;
+}
+
+.navLinks:hover {
+  color: black;
+  transition: all 0.5s ease-in-out;
+}
+
+.linkChip::after {
+  display: block;
+  position: absolute;
+  padding: 2px 8px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 500;
+  top: 0.2rem;
+  margin-left: 40px;
+  transform: scale(0.6);
+  color: white;
+  background: rgb(236, 64, 122);
+}
+
+.exploreBtn::after {
+  content: "Day 5";
+}
+
+.interviewBtn::after {
+  content: "New";
+  margin-left: 54px;
+}
+
+/* ul.rightItemList li {
+  margin-right: 25px;
+  z-index: 1;
+} */

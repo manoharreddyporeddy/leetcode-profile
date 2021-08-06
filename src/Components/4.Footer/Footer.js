@@ -1,5 +1,5 @@
 import React from "react";
-import "./Bottombar.css";
+import "./Footer.css";
 
 export default function App() {
   return (

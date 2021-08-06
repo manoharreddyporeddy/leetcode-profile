@@ -178,3 +178,44 @@
                     <Divider />
                   </ul>
                 </Paper>
+
+
+
+.notificationCard {
+  height: 380px;
+  overflow-y: scroll;
+  overflow-x: none;
+  width: 500px;
+}
+
+.notificaitonList {
+  list-style: none;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+.notificaitonListItem {
+  position: relative;
+  height: 74px;
+  width: 460px;
+  padding-left: 0px;
+  padding-right: 40px;
+}
+
+.notificaitonItemTitle {
+  position: relative;
+  padding-top: 10px;
+}
+
+.notificaitonItemTime {
+  position: relative;
+  margin-left: 335px;
+  text-decoration: none;
+  padding-top: 10px;
+}
+
+.notificationItemLink {
+  position: absolute;
+  margin-top: 40px;
+}
+

@@ -38,3 +38,24 @@
                   })}
                 </ul>
               </Paper>
+
+
+
+  .profileMenu {
+  text-align: left;
+  width: 270px;
+}
+
+.profileMenuList {
+  display: flex;
+  flex-direction: column;
+  grid-gap: 20px;
+  list-style: none;
+  padding: 15px;
+}
+
+.profileItems {
+  text-decoration: none;
+  color: #546e7a;
+  font-size: 14px;
+}
