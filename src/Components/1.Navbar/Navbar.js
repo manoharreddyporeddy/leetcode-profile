@@ -218,7 +218,6 @@ export default function Navbar() {
         </li>
 
         {iconLinks.map((item, index) => {
-          var title = { title } === "newplayground" ? true : false;
           return (
             <li>
               <IconButton
