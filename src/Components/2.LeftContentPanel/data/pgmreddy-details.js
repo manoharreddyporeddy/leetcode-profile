@@ -14,24 +14,19 @@ export const profileDetails = [
 
 export const starClasses = [
   {
-    cNameBackground: "ratingStarBackground ratingStarBase",
-    cNameForeground: "ratingStar ratingStarBase"
+    index: 0
   },
   {
-    cNameBackground: "ratingStarBackground ratingStarBase",
-    cNameForeground: "ratingStar ratingStarBase"
+    index: 1
   },
   {
-    cNameBackground: "ratingStarBackground ratingStarBase",
-    cNameForeground: "ratingStar ratingStarBase"
+    index: 2
   },
   {
-    cNameBackground: "ratingStarBackground ratingStarBase",
-    cNameForeground: "ratingStar ratingStarBase"
+    index: 3
   },
   {
-    cNameBackground: "ratingStarBackground ratingStarBase",
-    cNameForeground: "ratingStar ratingStarBase"
+    index: 4
   }
 ];
 
