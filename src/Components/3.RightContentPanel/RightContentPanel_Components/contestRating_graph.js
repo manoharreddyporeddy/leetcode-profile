@@ -1,11 +1,11 @@
 import React from "react";
 
-import "./highchart.css";
+import "./contestRating_graph.css";
 
 import Highcharts from "highcharts";
 import HighchartsReact from "highcharts-react-official";
 
-import { highchart_data } from "./highchart_data";
+import { highchart_data } from "./contestRating_graph_data";
 
 const Highchart = () => (
   <div>

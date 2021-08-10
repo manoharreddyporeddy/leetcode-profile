@@ -1,10 +1,10 @@
 import React from "react";
-import ReactDOM from "react-dom";
+
 import CalendarHeatmap from "react-calendar-heatmap";
 import ReactTooltip from "react-tooltip";
-import { heatmapdata, heatmapdata2 } from "./heatmap_data";
+import { heatmapdata, heatmapdata2 } from "./submission_calendar_data";
 
-import "./heatmap.css";
+import "./submission_calendar.css";
 
 const today = new Date();
 
