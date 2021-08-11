@@ -1,13 +1,13 @@
-import "./styles.css";
+import "./css/styles.css";
+
 import { makeStyles } from "@material-ui/core/styles";
-
 import React from "react";
-import { useParams } from "react-router-dom";
+// import { useParams } from "react-router-dom";
 
-import Navbar from "./1.Navbar/Navbar";
-import LeftContentPanel from "./2.LeftContentPanel/LeftContentPanel";
-import RightContentPanel from "./3.RightContentPanel/RightContentPanel";
-import Footer from "./4.Footer/Footer";
+import Navbar from "./_Navbar";
+import LeftContentPanel from "./_LeftContentPanel";
+import RightContentPanel from "./_RightContentPanel";
+import Footer from "./_Footer";
 
 const useStyles = makeStyles((theme) => ({
     navbarWrapper: {
@@ -52,8 +52,8 @@ const useStyles = makeStyles((theme) => ({
 export default function App(props) {
     const classes = useStyles();
 
-    let { username } = useParams();
-    alert(username);
+    // let { username } = useParams();
+    // alert(username);
 
     return (
         <>

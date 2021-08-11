@@ -1,14 +1,11 @@
-import { makeStyles } from "@material-ui/core/styles";
-
 import React from "react";
-
+import { makeStyles } from "@material-ui/core/styles";
 import Card from "@material-ui/core/Card";
 import Divider from "@material-ui/core/Divider";
 import { Tooltip } from "@material-ui/core";
 
-import { userData } from "./data/pgmreddy";
-
-import Rating from "./rating";
+import { userData } from "./data/pgmreddy-lcp";
+import Rating from "./helpers/BasicProfile-rating";
 
 const useStyles = makeStyles((theme) => ({
   profileCard: {

@@ -1,6 +1,5 @@
 import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
-
 import Card from "@material-ui/core/Card";
 import Divider from "@material-ui/core/Divider";
 
@@ -65,7 +64,7 @@ export default function RecentPosts() {
                       </span>
                     </span>
                     <span style={{ display: "flex", minWidth: "100px" }}>
-                      <span class={classes.iconContainer}>
+                      <span className={classes.iconContainer}>
                         <svg
                           viewBox="0 0 24 24"
                           width="14px"
@@ -80,7 +79,7 @@ export default function RecentPosts() {
                         </svg>
                         {item.like}
                       </span>
-                      <span class={classes.iconContainer}>
+                      <span className={classes.iconContainer}>
                         <svg
                           viewBox="0 0 576 512"
                           width="14px"

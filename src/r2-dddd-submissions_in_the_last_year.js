@@ -1,8 +1,8 @@
 import React from "react";
-
 import Card from "@material-ui/core/Card";
 import Divider from "@material-ui/core/Divider";
-import Heatmap from "./submission_calendar";
+
+import Heatmap from "./helpers/submission_calendar";
 
 export default function NoOfSubmissions() {
   return (

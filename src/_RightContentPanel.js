@@ -1,12 +1,12 @@
 import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
 
-import ContestRating from "./ContestRating";
-import ProblemsSolved from "./ProblemsSolved";
-import Badges from "./Badges";
-import NoOfSubmissions from "./NoOfSubmissionsPastYear";
-import RecentPosts from "./RecentPosts";
-import MostRecentSubmissions from "./MostRecentSubmissions";
+import Badges from "./r1-Badges";
+import ContestRating from "./r1-ContestRating";
+import ProblemsSolved from "./r1-ProblemsSolved";
+import NoOfSubmissions from "./r2-dddd-submissions_in_the_last_year";
+import RecentPosts from "./r3-RecentPosts";
+import MostRecentSubmissions from "./r4-MostRecentSubmissions";
 
 // import { userData } from "./data/akshay";
 

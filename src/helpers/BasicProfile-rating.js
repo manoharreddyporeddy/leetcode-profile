@@ -1,10 +1,8 @@
-import { makeStyles } from "@material-ui/core/styles";
-
 import React from "react";
-
+import { makeStyles } from "@material-ui/core/styles";
 import StarIcon from "@material-ui/icons/Star";
 
-import { userData } from "./data/pgmreddy";
+import { userData } from "../data/pgmreddy-lcp";
 
 const useStyles = makeStyles((theme) => ({
   ratingList: {

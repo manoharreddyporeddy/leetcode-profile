@@ -1,5 +1,5 @@
 import React from "react";
-import "./circle.css";
+import "../css/ProblemsSolved_circle.css";
 
 const Percentage_circle = () => (
   <div size="108" className="cicleContainer">

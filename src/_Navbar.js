@@ -1,4 +1,4 @@
-import "./Navbar.css";
+import "./css/Navbar.css";
 import { makeStyles } from "@material-ui/core/styles";
 
 import React from "react";
@@ -13,11 +13,10 @@ import Paper from "@material-ui/core/Paper";
 import Popper from "@material-ui/core/Popper";
 import StarOutlineIcon from "@material-ui/icons/StarOutline";
 import StoreIcon from "@material-ui/icons/Store";
-import Tooltip from "@material-ui/core/Tooltip";
+// import Tooltip from "@material-ui/core/Tooltip";
 
-import Popup from "./Popup";
-import { linksList } from "./data/navbarItems";
-import { iconLinks } from "./data/navbarItems";
+import Popup from "./helpers/Navbar-Popup";
+import { linksList, iconLinks } from "./data/Navbar-data";
 
 const useStyles = makeStyles((theme) => ({
     navbarContainer: {

@@ -1,5 +1,5 @@
 import React from "react";
-import "./Popup.css";
+import "../css/Navbar-Popup.css";
 import Divider from "@material-ui/core/Divider";
 import Card from "@material-ui/core/Card";
 
