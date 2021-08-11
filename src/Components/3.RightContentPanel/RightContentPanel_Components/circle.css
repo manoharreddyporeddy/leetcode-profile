@@ -1,4 +1,4 @@
-.main {
+.cicleContainer {
   height: 108px;
   width: 108px;
   display: flex;
@@ -13,7 +13,7 @@
   flex: 1;
 }
 
-.main2 {
+.backgroundCircle {
   width: 100px;
   height: 100px;
   border: 3.26953px solid rgb(224, 224, 224);
@@ -22,7 +22,7 @@
   background: white;
 }
 
-.svg1 {
+.svgCircle {
   position: absolute;
   z-index: 0;
   fill: transparent;
@@ -36,12 +36,9 @@
   cursor: pointer;
   fill: none;
   stroke: inherit;
-  stroke-dasharray: 0, 318.086px;
-  stroke-linecap: round;
-  stroke-width: 3.375px;
 }
 
-.circle2 {
+.easyCircle {
   cursor: pointer;
   fill: none;
   stroke: rgb(67, 160, 71);
@@ -49,11 +46,11 @@
   stroke-linecap: round;
   stroke-width: 3.375px;
 }
-.circle2:hover {
+.easyCircle:hover {
   stroke-width: 10px;
 }
 
-.circle3 {
+.mediumCircle {
   cursor: pointer;
   fill: none;
   stroke: rgb(251, 140, 0);
@@ -61,11 +58,11 @@
   stroke-linecap: round;
   stroke-width: 3.375px;
 }
-.circle3:hover {
+.mediumCircle:hover {
   stroke-width: 10px;
 }
 
-.circle4 {
+.hardCircle {
   cursor: pointer;
   fill: none;
   stroke: rgb(233, 30, 99);
@@ -73,15 +70,15 @@
   stroke-linecap: round;
   stroke-width: 3.375px;
 }
-.circle4:hover {
+.hardCircle:hover {
   stroke-width: 10px;
 }
 
-.text {
+.circleTextContainer {
   z-index: 1;
 }
 
-.percent {
+.circelPercentage {
   color: rgb(33, 33, 33);
   font-size: 27px;
   text-align: center;
