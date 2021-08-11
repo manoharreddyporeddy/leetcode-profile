@@ -3,6 +3,8 @@ import React from "react";
 import Card from "@material-ui/core/Card";
 import Divider from "@material-ui/core/Divider";
 
+import { getUserProfile as UserProfile } from "./data/getUserProfile";
+
 const useStyles = makeStyles((theme) => ({
   profileCard: {
     borderRadius: "8px",
@@ -33,6 +35,7 @@ const useStyles = makeStyles((theme) => ({
 
 export default function Discuss() {
   const classes = useStyles();
+  let reputation = UserProfile.data.matchedUser.profile.reputation;
 
   return (
     <Card className={classes.profileCard}>
@@ -56,7 +59,7 @@ export default function Discuss() {
           </svg>
           Reputation
         </span>
-        <span className={classes.chip}>2708</span>
+        <span className={classes.chip}>{reputation}</span>
       </div>
     </Card>
   );

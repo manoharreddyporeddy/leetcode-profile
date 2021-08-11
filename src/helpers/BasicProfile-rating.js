@@ -3,6 +3,7 @@ import { makeStyles } from "@material-ui/core/styles";
 import StarIcon from "@material-ui/icons/Star";
 
 import { userData } from "../data/pgmreddy-lcp";
+import { getUserProfile as UserProfile } from "../data/getUserProfile";
 
 const useStyles = makeStyles((theme) => ({
   ratingList: {
@@ -23,11 +24,13 @@ const useStyles = makeStyles((theme) => ({
 export default function Rating() {
   const classes = useStyles();
   const starClasses = userData.starClasses;
+  let starRating = UserProfile.data.matchedUser.profile.starRating;
+  starRating = starRating * 20;
 
   return (
     <div
       style={{
-        width: "70%",
+        width: `${starRating}%`,
         margin: "5px 0px",
         position: "relative"
       }}

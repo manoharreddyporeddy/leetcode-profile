@@ -3,6 +3,7 @@ import React from "react";
 import Card from "@material-ui/core/Card";
 import Divider from "@material-ui/core/Divider";
 
+import { getUserProfile as UserProfile } from "./data/getUserProfile";
 
 const useStyles = makeStyles((theme) => ({
   profileCard: {
@@ -34,6 +35,10 @@ const useStyles = makeStyles((theme) => ({
 
 export default function Contributions() {
   const classes = useStyles();
+  let contributions = UserProfile.data.matchedUser.contributions;
+  let points = contributions.points;
+  let questionCount = contributions.questionCount;
+  let testcaseCount = contributions.testcaseCount;
 
   return (
     <Card className={classes.profileCard}>
@@ -68,7 +73,7 @@ export default function Contributions() {
             </svg>
             <span>Points</span>
           </div>
-          <span className={classes.chip}>1011</span>
+          <span className={classes.chip}>{points}</span>
         </div>
         <div
           className={classes.cardItem}
@@ -96,7 +101,7 @@ export default function Contributions() {
             </svg>
             Problems
           </div>
-          <span className={classes.chip}>0</span>
+          <span className={classes.chip}>{questionCount}</span>
         </div>
         <div
           className={classes.cardItem}
@@ -124,7 +129,7 @@ export default function Contributions() {
             </svg>
             Testcases
           </div>
-          <span className={classes.chip}>11</span>
+          <span className={classes.chip}>{testcaseCount}</span>
         </div>
       </div>
     </Card>

@@ -5,6 +5,8 @@ import Divider from "@material-ui/core/Divider";
 import { Tooltip } from "@material-ui/core";
 
 import { userData } from "./data/pgmreddy-lcp";
+import { getUserProfile as UserProfile } from "./data/getUserProfile";
+
 import Rating from "./helpers/BasicProfile-rating";
 
 const useStyles = makeStyles((theme) => ({
@@ -36,6 +38,13 @@ export default function BasicProfile() {
   const classes = useStyles();
   const profileDetails = userData.profileDetails;
   const profileInfo = userData.profileInfo;
+  let realName = UserProfile.data.matchedUser.profile.realName;
+  let username = UserProfile.data.matchedUser.username;
+  let githubUrl = UserProfile.data.matchedUser.githubUrl;
+  let userAvatar = UserProfile.data.matchedUser.profile.userAvatar;
+  let aboutMe = UserProfile.data.matchedUser.profile.aboutMe;
+  let ranking = UserProfile.data.matchedUser.profile.ranking;
+  ranking = `Ranking: ${ranking}`;
 
   return (
     <Card className={classes.profileCard}>
@@ -55,7 +64,7 @@ export default function BasicProfile() {
             return (
               <>
                 <img
-                  src={item.profileImg}
+                  src={userAvatar}
                   alt="Profile"
                   style={{ height: "80px", borderRadius: "6px" }}
                 />
@@ -76,17 +85,13 @@ export default function BasicProfile() {
                     }}
                   >
                     {" "}
-                    {item.name}
+                    {realName}
                   </span>
                   <span
                     style={{ fontSize: "14px", color: "rgba(0, 0, 0, 0.65)" }}
                   >
-                    {item.id}
-                    <Tooltip
-                      title="Check the below post."
-                      placement="top"
-                      arrow
-                    >
+                    {username}
+                    <Tooltip title={aboutMe} placement="top" arrow>
                       <svg
                         viewBox="0 0 24 24"
                         width="16px"
@@ -103,7 +108,7 @@ export default function BasicProfile() {
                     </Tooltip>
                   </span>
 
-                  <Tooltip title="Ranking: 5474" arrow>
+                  <Tooltip title={ranking} arrow>
                     <Rating />
                   </Tooltip>
                 </div>
@@ -113,7 +118,7 @@ export default function BasicProfile() {
           <div className="githubContainer">
             {profileDetails.map((item) => {
               return (
-                <a href={item.github_link}>
+                <a href={githubUrl}>
                   <svg
                     viewBox="0 0 24 24"
                     width="32px"

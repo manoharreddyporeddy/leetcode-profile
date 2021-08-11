@@ -1,4 +1,4 @@
-export const getRecentSubmissionsList = {
+export const getRecentSubmissionList = {
   data: {
     recentSubmissionList: [
       {
