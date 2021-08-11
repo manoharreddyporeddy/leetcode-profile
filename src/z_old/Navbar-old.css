@@ -1,0 +1,80 @@
+img {
+  height: 20px;
+  justify-content: center;
+  margin-top: 12px;
+  margin-right: 12px;
+}
+/* 
+.btn-left {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC",
+    "Hiragino Sans GB", "Microsoft YaHei", "Helvetica Neue", Helvetica, Arial,
+    sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  color: #546e7a;
+  font-weight: 400;
+  text-transform: none;
+  height: 20px;
+  margin-top: 12px;
+  line-height: 20px;
+  margin-bottom: 22px;
+  background-color: white;
+} */
+/* 
+.btn-right {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC",
+    "Hiragino Sans GB", "Microsoft YaHei", "Helvetica Neue", Helvetica, Arial,
+    sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  color: #546e7a;
+  font-weight: 400;
+  text-transform: none;
+  height: 20px;
+  margin-top: 12px;
+  line-height: 20px;
+  margin-bottom: 22px;
+  padding: 12px 6px;
+}
+
+.btn-right:hover button {
+  background-color: white;
+} */
+
+/* .nabvar {
+  background-color: whitesmoke;
+  fill: currentColor;
+  justify-content: center;
+}
+
+.left-navbar {
+  width: fit-content;
+  max-width: 507.8px;
+} */
+
+.right-navbar {
+  width: fit-content;
+  max-width: 245.538px;
+}
+
+.dummygrid {
+  max-width: 444.662px;
+}
+
+/* .btn-right-icon {
+  color: #90a4ae;
+  font-weight: 400;
+  text-transform: none;
+  height: 20px;
+  margin-top: 12px;
+  line-height: 20px;
+  margin-bottom: 22px;
+  padding-left: 24px;
+  padding-right: 0px;
+} */
+
+/* .icon-right {
+  color: #90a4ae;
+  fill: currentColor;
+} */
+
+/* .icon-premium {
+  color: #f9a825;
+  fill: currentColor;
+} */

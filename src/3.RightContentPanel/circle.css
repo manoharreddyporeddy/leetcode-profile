@@ -1,0 +1,87 @@
+.cicleContainer {
+  height: 108px;
+  width: 108px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  color: rgb(158, 158, 158);
+  font-size: 13.5px;
+  font-weight: normal;
+  margin-top: 0px;
+  margin-bottom: 0px;
+  flex: 1;
+}
+
+.backgroundCircle {
+  width: 100px;
+  height: 100px;
+  border: 3.26953px solid rgb(224, 224, 224);
+  position: absolute;
+  border-radius: 50%;
+  background: white;
+}
+
+.svgCircle {
+  position: absolute;
+  z-index: 0;
+  fill: transparent;
+  transform: rotate(-90deg);
+  transform-origin: 54px 54px;
+
+  overflow: visible;
+}
+
+.circle1 {
+  cursor: pointer;
+  fill: none;
+  stroke: inherit;
+}
+
+.easyCircle {
+  cursor: pointer;
+  fill: none;
+  stroke: rgb(67, 160, 71);
+  stroke-dasharray: 70.7398, 318.086px;
+  stroke-linecap: round;
+  stroke-width: 3.375px;
+}
+.easyCircle:hover {
+  stroke-width: 10px;
+}
+
+.mediumCircle {
+  cursor: pointer;
+  fill: none;
+  stroke: rgb(251, 140, 0);
+  stroke-dasharray: 62.3222, 318.086px;
+  stroke-linecap: round;
+  stroke-width: 3.375px;
+}
+.mediumCircle:hover {
+  stroke-width: 10px;
+}
+
+.hardCircle {
+  cursor: pointer;
+  fill: none;
+  stroke: rgb(233, 30, 99);
+  stroke-dasharray: 4.0469, 318.086px;
+  stroke-linecap: round;
+  stroke-width: 3.375px;
+}
+.hardCircle:hover {
+  stroke-width: 10px;
+}
+
+.circleTextContainer {
+  z-index: 1;
+}
+
+.circelPercentage {
+  color: rgb(33, 33, 33);
+  font-size: 27px;
+  text-align: center;
+  line-height: 13.5px;
+  font-weight: 500;
+}

@@ -1,0 +1,36 @@
+.githubContainer {
+  display: flex;
+  margin-left: 12.5px;
+}
+
+.githubIcon {
+  margin-top: 12px;
+  color: rgba(0, 0, 0, 0.65);
+}
+
+.linkAndLocationWrapper {
+  border-top: 1px solid rgb(224, 224, 224);
+  margin-top: 15px;
+}
+
+.linkContainer {
+  display: flex;
+  padding: 12px 0px;
+  align-items: center;
+  border-bottom: 1px solid #e8e8e8;
+}
+
+.locationContainer {
+  display: flex;
+  padding: 12px 0px 0px;
+  align-items: center;
+}
+
+.webLink {
+  text-decoration: none;
+  color: #1890ff;
+}
+.location {
+  color: rgba(0, 0, 0, 0.65);
+  margin-left: 230px;
+}

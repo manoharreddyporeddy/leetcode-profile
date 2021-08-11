@@ -1,0 +1,221 @@
+<Paper className="notificationCard">
+                  <ul className="notificaitonList">
+                    <li className="notificaitonListItem">
+                      <div className="notificaitonItemTitle">
+                        <svg
+                          viewBox="0 0 24 24"
+                          width="18px"
+                          height="18px"
+                          style={{ color: "#f9a825" }}
+                          fill="currentColor"
+                        >
+                          <path
+                            fill-rule="evenodd"
+                            d="M6.5 5V3h11v2h4v4.571c0 1.894-1.343 3.429-3 3.429h-1.207a5.511 5.511 0 0 1-3.793 3.793V19h2a3 3 0 0 1 3 3h-13a3 3 0 0 1 3-3h2v-2.207A5.511 5.511 0 0 1 6.707 13H5.5a3 3 0 0 1-3-3V5h4zm-2 2v3a1 1 0 0 0 1 1h1V7h-2zm13 0v4h1c.488 0 1-.585 1-1.429V7h-2z"
+                          ></path>
+                        </svg>{" "}
+                        Contest
+                      </div>
+                      <div className="notificaitonItemTime">
+                        July 08, 2021 4:50 AM
+                      </div>
+                      <div className="notificationItemLink">
+                        {" "}
+                        Biweekly Contest 56 and Weekly Contest 249 are
+                        approaching.{" "}
+                      </div>
+                    </li>
+                    <Divider />
+                    <li className="notificaitonListItem">
+                      <div className="notificaitonItemTitle">
+                        <svg
+                          viewBox="0 0 24 24"
+                          width="18px"
+                          height="18px"
+                          style={{ color: "#f9a825" }}
+                          fill="currentColor"
+                        >
+                          <path
+                            fill-rule="evenodd"
+                            d="M6.5 5V3h11v2h4v4.571c0 1.894-1.343 3.429-3 3.429h-1.207a5.511 5.511 0 0 1-3.793 3.793V19h2a3 3 0 0 1 3 3h-13a3 3 0 0 1 3-3h2v-2.207A5.511 5.511 0 0 1 6.707 13H5.5a3 3 0 0 1-3-3V5h4zm-2 2v3a1 1 0 0 0 1 1h1V7h-2zm13 0v4h1c.488 0 1-.585 1-1.429V7h-2z"
+                          ></path>
+                        </svg>{" "}
+                        Contest
+                      </div>
+                      <div className="notificaitonItemTime">
+                        July 01, 2021 4:50 AM
+                      </div>
+                      <div className="notificationItemLink">
+                        {" "}
+                        Weekly Contest 248 is approaching.{" "}
+                      </div>
+                    </li>
+                    <Divider />
+                    <li className="notificaitonListItem">
+                      <div className="notificaitonItemTitle">
+                        <svg
+                          viewBox="0 0 24 24"
+                          width="18px"
+                          height="18px"
+                          style={{ color: "#f9a825" }}
+                          fill="currentColor"
+                        >
+                          <path
+                            fill-rule="evenodd"
+                            d="M6.5 5V3h11v2h4v4.571c0 1.894-1.343 3.429-3 3.429h-1.207a5.511 5.511 0 0 1-3.793 3.793V19h2a3 3 0 0 1 3 3h-13a3 3 0 0 1 3-3h2v-2.207A5.511 5.511 0 0 1 6.707 13H5.5a3 3 0 0 1-3-3V5h4zm-2 2v3a1 1 0 0 0 1 1h1V7h-2zm13 0v4h1c.488 0 1-.585 1-1.429V7h-2z"
+                          ></path>
+                        </svg>{" "}
+                        Contest
+                      </div>
+                      <div className="notificaitonItemTime">
+                        June 24, 2021 4:53 AM
+                      </div>
+                      <div className="notificationItemLink">
+                        {" "}
+                        Biweekly Contest 55 and Weekly Contest 247 are
+                        approaching.{" "}
+                      </div>
+                    </li>
+                    <Divider />
+                    <li className="notificaitonListItem">
+                      <div className="notificaitonItemTitle">
+                        <svg
+                          viewBox="0 0 24 24"
+                          width="18px"
+                          height="18px"
+                          style={{ color: "#f9a825" }}
+                          fill="currentColor"
+                        >
+                          <path
+                            fill-rule="evenodd"
+                            d="M6.5 5V3h11v2h4v4.571c0 1.894-1.343 3.429-3 3.429h-1.207a5.511 5.511 0 0 1-3.793 3.793V19h2a3 3 0 0 1 3 3h-13a3 3 0 0 1 3-3h2v-2.207A5.511 5.511 0 0 1 6.707 13H5.5a3 3 0 0 1-3-3V5h4zm-2 2v3a1 1 0 0 0 1 1h1V7h-2zm13 0v4h1c.488 0 1-.585 1-1.429V7h-2z"
+                          ></path>
+                        </svg>{" "}
+                        Contest
+                      </div>
+                      <div className="notificaitonItemTime">
+                        June 17, 2021 4:48 AM
+                      </div>
+                      <div className="notificationItemLink">
+                        {" "}
+                        Weekly Contest 246 is approaching.{" "}
+                      </div>
+                    </li>
+                    <Divider />
+                    <li className="notificaitonListItem">
+                      <div className="notificaitonItemTitle">
+                        <svg
+                          viewBox="0 0 24 24"
+                          width="1em"
+                          height="1em"
+                          class="icon__1Md2 notification-icon__2kqT"
+                        >
+                          <path
+                            fill-rule="evenodd"
+                            d="M12 22C6.477 22 2 17.523 2 12S6.477 2 12 2s10 4.477 10 10-4.477 10-10 10zm-2.356-4.21l.011.01a3.342 3.342 0 0 0 4.641-.043l1.38-1.367a.787.787 0 0 0 0-1.117.797.797 0 0 0-1.122-.002l-1.38 1.368a1.748 1.748 0 0 1-2.42.02l-2.472-2.406c-.663-.645-.73-1.627-.165-2.244l.013-.014 2.225-2.364c.61-.642 1.84-.718 2.544-.153l2.015 1.618a.797.797 0 0 0 1.116-.118.787.787 0 0 0-.119-1.11l-2.014-1.619a3.366 3.366 0 0 0-1.597-.686l1.16-1.234a.787.787 0 0 0-.037-1.116.797.797 0 0 0-1.123.037L9.198 8.55a2.99 2.99 0 0 0-.01.01l-2.217 2.357c-1.19 1.265-1.064 3.235.2 4.466l2.461 2.396a.809.809 0 0 0 .012.011zm1.56-3.887h5.856a.792.792 0 0 0 .794-.79.792.792 0 0 0-.794-.79h-5.856a.792.792 0 0 0-.794.79c0 .437.355.79.794.79z"
+                          ></path>
+                        </svg>
+                        LeetCoin Reward
+                      </div>
+                      <div className="notificaitonItemTime">
+                        June 10, 2021 6:57 PM
+                      </div>
+                      <div className="notificationItemLink">
+                        {" "}
+                        Weekly Contest 248 is approaching.{" "}
+                      </div>
+                    </li>
+                    <Divider />
+                    <li className="notificaitonListItem">
+                      <div className="notificaitonItemTitle">
+                        <svg
+                          viewBox="0 0 24 24"
+                          width="18px"
+                          height="18px"
+                          style={{ color: "#f9a825" }}
+                          fill="currentColor"
+                        >
+                          <path
+                            fill-rule="evenodd"
+                            d="M6.5 5V3h11v2h4v4.571c0 1.894-1.343 3.429-3 3.429h-1.207a5.511 5.511 0 0 1-3.793 3.793V19h2a3 3 0 0 1 3 3h-13a3 3 0 0 1 3-3h2v-2.207A5.511 5.511 0 0 1 6.707 13H5.5a3 3 0 0 1-3-3V5h4zm-2 2v3a1 1 0 0 0 1 1h1V7h-2zm13 0v4h1c.488 0 1-.585 1-1.429V7h-2z"
+                          ></path>
+                        </svg>{" "}
+                        Contest
+                      </div>
+                      <div className="notificaitonItemTime">
+                        July 01, 2021 4:50 AM
+                      </div>
+                      <div className="notificationItemLink">
+                        {" "}
+                        Weekly Contest 248 is approaching.{" "}
+                      </div>
+                    </li>
+                    <Divider />
+                    <li className="notificaitonListItem">
+                      <div className="notificaitonItemTitle">
+                        <svg
+                          viewBox="0 0 24 24"
+                          width="18px"
+                          height="18px"
+                          style={{ color: "#f9a825" }}
+                          fill="currentColor"
+                        >
+                          <path
+                            fill-rule="evenodd"
+                            d="M6.5 5V3h11v2h4v4.571c0 1.894-1.343 3.429-3 3.429h-1.207a5.511 5.511 0 0 1-3.793 3.793V19h2a3 3 0 0 1 3 3h-13a3 3 0 0 1 3-3h2v-2.207A5.511 5.511 0 0 1 6.707 13H5.5a3 3 0 0 1-3-3V5h4zm-2 2v3a1 1 0 0 0 1 1h1V7h-2zm13 0v4h1c.488 0 1-.585 1-1.429V7h-2z"
+                          ></path>
+                        </svg>{" "}
+                        Contest
+                      </div>
+                      <div className="notificaitonItemTime">
+                        July 01, 2021 4:50 AM
+                      </div>
+                      <div className="notificationItemLink">
+                        {" "}
+                        Weekly Contest 248 is approaching.{" "}
+                      </div>
+                    </li>
+                    <Divider />
+                  </ul>
+                </Paper>
+
+
+
+.notificationCard {
+  height: 380px;
+  overflow-y: scroll;
+  overflow-x: none;
+  width: 500px;
+}
+
+.notificaitonList {
+  list-style: none;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+.notificaitonListItem {
+  position: relative;
+  height: 74px;
+  width: 460px;
+  padding-left: 0px;
+  padding-right: 40px;
+}
+
+.notificaitonItemTitle {
+  position: relative;
+  padding-top: 10px;
+}
+
+.notificaitonItemTime {
+  position: relative;
+  margin-left: 335px;
+  text-decoration: none;
+  padding-top: 10px;
+}
+
+.notificationItemLink {
+  position: absolute;
+  margin-top: 40px;
+}
+

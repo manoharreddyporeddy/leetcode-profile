@@ -1,0 +1,78 @@
+.bottomContainer {
+  border-top: 1px solid #eeeeee;
+  font-size: 12px;
+  padding: 15px 0;
+  width: 100%;
+}
+
+.itemContainer {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  margin-top: -8px;
+}
+
+.leftItemWrapper {
+  display: block;
+  flex: 1 1 auto;
+  margin-top: 8px;
+}
+
+.leftItemContainer {
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: -8px;
+}
+
+.leftItemList {
+  display: flex;
+  flex-wrap: wrap;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.leftListItem {
+  display: flex;
+  margin-top: 8px;
+  align-items: center;
+}
+
+.leftListItem::after {
+  border-right: 1px solid #e0e0e0;
+  content: "";
+  height: 10px;
+}
+
+.privacyButton {
+  display: flex;
+  margin-top: 8px;
+  align-items: center;
+}
+
+.leftButtons {
+  color: #424242;
+  margin-left: 10.5px;
+  margin-right: 10.5px;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.leftButtons:hover {
+  text-decoration: underline;
+}
+
+.regionLink {
+  display: block;
+  text-decoration: none;
+  margin-top: 8px;
+}
+
+.regionLinkText {
+  color: #424242;
+}
+
+.regionLinkText:hover {
+  text-decoration: underline;
+  text-decoration-color: #1890ff;
+}
