@@ -4,7 +4,7 @@ import { makeStyles } from "@material-ui/core/styles";
 import Card from "@material-ui/core/Card";
 import Divider from "@material-ui/core/Divider";
 
-import { userData } from "../../3.RightContentPanel/data/pgmreddy";
+import { userData } from "./data/pgmreddy";
 
 const useStyles = makeStyles((theme) => ({
   recentPostsListItems: {

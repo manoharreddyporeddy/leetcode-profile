@@ -6,7 +6,7 @@ import Card from "@material-ui/core/Card";
 import Divider from "@material-ui/core/Divider";
 import { Tooltip } from "@material-ui/core";
 
-import { userData } from "../../2.LeftContentPanel/data/pgmreddy";
+import { userData } from "./data/pgmreddy";
 
 import Rating from "./rating";
 

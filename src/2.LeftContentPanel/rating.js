@@ -4,7 +4,7 @@ import React from "react";
 
 import StarIcon from "@material-ui/icons/Star";
 
-import { userData } from "../../2.LeftContentPanel/data/pgmreddy";
+import { userData } from "./data/pgmreddy";
 
 const useStyles = makeStyles((theme) => ({
   ratingList: {
