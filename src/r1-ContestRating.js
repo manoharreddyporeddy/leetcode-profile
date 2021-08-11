@@ -4,6 +4,8 @@ import { makeStyles } from "@material-ui/core/styles";
 import Highchart from "./helpers/contestRating_graph";
 import UserDataCard from "./_SquareCard";
 
+import { getContestRankingData as contestRankingData } from "./data/getContestRankingData";
+
 const useStyles = makeStyles((theme) => ({
     eachCardHeading: {
         fontWeight: "500",
@@ -16,11 +18,15 @@ const useStyles = makeStyles((theme) => ({
 export default function ContestRating() {
     const classes = useStyles();
 
+    let rating = contestRankingData.data.userContestRanking.rating;
+    rating = Math.round(rating);
+    rating = rating.toLocaleString();
+
     return (
         <UserDataCard>
             <div style={{ padding: "0px", height: "45.2px" }}>
                 <span className={classes.eachCardHeading}>Contest Rating{"\n"}</span>
-                <span style={{ fontSize: "22px", fontWeight: "600" }}> 1,618</span>
+                <span style={{ fontSize: "22px", fontWeight: "600" }}> {rating} </span>
                 <span style={{ fontSize: "12px", fontWeight: "600" }}>pt</span>
             </div>
 
