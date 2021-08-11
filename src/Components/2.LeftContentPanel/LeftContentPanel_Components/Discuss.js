@@ -5,8 +5,6 @@ import React from "react";
 import Card from "@material-ui/core/Card";
 import Divider from "@material-ui/core/Divider";
 
-import { userData } from "/src/Components/2.LeftContentPanel/data/pgmreddy";
-
 const useStyles = makeStyles((theme) => ({
   profileCard: {
     borderRadius: "8px",

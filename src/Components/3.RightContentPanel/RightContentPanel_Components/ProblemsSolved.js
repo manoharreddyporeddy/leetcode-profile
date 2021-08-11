@@ -5,7 +5,7 @@ import Percentage_circle from "./percentage_circle";
 
 import UserDataCard from "./userDataCard";
 
-import { getUserProfile } from "/src/data/getUserProfile";
+import { getUserProfile } from "./../../../data/getUserProfile";
 
 const useStyles = makeStyles((theme) => ({
   eachCardHeading: {
