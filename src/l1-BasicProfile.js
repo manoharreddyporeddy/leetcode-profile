@@ -12,7 +12,8 @@ import Rating from "./helpers/BasicProfile-rating";
 const useStyles = makeStyles((theme) => ({
   profileCard: {
     borderRadius: "8px",
-    marginBottom: "15px"
+    marginBottom: "15px",
+    boxShadow: "rgb(0 0 0 / 10%) 0px 1px 2px, rgb(0 0 0 / 8%) 0px 2px 8px"
   },
 
   cardTitleContainer: {
@@ -37,14 +38,36 @@ const useStyles = makeStyles((theme) => ({
 export default function BasicProfile() {
   const classes = useStyles();
   const profileDetails = userData.profileDetails;
-  const profileInfo = userData.profileInfo;
-  let realName = UserProfile.data.matchedUser.profile.realName;
-  let username = UserProfile.data.matchedUser.username;
-  let githubUrl = UserProfile.data.matchedUser.githubUrl;
-  let userAvatar = UserProfile.data.matchedUser.profile.userAvatar;
-  let aboutMe = UserProfile.data.matchedUser.profile.aboutMe;
-  let ranking = UserProfile.data.matchedUser.profile.ranking;
+  let matchedUser = UserProfile.data.matchedUser;
+  let realName = matchedUser.profile.realName;
+  let username = matchedUser.username;
+  let githubUrl = matchedUser.githubUrl;
+  let userAvatar = matchedUser.profile.userAvatar;
+  let aboutMe = matchedUser.profile.aboutMe;
+  let ranking = matchedUser.profile.ranking;
   ranking = `Ranking: ${ranking}`;
+  let websites = matchedUser.profile.websites;
+  let countryName = matchedUser.profile.countryName;
+
+  let items = [
+    {
+      cName: "linkContainer",
+      title: "Websites",
+      content: websites[0],
+      link: websites[0],
+      contentClass: "webLink",
+      path_d:
+        "M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1 0 1.71-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z"
+    },
+    {
+      cName: "locationContainer",
+      title: "Location",
+      content: countryName,
+      contentClass: "location",
+      path_d:
+        "M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"
+    }
+  ];
 
   return (
     <Card className={classes.profileCard}>
@@ -58,7 +81,7 @@ export default function BasicProfile() {
 
       <Divider />
 
-      <div style={{ padding: "12px" }}>
+      <div style={{ padding: "12px 12px 0px 12px" }}>
         <div style={{ display: "flex" }}>
           {profileDetails.map((item) => {
             return (
@@ -134,7 +157,7 @@ export default function BasicProfile() {
           </div>
         </div>
         <div className="linkAndLocationWrapper">
-          {profileInfo.map((item, index) => {
+          {items.map((item, index) => {
             return (
               <div className={item.cName} style={{}}>
                 <svg
@@ -160,8 +183,8 @@ export default function BasicProfile() {
                     marginLeft: "12px"
                   }}
                 >
-                  <a href={item.link} className={item.subCName}>
-                    {item.sub}
+                  <a href={item.link} className={item.contentClass}>
+                    {item.content}
                   </a>
                 </span>
               </div>
