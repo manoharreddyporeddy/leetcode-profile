@@ -1,28 +1,55 @@
 import React from "react";
 import "../css/ProblemsSolved_circle.css";
 
+import { getUserProfile as UserProfile } from "../data/getUserProfile";
+
+let acSubmissionNum = UserProfile.data.matchedUser.submitStats.acSubmissionNum;
+let totalSubmissionNum =
+  UserProfile.data.matchedUser.submitStats.totalSubmissionNum;
+let totalAcSubmissions = acSubmissionNum[0].submissions;
+let totalAcCount = acSubmissionNum[0].count;
+let totalSubmissions = totalSubmissionNum[0].submissions;
+let totalAcEasyCount = acSubmissionNum[1].count;
+let totalAcMediumCount = acSubmissionNum[2].count;
+let totalAcHardCount = acSubmissionNum[3].count;
+
+let rawPerncentage = (totalAcSubmissions / totalSubmissions) * 100;
+let perncentageInt = Math.trunc(rawPerncentage.toFixed(1));
+let perncentageDecimal = Math.trunc(
+  (rawPerncentage.toFixed(1) - perncentageInt) * 10
+);
+
+let allQuestionsCount = UserProfile.data.allQuestionsCount;
+let totalQuestions = allQuestionsCount[0].count;
+let width = totalAcCount / totalQuestions;
+let length = 318.086 * width;
+let easyLength = length * (totalAcEasyCount / totalAcCount);
+let mediumLength = length * (totalAcMediumCount / totalAcCount);
+let hardLength = length * (totalAcHardCount / totalAcCount);
+
 const Percentage_circle = () => (
   <div size="108" className="cicleContainer">
     <div radius="52.3125" className="backgroundCircle"></div>
     <svg viewBox="0 0 108 108" className="svgCircle">
       <circle
         from="0"
-        to="70.73979335821748"
         cx="54"
         cy="54"
         r="50.625"
         transform="rotate(0 54 54)"
         data-difficulty="Easy"
+        style={{ strokeDasharray: `${easyLength}, 318.086px` }}
         className="easyCircle"
       ></circle>
       <circle
         from="0"
-        to="62.32224357646164"
+        to="62.3222457646164"
         cx="54"
         cy="54"
         r="50.625"
         transform="rotate(80.06106870229007 54 54)"
         data-difficulty="Medium"
+        style={{ strokeDasharray: `${mediumLength}, 318.086px` }}
         className="mediumCircle"
       ></circle>
       <circle
@@ -33,15 +60,16 @@ const Percentage_circle = () => (
         r="50.625"
         transform="rotate(150.59541984732823 54 54)"
         data-difficulty="Hard"
+        style={{ strokeDasharray: `${hardLength}, 318.086px` }}
         className="hardCircle"
       ></circle>
     </svg>
     <div className="circleTextContainer">
       <div>
         <div size="108" className="circelPercentage">
-          <span>86</span>
+          <span>{perncentageInt}</span>
           <span size="108" style={{ fontSize: "13.5px" }}>
-            .7%
+            .{perncentageDecimal}%
           </span>
         </div>
         <div>Acceptance</div>

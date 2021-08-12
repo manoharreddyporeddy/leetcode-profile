@@ -4,8 +4,29 @@ import CalendarHeatmap from "react-calendar-heatmap";
 import ReactTooltip from "react-tooltip";
 
 import { heatmapdata, heatmapdata2 } from "../data/submission_calendar_data";
+import { getUserProfile as UserProfile } from "../data/getUserProfile";
 
 const today = new Date();
+
+let submissionCalendar = UserProfile.data.matchedUser.submissionCalendar;
+
+let object = JSON.parse(submissionCalendar);
+
+const ordered = Object.keys(object)
+  .sort()
+  .reduce((obj, key) => {
+    obj[key] = object[key];
+    return obj;
+  }, {});
+
+// const o = Object.keys(ordered).reduce((obj, key) => {
+//   let dateObject = new Date(key * 1000);
+//   let humanDateFormat = dateObject.toLocaleString().slice(0, 10);
+//   key = humanDateFormat;
+//   return obj;
+// }, {});
+
+console.log(ordered);
 
 const heatmap = heatmapdata.reverse();
 
@@ -21,7 +42,12 @@ function Heatmap() {
       <CalendarHeatmap
         startDate={shiftDate(today, -365)}
         endDate={today}
-        values={data}
+        values={[
+          { date: "2021/01/01", count: 1 },
+          { date: "2021/01/03", count: 4 },
+          { date: "2021/01/06", count: 2 }
+          // ...and so on
+        ]}
         classForValue={(value) => {
           if (!value) {
             return "color-empty";
@@ -32,9 +58,7 @@ function Heatmap() {
         }}
         tooltipDataAttrs={(value) => {
           return {
-            "data-tip": `${
-              value.count
-            } submissions on ${value.date.toString().slice(4, 15)}`
+            "data-tip": `${value.count} submissions on ${value.date}`
           };
         }}
         showWeekdayLabels={false}
