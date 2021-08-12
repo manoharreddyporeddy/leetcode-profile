@@ -38,7 +38,7 @@ export default function Rating() {
       <div className={classes.ratingListBackground}>
         {starClasses.map((item, index) => {
           return (
-            <div>
+            <div key={index}>
               <StarIcon
                 style={{
                   height: "1rem",
@@ -53,7 +53,7 @@ export default function Rating() {
       <div className={classes.ratingList}>
         {starClasses.map((item, index) => {
           return (
-            <div>
+            <div key={index}>
               <StarIcon
                 style={{
                   height: "1rem",

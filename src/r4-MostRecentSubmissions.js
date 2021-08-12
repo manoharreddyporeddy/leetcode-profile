@@ -4,10 +4,9 @@ import Card from "@material-ui/core/Card";
 import Divider from "@material-ui/core/Divider";
 import TimeAgo from "react-timeago";
 
-import { userData } from "./data/pgmreddy";
 import { getRecentSubmissionList as RecentSubmissionList } from "./data/getRecentSubmissionList";
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles(() => ({
   recentPostsListItems: {
     textDecoration: "none",
     padding: "12px 0px",
@@ -36,8 +35,15 @@ const useStyles = makeStyles((theme) => ({
 
 export default function MostRecentSubmissions() {
   const classes = useStyles();
-  const recentSubmissions = userData.recentSubmissions;
   let recentSubmissionList = RecentSubmissionList.data.recentSubmissionList;
+
+  recentSubmissionList.forEach((element) =>
+    RecentSubmissionList.data.languageList.forEach(
+      (name) => name.name === element.lang
+    )
+      ? (element.lang = RecentSubmissionList.data.languageList.verboseName)
+      : ""
+  );
 
   return (
     <div style={{ marginBottom: "15px" }}>

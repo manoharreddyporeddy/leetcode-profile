@@ -3,40 +3,45 @@ import "../css/submission_calendar.css";
 import CalendarHeatmap from "react-calendar-heatmap";
 import ReactTooltip from "react-tooltip";
 
-import { heatmapdata, heatmapdata2 } from "../data/submission_calendar_data";
+// import { heatmapdata } from "../data/submission_calendar_data";
 import { getUserProfile as UserProfile } from "../data/getUserProfile";
 
 const today = new Date();
 
 let submissionCalendar = UserProfile.data.matchedUser.submissionCalendar;
 
-let object = JSON.parse(submissionCalendar);
+let submissionCalendarObject = JSON.parse(submissionCalendar);
 
-const ordered = Object.keys(object)
+const ordered = Object.keys(submissionCalendarObject)
   .sort()
   .reduce((obj, key) => {
-    obj[key] = object[key];
+    obj[key] = submissionCalendarObject[key];
     return obj;
   }, {});
 
-// const o = Object.keys(ordered).reduce((obj, key) => {
-//   let dateObject = new Date(key * 1000);
-//   let humanDateFormat = dateObject.toLocaleString().slice(0, 10);
-//   key = humanDateFormat;
-//   return obj;
-// }, {});
+const o = Object.keys(ordered).reduce((obj, key) => {
+  let dateObject = new Date(key * 1000);
+  let humanDateFormat = dateObject.toLocaleString().slice(0, 10);
+  console.log(humanDateFormat);
+  // console.log(obj);
+  return obj;
+}, {});
 
-console.log(ordered);
+// console.log(ordered);
 
-const heatmap = heatmapdata.reverse();
+let arr = [];
+arr.push(ordered);
+// console.log(arr[0]);
+
+// const heatmap = heatmapdata.reverse();
 
 function Heatmap() {
-  const data = getRange(365).map((index) => {
-    return {
-      date: shiftDate(today, -index),
-      count: heatmap[index]
-    };
-  });
+  // const data = arr.map((index) => {
+  //   return {
+  //     date: Object.keys(arr[0]),
+  //     count: Object.values(arr[0])
+  //   };
+  // });
   return (
     <div>
       <CalendarHeatmap
@@ -46,7 +51,6 @@ function Heatmap() {
           { date: "2021/01/01", count: 1 },
           { date: "2021/01/03", count: 4 },
           { date: "2021/01/06", count: 2 }
-          // ...and so on
         ]}
         classForValue={(value) => {
           if (!value) {
@@ -74,12 +78,12 @@ function shiftDate(date, numDays) {
   return newDate;
 }
 
-function getRange(count) {
-  return Array.from({ length: count }, (_, i) => i);
-}
+// function getRange(count) {
+//   return Array.from({ length: count }, (_, i) => i);
+// }
 
-function getRandomInt(min, max) {
-  return Math.floor(Math.random() * (max - min + 1)) + min;
-}
+// function getRandomInt(min, max) {
+//   return Math.floor(Math.random() * (max - min + 1)) + min;
+// }
 
 export default Heatmap;

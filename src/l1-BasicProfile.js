@@ -44,8 +44,8 @@ export default function BasicProfile() {
   let githubUrl = matchedUser.githubUrl;
   let userAvatar = matchedUser.profile.userAvatar;
   let aboutMe = matchedUser.profile.aboutMe;
-  let ranking = matchedUser.profile.ranking;
-  ranking = `Ranking: ${ranking}`;
+  // let ranking = matchedUser.profile.ranking;
+  // ranking = `Ranking: ${ranking}`;
   let websites = matchedUser.profile.websites;
   let countryName = matchedUser.profile.countryName;
 
@@ -82,66 +82,61 @@ export default function BasicProfile() {
       <Divider />
 
       <div style={{ padding: "12px 12px 0px 12px" }}>
-        <div style={{ display: "flex" }}>
-          {profileDetails.map((item) => {
-            return (
-              <>
-                <img
-                  src={userAvatar}
-                  alt="Profile"
-                  style={{ height: "80px", borderRadius: "6px" }}
-                />
+        {profileDetails.map((item, index) => {
+          return (
+            <div style={{ display: "flex" }} key={index}>
+              <img
+                src={userAvatar}
+                alt="Profile"
+                style={{ height: "80px", borderRadius: "6px" }}
+              />
 
-                <div
+              <div
+                style={{
+                  display: "flex",
+                  flexDirection: "column",
+                  margin: "0px 4px 0px 15px"
+                }}
+              >
+                <span
                   style={{
-                    display: "flex",
-                    flexDirection: "column",
-                    margin: "0px 4px 0px 15px"
+                    fontWeight: 600,
+                    fontSize: "18px",
+                    color: "rgba(0, 0, 0, 0.65)",
+                    whiteSpace: "nowrap"
                   }}
                 >
-                  <span
-                    style={{
-                      fontWeight: 600,
-                      fontSize: "18px",
-                      color: "rgba(0, 0, 0, 0.65)",
-                      whiteSpace: "nowrap"
-                    }}
-                  >
-                    {" "}
-                    {realName}
-                  </span>
-                  <span
-                    style={{ fontSize: "14px", color: "rgba(0, 0, 0, 0.65)" }}
-                  >
-                    {username}
-                    <Tooltip title={aboutMe} placement="top" arrow>
-                      <svg
-                        viewBox="0 0 24 24"
-                        width="16px"
-                        height="16px"
-                        style={{
-                          color: "#337ab7",
-                          margin: "3px 0px 0px 4px",
-                          position: "absolute"
-                        }}
-                        fill="currentColor"
-                      >
-                        <path d={item.i_path_d}></path>
-                      </svg>
-                    </Tooltip>
-                  </span>
-
-                  <Tooltip title={ranking} arrow>
-                    <Rating />
+                  {" "}
+                  {realName}
+                </span>
+                <span
+                  style={{ fontSize: "14px", color: "rgba(0, 0, 0, 0.65)" }}
+                >
+                  {username}
+                  <Tooltip title={aboutMe} placement="top" arrow>
+                    <svg
+                      viewBox="0 0 24 24"
+                      width="16px"
+                      height="16px"
+                      style={{
+                        color: "#337ab7",
+                        margin: "3px 0px 0px 4px",
+                        position: "absolute"
+                      }}
+                      fill="currentColor"
+                    >
+                      <path d={item.i_path_d}></path>
+                    </svg>
                   </Tooltip>
-                </div>
-              </>
-            );
-          })}
-          <div className="githubContainer">
-            {profileDetails.map((item) => {
-              return (
-                <a href={githubUrl}>
+                </span>
+
+                {/* <Tooltip title={ranking} arrow> */}
+                <Rating />
+                {/* </Tooltip> */}
+              </div>
+
+              <div className="githubContainer">
+                <a href={githubUrl} key={index}>
                   <svg
                     viewBox="0 0 24 24"
                     width="32px"
@@ -152,14 +147,15 @@ export default function BasicProfile() {
                     <path d={item.github_path_d}></path>
                   </svg>
                 </a>
-              );
-            })}
-          </div>
-        </div>
+              </div>
+            </div>
+          );
+        })}
+
         <div className="linkAndLocationWrapper">
           {items.map((item, index) => {
             return (
-              <div className={item.cName} style={{}}>
+              <div className={item.cName} style={{}} key={index}>
                 <svg
                   viewBox="0 0 24 24"
                   width="14px"
