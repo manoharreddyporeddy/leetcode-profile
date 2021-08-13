@@ -23,6 +23,7 @@
     "typescript": "4.1.3"
   },
   "scripts": {
+    "yarn": "yarn",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",

@@ -1,8 +1,8 @@
-export const getContestRankingData = {
+export let getContestRankingData = {
   data: {
     userContestRanking: {
       attendedContestsCount: 31,
-      rating: 1616.8967650834998,
+      rating: 1600.8967650834998,
       globalRanking: 34657,
       __typename: "UserContestRankingNode"
     },

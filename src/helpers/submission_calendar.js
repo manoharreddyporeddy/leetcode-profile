@@ -22,7 +22,7 @@ const ordered = Object.keys(submissionCalendarObject)
 const o = Object.keys(ordered).reduce((obj, key) => {
   let dateObject = new Date(key * 1000);
   let humanDateFormat = dateObject.toLocaleString().slice(0, 10);
-  console.log(humanDateFormat);
+//   console.log(humanDateFormat);
   // console.log(obj);
   return obj;
 }, {});
