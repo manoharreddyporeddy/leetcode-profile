@@ -19,39 +19,41 @@ const ordered = Object.keys(submissionCalendarObject)
     return obj;
   }, {});
 
-const o = Object.keys(ordered).reduce((obj, key) => {
+function convert(date) {
+  var datearray = date.split("/");
+  var newdate = datearray[2] + "/" + datearray[0] + "/" + datearray[1];
+  return newdate;
+}
+
+const orderedFormattedDates = Object.keys(ordered).reduce((obj, key) => {
   let dateObject = new Date(key * 1000);
-  let humanDateFormat = dateObject.toLocaleString().slice(0, 10);
-//   console.log(humanDateFormat);
-  // console.log(obj);
+  let humanDateFormat = dateObject.toLocaleDateString();
+  obj[key] = convert(humanDateFormat);
   return obj;
 }, {});
 
-// console.log(ordered);
-
 let arr = [];
 arr.push(ordered);
-// console.log(arr[0]);
 
-// const heatmap = heatmapdata.reverse();
+let dateValues = Object.values(orderedFormattedDates);
+let countValues = Object.values(arr[0]);
+export const totalSubmissionCount = countValues.reduce((a, b) => a + b, 0);
+
+let count = Object.values(orderedFormattedDates).length;
 
 function Heatmap() {
-  // const data = arr.map((index) => {
-  //   return {
-  //     date: Object.keys(arr[0]),
-  //     count: Object.values(arr[0])
-  //   };
-  // });
+  const data = Array.from(Array(count).keys()).map((index) => {
+    return {
+      date: dateValues[index],
+      count: countValues[index]
+    };
+  });
   return (
     <div>
       <CalendarHeatmap
         startDate={shiftDate(today, -365)}
         endDate={today}
-        values={[
-          { date: "2021/01/01", count: 1 },
-          { date: "2021/01/03", count: 4 },
-          { date: "2021/01/06", count: 2 }
-        ]}
+        values={data}
         classForValue={(value) => {
           if (!value) {
             return "color-empty";
@@ -77,13 +79,5 @@ function shiftDate(date, numDays) {
   newDate.setDate(newDate.getDate() + numDays);
   return newDate;
 }
-
-// function getRange(count) {
-//   return Array.from({ length: count }, (_, i) => i);
-// }
-
-// function getRandomInt(min, max) {
-//   return Math.floor(Math.random() * (max - min + 1)) + min;
-// }
 
 export default Heatmap;
