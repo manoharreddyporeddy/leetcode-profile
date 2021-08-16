@@ -7,7 +7,7 @@ export const requests = {
         },
         body: {
             operationName: "getContestRankingData", //
-            username: "pgmreddy",
+            username: "{USER_NAME}", // "pgmreddy",
         },
     },
 };

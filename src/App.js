@@ -2,7 +2,6 @@ import "./css/styles.css";
 
 import { makeStyles } from "@material-ui/core/styles";
 import React from "react";
-// import { useParams } from "react-router-dom";
 
 import Navbar from "./_Navbar";
 import LeftContentPanel from "./_LeftContentPanel";
@@ -51,9 +50,6 @@ const useStyles = makeStyles((theme) => ({
 
 export default function App(props) {
     const classes = useStyles();
-
-    // let { username } = useParams();
-    // alert(username);
 
     return (
         <>

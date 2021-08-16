@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
 import { makeStyles } from "@material-ui/core/styles";
 
 import Highchart from "./helpers/contestRating_graph";
@@ -8,10 +9,26 @@ import { getContestRankingData as getContestRankingDataDefault } from "./data/ge
 import { requests } from "./services/urls";
 
 // let getContestRankingData = getContestRankingDataDefault || {};
-let { url, method, headers, body } = requests.getContestRankingData;
 // console.log(url, method, headers, body);
 
-const fetchData = async () => {
+// console.log(requests);
+
+const useStyles = makeStyles((theme) => ({
+    eachCardHeading: {
+        fontWeight: "500",
+        fontSize: "12px",
+        color: "rgba(60, 60, 67, 0.6)",
+        whiteSpace: "pre-wrap",
+    },
+}));
+
+const fetchData = async (username) => {
+    let { url, method, headers, body } = JSON.parse(JSON.stringify(requests.getContestRankingData));
+
+    console.log(body);
+    body.username = body.username.replace("{USER_NAME}", username || "pgmreddy");
+    console.log(body);
+
     // console.log("100");
     const response = await fetch(
         url, //
@@ -42,36 +59,44 @@ const fetchData = async () => {
     return resp;
 };
 
-// console.log(requests);
-
-const useStyles = makeStyles((theme) => ({
-    eachCardHeading: {
-        fontWeight: "500",
-        fontSize: "12px",
-        color: "rgba(60, 60, 67, 0.6)",
-        whiteSpace: "pre-wrap",
-    },
-}));
-
-export default function ContestRating() {
+export default function ContestRating(props) {
     const classes = useStyles();
 
+    let { username } = useParams();
+    // alert(username);
+
     const [getContestRankingData, set_getContestRankingData] = useState(getContestRankingDataDefault); //
+    // const [rating, set_rating] = useState(""); //
+    // const [globalRanking, set_globalRanking] = useState(""); //
+    // const [attendedContestsCount, set_attendedContestsCount] = useState(""); //
 
-    console.log("yyy", getContestRankingDataDefault);
+    useEffect(async () => {
+        console.log("-----------------------");
+        let a = await fetchData(username);
+        console.log(a);
+        set_getContestRankingData(a);
 
-    let rating = getContestRankingData.data.userContestRanking.rating;
-    let globalRanking = getContestRankingData.data.userContestRanking.globalRanking;
-    let attendedContestsCount = getContestRankingData.data.userContestRanking.attendedContestsCount;
+        // console.log("yyy", getContestRankingDataDefault);
+        // let rating = getContestRankingData.data.userContestRanking.rating;
+        // let globalRanking = getContestRankingData.data.userContestRanking.globalRanking;
+        // let attendedContestsCount = getContestRankingData.data.userContestRanking.attendedContestsCount;
+        // rating = Math.round(rating);
+        // rating = rating.toLocaleString();
+        // globalRanking = globalRanking.toLocaleString();
+
+        // set_rating(rating);
+        // set_globalRanking(globalRanking);
+        // set_attendedContestsCount(attendedContestsCount);
+    }, [username]);
+
+    let rating = getContestRankingData.data.userContestRanking?.rating || 0;
+    let globalRanking = getContestRankingData.data.userContestRanking?.globalRanking || "";
+    let attendedContestsCount = getContestRankingData.data.userContestRanking?.attendedContestsCount || "";
+    let userContestRankingHistory = getContestRankingData.data.userContestRankingHistory || [];
 
     rating = Math.round(rating);
     rating = rating.toLocaleString();
     globalRanking = globalRanking.toLocaleString();
-
-    useEffect(async () => {
-        // let a = await fetchData();
-        // set_getContestRankingData(a);
-    });
 
     return (
         <UserDataCard>
@@ -82,7 +107,7 @@ export default function ContestRating() {
             </div>
 
             <div>
-                <Highchart />
+                <Highchart userContestRankingHistory={userContestRankingHistory} />
             </div>
 
             <div style={{ display: "flex", justifyContent: "space-between" }}>

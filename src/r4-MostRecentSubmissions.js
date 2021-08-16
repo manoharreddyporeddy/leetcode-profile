@@ -42,8 +42,6 @@ export default function MostRecentSubmissions() {
     for (let j = 0; j < languageList.length; j++) {
       if (recentSubmissionList[i].lang === languageList[j].name) {
         recentSubmissionList[i].lang = languageList[j].verboseName;
-      } else {
-        continue;
       }
     }
   }
