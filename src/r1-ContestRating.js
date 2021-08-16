@@ -10,7 +10,6 @@ import { requests } from "./services/urls";
 
 // let getContestRankingData = getContestRankingDataDefault || {};
 // console.log(url, method, headers, body);
-// Hello
 
 // console.log(requests);
 
@@ -99,6 +98,8 @@ export default function ContestRating(props) {
     rating = rating.toLocaleString();
     globalRanking = globalRanking.toLocaleString();
 
+    if (getContestRankingData.data.userContestRanking != null){
+
     return (
         <UserDataCard>
             <div style={{ padding: "0px", height: "45.2px" }}>
@@ -156,4 +157,5 @@ export default function ContestRating(props) {
             </div>
         </UserDataCard>
     );
+                    } else return ("");
 }

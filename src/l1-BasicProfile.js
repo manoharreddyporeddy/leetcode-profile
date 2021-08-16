@@ -1,11 +1,13 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
 import { makeStyles } from "@material-ui/core/styles";
 import Card from "@material-ui/core/Card";
 import Divider from "@material-ui/core/Divider";
 import { Tooltip } from "@material-ui/core";
 
 import { userData } from "./data/pgmreddy-lcp";
-import { getUserProfile as UserProfile } from "./data/getUserProfile";
+import { getUserProfile as getUserProfileDefault } from "./data/getUserProfile";
+import { requests } from "./services/urls";
 
 import Rating from "./helpers/BasicProfile-rating";
 
@@ -13,7 +15,8 @@ const useStyles = makeStyles((theme) => ({
   profileCard: {
     borderRadius: "8px",
     marginBottom: "15px",
-    boxShadow: "rgb(0 0 0 / 10%) 0px 1px 2px, rgb(0 0 0 / 8%) 0px 2px 8px"
+    boxShadow: "rgb(0 0 0 / 10%) 0px 1px 2px, rgb(0 0 0 / 8%) 0px 2px 8px",
+    minWidth: "370px"
   },
 
   cardTitleContainer: {
@@ -35,12 +38,59 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
+const fetchData = async (username) => {
+  let { url, method, headers, body } = JSON.parse(JSON.stringify(requests.getUserProfile));
+
+  console.log(body);
+  body.username = body.username.replace("{USER_NAME}", username || "pgmreddy");
+  console.log(body);
+
+  const response = await fetch(
+      url, //
+      {
+          method: "POST", // *GET, POST, PUT, DELETE, etc.
+          // mode: 'cors', // no-cors, *cors, same-origin
+          // mode: 'no-cors', // no-cors, *cors, same-origin
+          // mode: 'same-origin', // no-cors, *cors, same-origin
+          // cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
+          // credentials: 'same-origin', // include, *same-origin, omit
+          headers: headers,
+          // {
+          //   'Content-Type': 'application/json'
+          //   // 'Content-Type': 'application/x-www-form-urlencoded',
+          // },
+          // redirect: 'follow', // manual, *follow, error
+          // referrerPolicy: 'no-referrer', // no-referrer, *no-referrer-when-downgrade, origin, origin-when-cross-origin, same-origin, strict-origin, strict-origin-when-cross-origin, unsafe-url
+          // body: JSON.stringify(data) // body data type must match "Content-Type" header
+          body: JSON.stringify(body), // body data type must match "Content-Type" header
+      }
+  );
+
+  let resp = await response.json();
+  return resp;
+};
+
+
 export default function BasicProfile() {
   const classes = useStyles();
+
+  let { username } = useParams();
+  // alert(username);
+
+  const [getUserProfile, set_getUserProfile] = useState(getUserProfileDefault); //
+
+  useEffect(async () => {
+      console.log("-----------------------");
+      let a = await fetchData(username);
+      console.log(a);
+      set_getUserProfile(a);
+  }, [username]);
+
+
   const profileDetails = userData.profileDetails;
-  let matchedUser = UserProfile.data.matchedUser;
+  let matchedUser = getUserProfile.data.matchedUser;
   let realName = matchedUser.profile.realName;
-  let username = matchedUser.username;
+  let usernameID = matchedUser.username;
   let githubUrl = matchedUser.githubUrl;
   let userAvatar = matchedUser.profile.userAvatar;
   let aboutMe = matchedUser.profile.aboutMe;
@@ -69,6 +119,15 @@ export default function BasicProfile() {
     }
   ];
 
+if(websites = [] && countryName === null) {
+   items = [];
+
+} else if(countryName === null){
+    items.pop();
+} else if(websites === []){
+  items.shift();   
+}
+
   return (
     <Card className={classes.profileCard}>
       <div
@@ -95,7 +154,8 @@ export default function BasicProfile() {
                 style={{
                   display: "flex",
                   flexDirection: "column",
-                  margin: "0px 4px 0px 15px"
+                  margin: "0px 4px 0px 15px",
+                  minWidth: "201px"
                 }}
               >
                 <span
@@ -112,7 +172,7 @@ export default function BasicProfile() {
                 <span
                   style={{ fontSize: "14px", color: "rgba(0, 0, 0, 0.65)" }}
                 >
-                  {username}
+                  {usernameID}
                   <Tooltip title={aboutMe} placement="top" arrow>
                     <svg
                       viewBox="0 0 24 24"

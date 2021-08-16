@@ -1,6 +1,7 @@
 .githubContainer {
   display: flex;
   margin-left: 12.5px;
+  right: 0;
 }
 
 .githubIcon {
