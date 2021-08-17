@@ -1,7 +1,11 @@
 import "./css/styles.css";
 
 import { makeStyles } from "@material-ui/core/styles";
-import React from "react";
+import React, { useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
+
+import { getUserProfile as getUserProfileDefault } from "./data/getUserProfile";
+import { requests } from "./services/urls";
 
 import Navbar from "./_Navbar";
 import LeftContentPanel from "./_LeftContentPanel";
@@ -18,18 +22,22 @@ const useStyles = makeStyles((theme) => ({
     },
 
     mainContentContainer: {
-        display: "flex",
         backgroundColor: "rgb(245, 245, 245)",
         padding: "20px 0px",
         justifyContent: "center",
+        minHeight: "calc(100vh - 93px)",
+        
     },
 
     flexWrapper: {
         display: "flex",
         flexWrap: "wrap",
+        maxWidth: "1170px",
+        margin: "0 auto",
     },
 
     leftPanelContainer: {
+        width: "100%",
         maxWidth: "370px",
         minWidth: "250px",
         margin: "0px 15px",
@@ -37,7 +45,6 @@ const useStyles = makeStyles((theme) => ({
 
     rightPanelContainer: {
         flex: 1,
-        maxWidth: "745px",
         margin: "0px 15px",
     },
 
@@ -48,8 +55,52 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
+const fetchData = async (username) => {
+    let { url, method, headers, body } = JSON.parse(JSON.stringify(requests.getUserProfile));
+  
+    console.log(body);
+    body.username = body.username.replace("{USER_NAME}", username || "pgmreddy");
+    console.log(body);
+  
+    const response = await fetch(
+        url, //
+        {
+            method: "POST", // *GET, POST, PUT, DELETE, etc.
+            // mode: 'cors', // no-cors, *cors, same-origin
+            // mode: 'no-cors', // no-cors, *cors, same-origin
+            // mode: 'same-origin', // no-cors, *cors, same-origin
+            // cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
+            // credentials: 'same-origin', // include, *same-origin, omit
+            headers: headers,
+            // {
+            //   'Content-Type': 'application/json'
+            //   // 'Content-Type': 'application/x-www-form-urlencoded',
+            // },
+            // redirect: 'follow', // manual, *follow, error
+            // referrerPolicy: 'no-referrer', // no-referrer, *no-referrer-when-downgrade, origin, origin-when-cross-origin, same-origin, strict-origin, strict-origin-when-cross-origin, unsafe-url
+            // body: JSON.stringify(data) // body data type must match "Content-Type" header
+            body: JSON.stringify(body), // body data type must match "Content-Type" header
+        }
+    );
+  
+    let resp = await response.json();
+    return resp;
+  };
+
 export default function App(props) {
     const classes = useStyles();
+
+    let { username } = useParams();
+    // alert(username);
+  
+    const [getUserProfile, set_getUserProfile] = useState(getUserProfileDefault); //
+  
+    useEffect(async () => {
+        console.log("-----------------------");
+        let a = await fetchData(username);
+        console.log(a);
+        set_getUserProfile(a);
+    }, [username]);
 
     return (
         <>
@@ -59,10 +110,10 @@ export default function App(props) {
             <div className={classes.mainContentContainer}>
                 <div className={classes.flexWrapper}>
                     <div className={classes.leftPanelContainer}>
-                        <LeftContentPanel />
+                        <LeftContentPanel getUserProfile={getUserProfile}/>
                     </div>
                     <div className={classes.rightPanelContainer}>
-                        <RightContentPanel />
+                        <RightContentPanel getUserProfile={getUserProfile}/>
                     </div>
                 </div>
             </div>

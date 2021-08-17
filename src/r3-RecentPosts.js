@@ -1,11 +1,16 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
+
 import { makeStyles } from "@material-ui/core/styles";
+
 import Card from "@material-ui/core/Card";
 import Divider from "@material-ui/core/Divider";
 import TimeAgo from "react-timeago";
 
 import { userData } from "./data/pgmreddy";
-import { getRecentPosts as RecentPostsData } from "./data/getRecentPosts";
+import { getRecentPosts as getRecentPostsDefault } from "./data/getRecentPosts";
+import { requests } from "./services/urls";
+
 
 const useStyles = makeStyles((theme) => ({
   recentPostsListItems: {
@@ -26,10 +31,60 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
+const fetchData = async (username) => {
+  let { url, method, headers, body } = JSON.parse(JSON.stringify(requests.getRecentPosts));
+
+  console.log(body);
+  body.username = body.username.replace("{USER_NAME}", username || "pgmreddy");
+  console.log(body);
+
+  const response = await fetch(
+      url, //
+      {
+          method: "POST", // *GET, POST, PUT, DELETE, etc.
+          // mode: 'cors', // no-cors, *cors, same-origin
+          // mode: 'no-cors', // no-cors, *cors, same-origin
+          // mode: 'same-origin', // no-cors, *cors, same-origin
+          // cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
+          // credentials: 'same-origin', // include, *same-origin, omit
+          headers: headers,
+          // {
+          //   'Content-Type': 'application/json'
+          //   // 'Content-Type': 'application/x-www-form-urlencoded',
+          // },
+          // redirect: 'follow', // manual, *follow, error
+          // referrerPolicy: 'no-referrer', // no-referrer, *no-referrer-when-downgrade, origin, origin-when-cross-origin, same-origin, strict-origin, strict-origin-when-cross-origin, unsafe-url
+          // body: JSON.stringify(data) // body data type must match "Content-Type" header
+          body: JSON.stringify(body), // body data type must match "Content-Type" header
+      }
+  );
+
+  let resp = await response.json();
+  return resp;
+};
+
+
 export default function RecentPosts() {
   const classes = useStyles();
   // const recentPosts = userData.recentPosts;
-  let userRecentTopics = RecentPostsData.data.userRecentTopics;
+
+  let { username } = useParams();
+  // alert(username);
+
+  const [getRecentPosts, set_getRecentPosts] = useState(getRecentPostsDefault); //
+
+  useEffect(async () => {
+      console.log("-----------------------");
+      let a = await fetchData(username);
+      console.log(a);
+      set_getRecentPosts(a);
+  }, [username]);
+
+  let userRecentTopics = getRecentPosts.data.userRecentTopics;
+
+  if (userRecentTopics.length == 0){ 
+    return ("");
+  }else {
 
   return (
     <div>
@@ -107,4 +162,5 @@ export default function RecentPosts() {
       </Card>
     </div>
   );
+} 
 }

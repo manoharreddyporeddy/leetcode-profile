@@ -6,8 +6,6 @@ import Divider from "@material-ui/core/Divider";
 import { Tooltip } from "@material-ui/core";
 
 import { userData } from "./data/pgmreddy-lcp";
-import { getUserProfile as getUserProfileDefault } from "./data/getUserProfile";
-import { requests } from "./services/urls";
 
 import Rating from "./helpers/BasicProfile-rating";
 
@@ -38,54 +36,8 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
-const fetchData = async (username) => {
-  let { url, method, headers, body } = JSON.parse(JSON.stringify(requests.getUserProfile));
-
-  console.log(body);
-  body.username = body.username.replace("{USER_NAME}", username || "pgmreddy");
-  console.log(body);
-
-  const response = await fetch(
-      url, //
-      {
-          method: "POST", // *GET, POST, PUT, DELETE, etc.
-          // mode: 'cors', // no-cors, *cors, same-origin
-          // mode: 'no-cors', // no-cors, *cors, same-origin
-          // mode: 'same-origin', // no-cors, *cors, same-origin
-          // cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
-          // credentials: 'same-origin', // include, *same-origin, omit
-          headers: headers,
-          // {
-          //   'Content-Type': 'application/json'
-          //   // 'Content-Type': 'application/x-www-form-urlencoded',
-          // },
-          // redirect: 'follow', // manual, *follow, error
-          // referrerPolicy: 'no-referrer', // no-referrer, *no-referrer-when-downgrade, origin, origin-when-cross-origin, same-origin, strict-origin, strict-origin-when-cross-origin, unsafe-url
-          // body: JSON.stringify(data) // body data type must match "Content-Type" header
-          body: JSON.stringify(body), // body data type must match "Content-Type" header
-      }
-  );
-
-  let resp = await response.json();
-  return resp;
-};
-
-
-export default function BasicProfile() {
+export default function BasicProfile({getUserProfile}) {
   const classes = useStyles();
-
-  let { username } = useParams();
-  // alert(username);
-
-  const [getUserProfile, set_getUserProfile] = useState(getUserProfileDefault); //
-
-  useEffect(async () => {
-      console.log("-----------------------");
-      let a = await fetchData(username);
-      console.log(a);
-      set_getUserProfile(a);
-  }, [username]);
-
 
   const profileDetails = userData.profileDetails;
   let matchedUser = getUserProfile.data.matchedUser;
@@ -119,12 +71,11 @@ export default function BasicProfile() {
     }
   ];
 
-if(websites = [] && countryName === null) {
+if(websites.length == 0 && countryName === null) {
    items = [];
-
 } else if(countryName === null){
     items.pop();
-} else if(websites === []){
+} else if(websites.length == 0){
   items.shift();   
 }
 
@@ -140,14 +91,27 @@ if(websites = [] && countryName === null) {
 
       <Divider />
 
-      <div style={{ padding: "12px 12px 0px 12px" }}>
+      <div style={{ padding: "12px 12px 0px 12px", zoom: "1" }}>
         {profileDetails.map((item, index) => {
+
+          var githubTopMargin = "12px";
+          var githubOpacity = "1"
+          if (githubUrl == null){
+            githubTopMargin = "0px";
+            githubOpacity = "50%"
+          }
+
+          var aboutMeVisibility = "visible";
+          if (aboutMe.length == 0){
+            aboutMeVisibility = "hidden";
+          }
+          
           return (
             <div style={{ display: "flex" }} key={index}>
               <img
                 src={userAvatar}
                 alt="Profile"
-                style={{ height: "80px", borderRadius: "6px" }}
+                style={{ height: "80px", borderRadius: "6px", alignSelf: "flex-start", flexShrink: "0" }}
               />
 
               <div
@@ -155,7 +119,6 @@ if(websites = [] && countryName === null) {
                   display: "flex",
                   flexDirection: "column",
                   margin: "0px 4px 0px 15px",
-                  minWidth: "201px"
                 }}
               >
                 <span
@@ -181,7 +144,8 @@ if(websites = [] && countryName === null) {
                       style={{
                         color: "#337ab7",
                         margin: "3px 0px 0px 4px",
-                        position: "absolute"
+                        position: "absolute",
+                        visibility: aboutMeVisibility
                       }}
                       fill="currentColor"
                     >
@@ -191,7 +155,7 @@ if(websites = [] && countryName === null) {
                 </span>
 
                 {/* <Tooltip title={ranking} arrow> */}
-                <Rating />
+                <Rating getUserProfile={getUserProfile}/>
                 {/* </Tooltip> */}
               </div>
 
@@ -201,7 +165,7 @@ if(websites = [] && countryName === null) {
                     viewBox="0 0 24 24"
                     width="32px"
                     height="32px"
-                    className="githubIcon"
+                    style = {{ marginTop: githubTopMargin, color: "rgba(0, 0, 0, 0.65)", opacity: githubOpacity }}
                     fill="currentColor"
                   >
                     <path d={item.github_path_d}></path>

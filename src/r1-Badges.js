@@ -3,8 +3,6 @@ import { makeStyles } from "@material-ui/core/styles";
 
 import UserDataCard from "./_SquareCard";
 
-import { getUserProfile as UserProfile } from "./data/getUserProfile";
-
 const useStyles = makeStyles((theme) => ({
   eachCardHeading: {
     fontWeight: "500",
@@ -21,13 +19,13 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
-export default function Badges() {
+export default function Badges({getUserProfile}) {
   const classes = useStyles();
-  let badges = (UserProfile.data.matchedUser.badges = []
+  let badges = (getUserProfile.data.matchedUser.badges = []
     ? 0
-    : UserProfile.data.matchedUser.badges);
-  let badgeImg = UserProfile.data.matchedUser.upcomingBadges[0].icon;
-  let badgeUpc = UserProfile.data.matchedUser.upcomingBadges[0].name;
+    : getUserProfile.data.matchedUser.badges);
+  let badgeImg = getUserProfile.data.matchedUser.upcomingBadges[0].icon;
+  let badgeUpc = getUserProfile.data.matchedUser.upcomingBadges[0].name;
   let badgeIcon = `https://leetcode.com${badgeImg}`;
 
   return (

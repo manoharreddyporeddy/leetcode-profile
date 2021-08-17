@@ -1,11 +1,10 @@
 import { makeStyles } from "@material-ui/core/styles";
+
 import React, { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+
 import Card from "@material-ui/core/Card";
 import Divider from "@material-ui/core/Divider";
 
-import { getUserProfile as getUserProfileDefault } from "./data/getUserProfile";
-import { requests } from "./services/urls";
 
 const useStyles = makeStyles((theme) => ({
   profileCard: {
@@ -35,53 +34,8 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
-const fetchData = async (username) => {
-  let { url, method, headers, body } = JSON.parse(JSON.stringify(requests.getUserProfile));
-
-  console.log(body);
-  body.username = body.username.replace("{USER_NAME}", username || "pgmreddy");
-  console.log(body);
-
-  const response = await fetch(
-      url, //
-      {
-          method: "POST", // *GET, POST, PUT, DELETE, etc.
-          // mode: 'cors', // no-cors, *cors, same-origin
-          // mode: 'no-cors', // no-cors, *cors, same-origin
-          // mode: 'same-origin', // no-cors, *cors, same-origin
-          // cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
-          // credentials: 'same-origin', // include, *same-origin, omit
-          headers: headers,
-          // {
-          //   'Content-Type': 'application/json'
-          //   // 'Content-Type': 'application/x-www-form-urlencoded',
-          // },
-          // redirect: 'follow', // manual, *follow, error
-          // referrerPolicy: 'no-referrer', // no-referrer, *no-referrer-when-downgrade, origin, origin-when-cross-origin, same-origin, strict-origin, strict-origin-when-cross-origin, unsafe-url
-          // body: JSON.stringify(data) // body data type must match "Content-Type" header
-          body: JSON.stringify(body), // body data type must match "Content-Type" header
-      }
-  );
-
-  let resp = await response.json();
-  return resp;
-};
-
-
-export default function Contributions() {
+export default function Contributions({getUserProfile}) {
   const classes = useStyles();
-  
-  let { username } = useParams();
-  // alert(username);
-
-  const [getUserProfile, set_getUserProfile] = useState(getUserProfileDefault); //
-
-  useEffect(async () => {
-      console.log("-----------------------");
-      let a = await fetchData(username);
-      console.log(a);
-      set_getUserProfile(a);
-  }, [username]);
 
   let contributions = getUserProfile.data.matchedUser.contributions || 0;
   let points = contributions.points;

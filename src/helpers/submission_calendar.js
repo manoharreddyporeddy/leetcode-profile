@@ -6,9 +6,11 @@ import ReactTooltip from "react-tooltip";
 // import { heatmapdata } from "../data/submission_calendar_data";
 import { getUserProfile as UserProfile } from "../data/getUserProfile";
 
+function Heatmap({getUserProfile}) {
+ 
 const today = new Date();
 
-let submissionCalendar = UserProfile.data.matchedUser.submissionCalendar;
+let submissionCalendar = getUserProfile.data.matchedUser.submissionCalendar;
 
 let submissionCalendarObject = JSON.parse(submissionCalendar);
 
@@ -37,11 +39,11 @@ arr.push(ordered);
 
 let dateValues = Object.values(orderedFormattedDates);
 let countValues = Object.values(arr[0]);
-export const totalSubmissionCount = countValues.reduce((a, b) => a + b, 0);
+const totalSubmissionCount = countValues.reduce((a, b) => a + b, 0);
 
 let count = Object.values(orderedFormattedDates).length;
 
-function Heatmap() {
+
   const data = Array.from(Array(count).keys()).map((index) => {
     return {
       date: dateValues[index],
@@ -81,3 +83,4 @@ function shiftDate(date, numDays) {
 }
 
 export default Heatmap;
+// export const totalSubmissionCount={totalSubmissionCount};

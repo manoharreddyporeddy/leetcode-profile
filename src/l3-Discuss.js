@@ -1,9 +1,9 @@
 import { makeStyles } from "@material-ui/core/styles";
+
 import React from "react";
+
 import Card from "@material-ui/core/Card";
 import Divider from "@material-ui/core/Divider";
-
-import { getUserProfile as UserProfile } from "./data/getUserProfile";
 
 const useStyles = makeStyles((theme) => ({
   profileCard: {
@@ -33,9 +33,9 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
-export default function Discuss() {
+export default function Discuss({getUserProfile}) {
   const classes = useStyles();
-  let reputation = UserProfile.data.matchedUser.profile.reputation;
+  let reputation = getUserProfile.data.matchedUser.profile.reputation;
 
   return (
     <Card className={classes.profileCard}>

@@ -15,19 +15,19 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
-export default function ProblemsSolved() {
+export default function ProblemsSolved({getUserProfile}) {
   const classes = useStyles();
-  let countEasy = UserProfile.data.allQuestionsCount[1].count;
-  let countMedium = UserProfile.data.allQuestionsCount[2].count;
-  let countHard = UserProfile.data.allQuestionsCount[3].count;
+  let countEasy = getUserProfile.data.allQuestionsCount[1].count;
+  let countMedium = getUserProfile.data.allQuestionsCount[2].count;
+  let countHard = getUserProfile.data.allQuestionsCount[3].count;
   let totalCount =
-    UserProfile.data.matchedUser.submitStats.acSubmissionNum[0].count;
+    getUserProfile.data.matchedUser.submitStats.acSubmissionNum[0].count;
   let subCountE =
-    UserProfile.data.matchedUser.submitStats.acSubmissionNum[1].count;
+    getUserProfile.data.matchedUser.submitStats.acSubmissionNum[1].count;
   let subCountM =
-    UserProfile.data.matchedUser.submitStats.acSubmissionNum[2].count;
+    getUserProfile.data.matchedUser.submitStats.acSubmissionNum[2].count;
   let subCountH =
-    UserProfile.data.matchedUser.submitStats.acSubmissionNum[3].count;
+    getUserProfile.data.matchedUser.submitStats.acSubmissionNum[3].count;
 
   return (
     <UserDataCard>
@@ -40,7 +40,7 @@ export default function ProblemsSolved() {
           </span>
         </div>
         <div style={{ margin: "12px 0px 15px 0px" }}>
-          <Percentage_circle />
+          <Percentage_circle getUserProfile={getUserProfile}/>
         </div>
       </div>
       <div style={{ display: "flex", justifyContent: "space-between" }}>

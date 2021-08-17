@@ -3,31 +3,34 @@ import "../css/ProblemsSolved_circle.css";
 
 import { getUserProfile as UserProfile } from "../data/getUserProfile";
 
-let acSubmissionNum = UserProfile.data.matchedUser.submitStats.acSubmissionNum;
-let totalSubmissionNum =
-  UserProfile.data.matchedUser.submitStats.totalSubmissionNum;
-let totalAcSubmissions = acSubmissionNum[0].submissions;
-let totalAcCount = acSubmissionNum[0].count;
-let totalSubmissions = totalSubmissionNum[0].submissions;
-let totalAcEasyCount = acSubmissionNum[1].count;
-let totalAcMediumCount = acSubmissionNum[2].count;
-let totalAcHardCount = acSubmissionNum[3].count;
 
-let rawPerncentage = (totalAcSubmissions / totalSubmissions) * 100;
-let perncentageInt = Math.trunc(rawPerncentage.toFixed(1));
-let perncentageDecimal = Math.trunc(
-  (rawPerncentage.toFixed(1) - perncentageInt) * 10
-);
 
-let allQuestionsCount = UserProfile.data.allQuestionsCount;
-let totalQuestions = allQuestionsCount[0].count;
-let width = totalAcCount / totalQuestions;
-let length = 318.086 * width;
-let easyLength = length * (totalAcEasyCount / totalAcCount);
-let mediumLength = length * (totalAcMediumCount / totalAcCount);
-let hardLength = length * (totalAcHardCount / totalAcCount);
+const Percentage_circle = ({getUserProfile}) => {
+  let acSubmissionNum = getUserProfile.data.matchedUser.submitStats.acSubmissionNum;
+  let totalSubmissionNum =
+    getUserProfile.data.matchedUser.submitStats.totalSubmissionNum;
+  let totalAcSubmissions = acSubmissionNum[0].submissions;
+  let totalAcCount = acSubmissionNum[0].count;
+  let totalSubmissions = totalSubmissionNum[0].submissions;
+  let totalAcEasyCount = acSubmissionNum[1].count;
+  let totalAcMediumCount = acSubmissionNum[2].count;
+  let totalAcHardCount = acSubmissionNum[3].count;
 
-const Percentage_circle = () => (
+  let rawPerncentage = (totalAcSubmissions / totalSubmissions) * 100;
+  let perncentageInt = Math.trunc(rawPerncentage.toFixed(1));
+  let perncentageDecimal = Math.trunc(
+    (rawPerncentage.toFixed(1) - perncentageInt) * 10
+  );
+
+  let allQuestionsCount = getUserProfile.data.allQuestionsCount;
+  let totalQuestions = allQuestionsCount[0].count;
+  let width = totalAcCount / totalQuestions;
+  let length = 318.086 * width;
+  let easyLength = length * (totalAcEasyCount / totalAcCount);
+  let mediumLength = length * (totalAcMediumCount / totalAcCount);
+  let hardLength = length * (totalAcHardCount / totalAcCount);
+
+  return (
   <div size="108" className="cicleContainer">
     <div radius="52.3125" className="backgroundCircle"></div>
     <svg viewBox="0 0 108 108" className="svgCircle">
@@ -77,5 +80,6 @@ const Percentage_circle = () => (
     </div>
   </div>
 );
+}
 
 export default Percentage_circle;

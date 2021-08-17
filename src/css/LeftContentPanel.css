@@ -1,6 +1,6 @@
 .githubContainer {
   display: flex;
-  margin-left: 12.5px;
+  margin-left: auto;
   right: 0;
 }
 
@@ -25,6 +25,7 @@
   display: flex;
   padding: 12px 0px;
   align-items: center;
+  white-space: nowrap;
 }
 
 .webLink {

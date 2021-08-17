@@ -17,17 +17,17 @@ const useStyles = makeStyles((theme) => ({
         marginLeft: "-12px",
     },
 }));
-export default function App() {
+export default function App({getUserProfile}) {
     const classes = useStyles();
 
     return (
         <>
             <div className={classes.threeCardsFlexWrapper}>
                 <ContestRating />
-                <ProblemsSolved />
-                <Badges />
+                <ProblemsSolved getUserProfile={getUserProfile}/>
+                <Badges getUserProfile={getUserProfile}/>
             </div>
-            <NoOfSubmissions />
+            <NoOfSubmissions getUserProfile={getUserProfile}/>
             <RecentPosts />
             <MostRecentSubmissions />
         </>
