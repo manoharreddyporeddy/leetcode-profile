@@ -39,7 +39,20 @@ arr.push(ordered);
 
 let dateValues = Object.values(orderedFormattedDates);
 let countValues = Object.values(arr[0]);
-const totalSubmissionCount = countValues.reduce((a, b) => a + b, 0);
+
+function calculateAverage(array) {
+  var total = 0;
+  var count = 0;
+
+  array.forEach(function(item, index) {
+      total += item;
+      count++;
+  });
+
+  return total / count;
+}
+
+// console.log(calculateAverage(countValues));
 
 let count = Object.values(orderedFormattedDates).length;
 
@@ -60,14 +73,19 @@ let count = Object.values(orderedFormattedDates).length;
           if (!value) {
             return "color-empty";
           }
-          return `${value.count}` < 5
+          return `${value.count}` < 7
             ? `color-github-${value.count}`
             : `color-github-5`;
         }}
         tooltipDataAttrs={(value) => {
+          let readableDate = new Date(value.date).toDateString();
+
+          if (value.count===null){ return null }
+          else {
           return {
-            "data-tip": `${value.count} submissions on ${value.date}`
+            "data-tip": `${value.count} submissions on ${readableDate}`
           };
+        }
         }}
         showWeekdayLabels={false}
       />

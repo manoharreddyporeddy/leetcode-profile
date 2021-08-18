@@ -10,7 +10,6 @@
 }
 
 .linkAndLocationWrapper {
-  border-top: 1px solid rgb(224, 224, 224);
   margin-top: 15px;
 }
 
@@ -18,21 +17,21 @@
   display: flex;
   padding: 12px 0px;
   align-items: center;
-  border-bottom: 1px solid #e8e8e8;
+  border-top: 1px solid #e8e8e8;
 }
 
 .locationContainer {
   display: flex;
   padding: 12px 0px;
   align-items: center;
-  white-space: nowrap;
+  border-top: 1px solid #e8e8e8;
 }
 
 .webLink {
   text-decoration: none;
   color: #1890ff;
+  overflow-wrap: anywhere;
 }
 .location {
   color: rgba(0, 0, 0, 0.65);
-  margin-left: 230px;
 }

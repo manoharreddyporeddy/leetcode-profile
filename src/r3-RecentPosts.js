@@ -33,9 +33,9 @@ const useStyles = makeStyles((theme) => ({
 const fetchData = async (username) => {
     let { url, method, headers, body } = JSON.parse(JSON.stringify(requests.getRecentPosts));
 
-    console.log(body);
+    // console.log(body);
     body.username = body.username.replace("{USER_NAME}", username || "pgmreddy");
-    console.log(body);
+    // console.log(body);
 
     const response = await fetch(
         url, //
@@ -72,9 +72,9 @@ export default function RecentPosts() {
     const [getRecentPosts, set_getRecentPosts] = useState(getRecentPostsDefault); //
 
     useEffect(async () => {
-        console.log("-----------------------");
+        // console.log("-----------------------");
         let a = await fetchData(username);
-        console.log(a);
+        // console.log(a);
         set_getRecentPosts(a);
     }, [username]);
 

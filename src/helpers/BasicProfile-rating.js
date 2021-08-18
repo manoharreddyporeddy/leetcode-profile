@@ -23,7 +23,7 @@ export default function Rating({getUserProfile}) {
   const classes = useStyles();
   const starClasses = userData.starClasses;
   let starRating = getUserProfile.data.matchedUser.profile.starRating;
-  starRating = starRating * 20;
+  starRating = starRating * 20.1;
 
   return (
     <div

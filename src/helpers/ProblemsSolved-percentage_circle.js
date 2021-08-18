@@ -3,8 +3,6 @@ import "../css/ProblemsSolved_circle.css";
 
 import { getUserProfile as UserProfile } from "../data/getUserProfile";
 
-
-
 const Percentage_circle = ({getUserProfile}) => {
   let acSubmissionNum = getUserProfile.data.matchedUser.submitStats.acSubmissionNum;
   let totalSubmissionNum =
@@ -30,6 +28,9 @@ const Percentage_circle = ({getUserProfile}) => {
   let mediumLength = length * (totalAcMediumCount / totalAcCount);
   let hardLength = length * (totalAcHardCount / totalAcCount);
 
+  let easyRotateLength = easyLength + (2*((easyLength*54/50.625)-easyLength));
+  let mediumRotateLength = easyRotateLength + mediumLength + (2*((mediumLength*54/50.625)-mediumLength));
+
   return (
   <div size="108" className="cicleContainer">
     <div radius="52.3125" className="backgroundCircle"></div>
@@ -50,7 +51,7 @@ const Percentage_circle = ({getUserProfile}) => {
         cx="54"
         cy="54"
         r="50.625"
-        transform="rotate(80.06106870229007 54 54)"
+        transform={`rotate(${easyRotateLength} 54 54)`}
         data-difficulty="Medium"
         style={{ strokeDasharray: `${mediumLength}, 318.086px` }}
         className="mediumCircle"
@@ -61,7 +62,7 @@ const Percentage_circle = ({getUserProfile}) => {
         cx="54"
         cy="54"
         r="50.625"
-        transform="rotate(150.59541984732823 54 54)"
+        transform={`rotate(${mediumRotateLength} 54 54)`}
         data-difficulty="Hard"
         style={{ strokeDasharray: `${hardLength}, 318.086px` }}
         className="hardCircle"

@@ -26,6 +26,7 @@ const useStyles = makeStyles(() => ({
         alignItems: "center",
         marginRight: "10px",
         color: "rgb(119, 119, 119)",
+        alignItems: "flex-end"
     },
 
     badge: {
@@ -42,9 +43,9 @@ const useStyles = makeStyles(() => ({
 const fetchData = async (username) => {
     let { url, method, headers, body } = JSON.parse(JSON.stringify(requests.getRecentSubmissionList));
 
-    console.log(body);
+    // console.log(body);
     body.username = body.username.replace("{USER_NAME}", username || "pgmreddy");
-    console.log(body);
+    // console.log(body);
 
     const response = await fetch(
         url, //
@@ -80,9 +81,9 @@ export default function MostRecentSubmissions() {
     const [getRecentSubmissionList, set_getRecentSubmissionList] = useState(getRecentSubmissionListDefault); //
 
     useEffect(async () => {
-        console.log("-----------------------");
+        // console.log("-----------------------");
         let a = await fetchData(username);
-        console.log(a);
+        // console.log(a);
         set_getRecentSubmissionList(a);
     }, [username]);
 
@@ -140,7 +141,7 @@ export default function MostRecentSubmissions() {
                                                     <TimeAgo date={dateObject} />
                                                 </span>
                                             </span>
-                                            <span style={{ display: "flex", minWidth: "141.738px" }}>
+                                            <span style={{ display: "inline-flex", marginLeft: "auto" }}>
                                                 <span className={classes.iconContainer} style={{ marginRight: "4px" }}>
                                                     <span className={classes.badge} style={{ backgroundColor: "rgb(64, 196, 255)" }}>
                                                         {item.lang}

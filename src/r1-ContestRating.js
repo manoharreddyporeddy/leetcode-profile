@@ -25,9 +25,7 @@ const useStyles = makeStyles((theme) => ({
 const fetchData = async (username) => {
     let { url, method, headers, body } = JSON.parse(JSON.stringify(requests.getContestRankingData));
 
-    console.log(body);
     body.username = body.username.replace("{USER_NAME}", username || "pgmreddy");
-    console.log(body);
 
     // console.log("100");
     const response = await fetch(
@@ -71,9 +69,7 @@ export default function ContestRating(props) {
     // const [attendedContestsCount, set_attendedContestsCount] = useState(""); //
 
     useEffect(async () => {
-        console.log("-----------------------");
         let a = await fetchData(username);
-        console.log(a);
         set_getContestRankingData(a);
 
         // console.log("yyy", getContestRankingDataDefault);

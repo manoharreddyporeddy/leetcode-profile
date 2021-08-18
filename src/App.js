@@ -57,9 +57,9 @@ const useStyles = makeStyles((theme) => ({
 const fetchData = async (username) => {
     let { url, method, headers, body } = JSON.parse(JSON.stringify(requests.getUserProfile));
 
-    console.log(body);
+    // console.log(body);
     body.username = body.username.replace("{USER_NAME}", username || "pgmreddy");
-    console.log(body);
+    // console.log(body);
 
     const response = await fetch(
         url, //
@@ -95,9 +95,9 @@ export default function App(props) {
     const [getUserProfile, set_getUserProfile] = useState(getUserProfileDefault); //
 
     useEffect(async () => {
-        console.log("-----------------------");
+        // console.log("-----------------------");
         let a = await fetchData(username);
-        console.log(a);
+        // console.log(a);
         set_getUserProfile(a);
     }, [username]);
 

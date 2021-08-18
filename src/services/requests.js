@@ -1,5 +1,5 @@
 import { common } from "../__common";
-console.log("common", common.apiBaseUrl);
+// console.log("common", common.apiBaseUrl);
 
 export const requests = {
     getContestRankingData: {
