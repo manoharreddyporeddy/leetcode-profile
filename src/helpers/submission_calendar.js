@@ -6,56 +6,54 @@ import ReactTooltip from "react-tooltip";
 // import { heatmapdata } from "../data/submission_calendar_data";
 import { getUserProfile as UserProfile } from "../data/getUserProfile";
 
-function Heatmap({getUserProfile}) {
- 
-const today = new Date();
+function Heatmap({ getUserProfile }) {
+  const today = new Date();
 
-let submissionCalendar = getUserProfile.data.matchedUser.submissionCalendar;
+  let submissionCalendar = getUserProfile.data.matchedUser.submissionCalendar;
 
-let submissionCalendarObject = JSON.parse(submissionCalendar);
+  let submissionCalendarObject = JSON.parse(submissionCalendar);
 
-const ordered = Object.keys(submissionCalendarObject)
-  .sort()
-  .reduce((obj, key) => {
-    obj[key] = submissionCalendarObject[key];
+  const ordered = Object.keys(submissionCalendarObject)
+    .sort()
+    .reduce((obj, key) => {
+      obj[key] = submissionCalendarObject[key];
+      return obj;
+    }, {});
+
+  function convert(date) {
+    var datearray = date.split("/");
+    var newdate = datearray[2] + "/" + datearray[0] + "/" + datearray[1];
+    return newdate;
+  }
+
+  const orderedFormattedDates = Object.keys(ordered).reduce((obj, key) => {
+    let dateObject = new Date(key * 1000);
+    let humanDateFormat = dateObject.toLocaleDateString();
+    obj[key] = convert(humanDateFormat);
     return obj;
   }, {});
 
-function convert(date) {
-  var datearray = date.split("/");
-  var newdate = datearray[2] + "/" + datearray[0] + "/" + datearray[1];
-  return newdate;
-}
+  let arr = [];
+  arr.push(ordered);
 
-const orderedFormattedDates = Object.keys(ordered).reduce((obj, key) => {
-  let dateObject = new Date(key * 1000);
-  let humanDateFormat = dateObject.toLocaleDateString();
-  obj[key] = convert(humanDateFormat);
-  return obj;
-}, {});
+  let dateValues = Object.values(orderedFormattedDates);
+  let countValues = Object.values(arr[0]);
 
-let arr = [];
-arr.push(ordered);
+  // function calculateAverage(array) {
+  //   var total = 0;
+  //   var count = 0;
 
-let dateValues = Object.values(orderedFormattedDates);
-let countValues = Object.values(arr[0]);
+  //   array.forEach(function(item, index) {
+  //       total += item;
+  //       count++;
+  //   });
 
-function calculateAverage(array) {
-  var total = 0;
-  var count = 0;
+  //   return total / count;
+  // }
 
-  array.forEach(function(item, index) {
-      total += item;
-      count++;
-  });
+  // console.log(calculateAverage(countValues));
 
-  return total / count;
-}
-
-// console.log(calculateAverage(countValues));
-
-let count = Object.values(orderedFormattedDates).length;
-
+  let count = Object.values(orderedFormattedDates).length;
 
   const data = Array.from(Array(count).keys()).map((index) => {
     return {
@@ -75,17 +73,18 @@ let count = Object.values(orderedFormattedDates).length;
           }
           return `${value.count}` < 7
             ? `color-github-${value.count}`
-            : `color-github-5`;
+            : `color-github-7`;
         }}
         tooltipDataAttrs={(value) => {
           let readableDate = new Date(value.date).toDateString();
 
-          if (value.count===null){ return null }
-          else {
-          return {
-            "data-tip": `${value.count} submissions on ${readableDate}`
-          };
-        }
+          if (value.count === null) {
+            return null;
+          } else {
+            return {
+              "data-tip": `${value.count} submissions on ${readableDate}`
+            };
+          }
         }}
         showWeekdayLabels={false}
       />
