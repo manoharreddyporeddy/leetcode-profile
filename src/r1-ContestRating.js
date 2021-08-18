@@ -6,7 +6,7 @@ import Highchart from "./helpers/contestRating_graph";
 import UserDataCard from "./_SquareCard";
 
 import { getContestRankingData as getContestRankingDataDefault } from "./data/getContestRankingData";
-import { requests } from "./services/urls";
+import { requests } from "./services/requests";
 
 // let getContestRankingData = getContestRankingDataDefault || {};
 // console.log(url, method, headers, body);
@@ -98,64 +98,63 @@ export default function ContestRating(props) {
     rating = rating.toLocaleString();
     globalRanking = globalRanking.toLocaleString();
 
-    if (getContestRankingData.data.userContestRanking != null){
-
-    return (
-        <UserDataCard>
-            <div style={{ padding: "0px", height: "45.2px" }}>
-                <span className={classes.eachCardHeading}>Contest Rating{"\n"}</span>
-                <span style={{ fontSize: "22px", fontWeight: "600" }}> {rating} </span>
-                <span style={{ fontSize: "12px", fontWeight: "600" }}>pt</span>
-            </div>
-
-            <div>
-                <Highchart userContestRankingHistory={userContestRankingHistory} />
-            </div>
-
-            <div style={{ display: "flex", justifyContent: "space-between" }}>
-                <div>
-                    <span
-                        style={{
-                            fontSize: "12px",
-                            color: "rgba(60, 60, 67, 0.6)",
-                            whiteSpace: "pre-wrap",
-                        }}
-                    >
-                        Ranking{"\n"}
-                    </span>
-                    <span
-                        style={{
-                            fontSize: "14px",
-                            color: "rgba(38, 38, 38, 0.75)",
-                            fontWeight: "600",
-                        }}
-                    >
-                        {globalRanking}
-                    </span>
+    if (getContestRankingData.data.userContestRanking != null) {
+        return (
+            <UserDataCard>
+                <div style={{ padding: "0px", height: "45.2px" }}>
+                    <span className={classes.eachCardHeading}>Contest Rating{"\n"}</span>
+                    <span style={{ fontSize: "22px", fontWeight: "600" }}> {rating} </span>
+                    <span style={{ fontSize: "12px", fontWeight: "600" }}>pt</span>
                 </div>
+
                 <div>
-                    <span
-                        style={{
-                            fontSize: "12px",
-                            color: "rgba(60, 60, 67, 0.6)",
-                            whiteSpace: "pre-wrap",
-                        }}
-                    >
-                        Attended{"\n"}
-                    </span>
-                    <span
-                        style={{
-                            fontSize: "14px",
-                            color: "rgba(38, 38, 38, 0.75)",
-                            fontWeight: "600",
-                            float: "right",
-                        }}
-                    >
-                        {attendedContestsCount}
-                    </span>
+                    <Highchart userContestRankingHistory={userContestRankingHistory} />
                 </div>
-            </div>
-        </UserDataCard>
-    );
-                    } else return ("");
+
+                <div style={{ display: "flex", justifyContent: "space-between" }}>
+                    <div>
+                        <span
+                            style={{
+                                fontSize: "12px",
+                                color: "rgba(60, 60, 67, 0.6)",
+                                whiteSpace: "pre-wrap",
+                            }}
+                        >
+                            Ranking{"\n"}
+                        </span>
+                        <span
+                            style={{
+                                fontSize: "14px",
+                                color: "rgba(38, 38, 38, 0.75)",
+                                fontWeight: "600",
+                            }}
+                        >
+                            {globalRanking}
+                        </span>
+                    </div>
+                    <div>
+                        <span
+                            style={{
+                                fontSize: "12px",
+                                color: "rgba(60, 60, 67, 0.6)",
+                                whiteSpace: "pre-wrap",
+                            }}
+                        >
+                            Attended{"\n"}
+                        </span>
+                        <span
+                            style={{
+                                fontSize: "14px",
+                                color: "rgba(38, 38, 38, 0.75)",
+                                fontWeight: "600",
+                                float: "right",
+                            }}
+                        >
+                            {attendedContestsCount}
+                        </span>
+                    </div>
+                </div>
+            </UserDataCard>
+        );
+    } else return "";
 }

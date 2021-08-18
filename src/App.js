@@ -5,7 +5,7 @@ import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 
 import { getUserProfile as getUserProfileDefault } from "./data/getUserProfile";
-import { requests } from "./services/urls";
+import { requests } from "./services/requests";
 
 import Navbar from "./_Navbar";
 import LeftContentPanel from "./_LeftContentPanel";
@@ -26,7 +26,6 @@ const useStyles = makeStyles((theme) => ({
         padding: "20px 0px",
         justifyContent: "center",
         minHeight: "calc(100vh - 93px)",
-        
     },
 
     flexWrapper: {
@@ -57,11 +56,11 @@ const useStyles = makeStyles((theme) => ({
 
 const fetchData = async (username) => {
     let { url, method, headers, body } = JSON.parse(JSON.stringify(requests.getUserProfile));
-  
+
     console.log(body);
     body.username = body.username.replace("{USER_NAME}", username || "pgmreddy");
     console.log(body);
-  
+
     const response = await fetch(
         url, //
         {
@@ -82,19 +81,19 @@ const fetchData = async (username) => {
             body: JSON.stringify(body), // body data type must match "Content-Type" header
         }
     );
-  
+
     let resp = await response.json();
     return resp;
-  };
+};
 
 export default function App(props) {
     const classes = useStyles();
 
     let { username } = useParams();
     // alert(username);
-  
+
     const [getUserProfile, set_getUserProfile] = useState(getUserProfileDefault); //
-  
+
     useEffect(async () => {
         console.log("-----------------------");
         let a = await fetchData(username);
@@ -110,10 +109,10 @@ export default function App(props) {
             <div className={classes.mainContentContainer}>
                 <div className={classes.flexWrapper}>
                     <div className={classes.leftPanelContainer}>
-                        <LeftContentPanel getUserProfile={getUserProfile}/>
+                        <LeftContentPanel getUserProfile={getUserProfile} />
                     </div>
                     <div className={classes.rightPanelContainer}>
-                        <RightContentPanel getUserProfile={getUserProfile}/>
+                        <RightContentPanel getUserProfile={getUserProfile} />
                     </div>
                 </div>
             </div>

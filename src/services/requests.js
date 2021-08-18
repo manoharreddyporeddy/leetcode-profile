@@ -1,6 +1,9 @@
+import { common } from "../__common";
+console.log("common", common.apiBaseUrl);
+
 export const requests = {
     getContestRankingData: {
-        url: "http://localhost:3001/contest-rating",
+        url: common.apiBaseUrl + "contest-rating",
         method: "POST",
         headers: {
             "content-type": "application/json",
@@ -12,7 +15,7 @@ export const requests = {
     },
 
     getUserProfile: {
-        url: "http://localhost:3001/user-profile",
+        url: common.apiBaseUrl + "user-profile",
         method: "POST",
         headers: {
             "content-type": "application/json",
@@ -24,7 +27,7 @@ export const requests = {
     },
 
     getRecentPosts: {
-        url: "http://localhost:3001/recent-posts",
+        url: common.apiBaseUrl + "recent-posts",
         method: "POST",
         headers: {
             "content-type": "application/json",
@@ -36,7 +39,7 @@ export const requests = {
     },
 
     getRecentSubmissionList: {
-        url: "http://localhost:3001/recent-submission",
+        url: common.apiBaseUrl + "recent-submission",
         method: "POST",
         headers: {
             "content-type": "application/json",
@@ -45,5 +48,5 @@ export const requests = {
             operationName: "getRecentSubmissionList", //
             username: "{USER_NAME}", // "pgmreddy",
         },
-    }
+    },
 };
