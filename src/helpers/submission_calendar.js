@@ -39,26 +39,26 @@ function Heatmap({ getUserProfile }) {
   let dateValues = Object.values(orderedFormattedDates);
   let countValues = Object.values(arr[0]);
 
-  // function calculateAverage(array) {
-  //   var total = 0;
-  //   var count = 0;
+  function calculateAverage(array) {
+    var total = 0;
+    var count = 0;
 
-  //   array.forEach(function(item, index) {
-  //       total += item;
-  //       count++;
-  //   });
+    array.forEach(function (item, index) {
+      total += item;
+      count++;
+    });
 
-  //   return total / count;
-  // }
+    return total / count;
+  }
 
-  // console.log(calculateAverage(countValues));
+  console.log(calculateAverage(countValues));
 
   let count = Object.values(orderedFormattedDates).length;
 
   const data = Array.from(Array(count).keys()).map((index) => {
     return {
       date: dateValues[index],
-      count: countValues[index]
+      count: countValues[index],
     };
   });
   return (
@@ -67,22 +67,22 @@ function Heatmap({ getUserProfile }) {
         startDate={shiftDate(today, -365)}
         endDate={today}
         values={data}
-        classForValue={(value) => {
-          if (!value) {
+        classForValue={(values) => {
+          if (!values) {
             return "color-empty";
           }
-          return `${value.count}` < 7
-            ? `color-github-${value.count}`
+          return `${values.count}` < 7
+            ? `color-github-${values.count}`
             : `color-github-7`;
         }}
-        tooltipDataAttrs={(value) => {
-          let readableDate = new Date(value.date).toDateString();
+        tooltipDataAttrs={(data) => {
+          let readableDate = new Date(data.date).toDateString();
 
-          if (value.count === null) {
+          if (data.count === null) {
             return null;
           } else {
             return {
-              "data-tip": `${value.count} submissions on ${readableDate}`
+              "data-tip": `${data.count} submissions on ${readableDate}`,
             };
           }
         }}

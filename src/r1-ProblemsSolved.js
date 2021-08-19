@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 
 import Percentage_circle from "./helpers/ProblemsSolved-percentage_circle";
@@ -11,11 +11,11 @@ const useStyles = makeStyles((theme) => ({
     fontWeight: "500",
     fontSize: "12px",
     color: "rgba(60, 60, 67, 0.6)",
-    whiteSpace: "pre-wrap"
-  }
+    whiteSpace: "pre-wrap",
+  },
 }));
 
-export default function ProblemsSolved({getUserProfile}) {
+export default function ProblemsSolved({ getUserProfile }) {
   const classes = useStyles();
   let countEasy = getUserProfile.data.allQuestionsCount[1].count;
   let countMedium = getUserProfile.data.allQuestionsCount[2].count;
@@ -29,6 +29,10 @@ export default function ProblemsSolved({getUserProfile}) {
   let subCountH =
     getUserProfile.data.matchedUser.submitStats.acSubmissionNum[3].count;
 
+  const [easyPercentHover, set_easyPercentHover] = useState(false);
+  const [mediumPercentHover, set_mediumPercentHover] = useState(false);
+  const [hardPercentHover, set_hardPercentHover] = useState(false);
+
   return (
     <UserDataCard>
       <div style={{ display: "flex", justifyContent: "space-between" }}>
@@ -40,16 +44,27 @@ export default function ProblemsSolved({getUserProfile}) {
           </span>
         </div>
         <div style={{ margin: "12px 0px 15px 0px" }}>
-          <Percentage_circle getUserProfile={getUserProfile}/>
+          <Percentage_circle
+            getUserProfile={getUserProfile}
+            easyPercentHover={easyPercentHover}
+            set_easyPercentHover={set_easyPercentHover}
+            mediumPercentHover={mediumPercentHover}
+            set_mediumPercentHover={set_mediumPercentHover}
+            hardPercentHover={hardPercentHover}
+            set_hardPercentHover={set_hardPercentHover}
+          />
         </div>
       </div>
       <div style={{ display: "flex", justifyContent: "space-between" }}>
-        <div>
+        <div
+          onMouseEnter={() => set_easyPercentHover(true)}
+          onMouseLeave={() => set_easyPercentHover(false)}
+        >
           <span
             style={{
               fontSize: "12px",
               color: "rgb(67, 160, 71)",
-              whiteSpace: "pre-wrap"
+              whiteSpace: "pre-wrap",
             }}
           >
             Easy{"\n"}
@@ -58,7 +73,7 @@ export default function ProblemsSolved({getUserProfile}) {
             style={{
               fontSize: "14px",
               color: "rgba(38, 38, 38, 0.75)",
-              fontWeight: "600"
+              fontWeight: "600",
             }}
           >
             {subCountE}
@@ -66,19 +81,22 @@ export default function ProblemsSolved({getUserProfile}) {
               style={{
                 fontWeight: "500",
                 color: "rgba(60, 60, 67, 0.3)",
-                fontSize: "12px"
+                fontSize: "12px",
               }}
             >
               /{countEasy}
             </span>
           </span>
         </div>
-        <div>
+        <div
+          onMouseEnter={() => set_mediumPercentHover(true)}
+          onMouseLeave={() => set_mediumPercentHover(false)}
+        >
           <span
             style={{
               fontSize: "12px",
               color: "rgb(251, 140, 0)",
-              whiteSpace: "pre-wrap"
+              whiteSpace: "pre-wrap",
             }}
           >
             Medium{"\n"}
@@ -87,7 +105,7 @@ export default function ProblemsSolved({getUserProfile}) {
             style={{
               fontSize: "14px",
               color: "rgba(38, 38, 38, 0.75)",
-              fontWeight: "600"
+              fontWeight: "600",
             }}
           >
             {subCountM}
@@ -95,19 +113,22 @@ export default function ProblemsSolved({getUserProfile}) {
               style={{
                 fontWeight: "500",
                 color: "rgba(60, 60, 67, 0.3)",
-                fontSize: "12px"
+                fontSize: "12px",
               }}
             >
               /{countMedium}
             </span>
           </span>
         </div>
-        <div>
+        <div
+          onMouseEnter={() => set_hardPercentHover(true)}
+          onMouseLeave={() => set_hardPercentHover(false)}
+        >
           <span
             style={{
               fontSize: "12px",
               color: "rgb(233, 30, 99)",
-              whiteSpace: "pre-wrap"
+              whiteSpace: "pre-wrap",
             }}
           >
             Hard{"\n"}
@@ -117,7 +138,7 @@ export default function ProblemsSolved({getUserProfile}) {
             style={{
               fontSize: "14px",
               color: "rgba(38, 38, 38, 0.75)",
-              fontWeight: "600"
+              fontWeight: "600",
             }}
           >
             {subCountH}
@@ -125,7 +146,7 @@ export default function ProblemsSolved({getUserProfile}) {
               style={{
                 fontWeight: "500",
                 color: "rgba(60, 60, 67, 0.3)",
-                fontSize: "12px"
+                fontSize: "12px",
               }}
             >
               /{countHard}

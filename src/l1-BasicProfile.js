@@ -4,6 +4,7 @@ import { makeStyles } from "@material-ui/core/styles";
 import Card from "@material-ui/core/Card";
 import Divider from "@material-ui/core/Divider";
 import { Tooltip } from "@material-ui/core";
+import SvgIcon from "@material-ui/core/SvgIcon";
 
 import { userData } from "./data/pgmreddy-lcp";
 
@@ -14,12 +15,12 @@ const useStyles = makeStyles((theme) => ({
     borderRadius: "8px",
     marginBottom: "15px",
     boxShadow: "rgb(0 0 0 / 10%) 0px 1px 2px, rgb(0 0 0 / 8%) 0px 2px 8px",
-    minWidth: "370px"
+    minWidth: "370px",
   },
 
   cardTitleContainer: {
     padding: "0.5625rem 0.75rem 0rem",
-    height: "27.8px"
+    height: "27.8px",
   },
 
   editProfileButton: {
@@ -32,11 +33,11 @@ const useStyles = makeStyles((theme) => ({
     cursor: "pointer",
     color: "rgb(69, 90, 100)",
     background: "rgb(250, 250, 250)",
-    fontSize: "12px"
-  }
+    fontSize: "12px",
+  },
 }));
 
-export default function BasicProfile({getUserProfile}) {
+export default function BasicProfile({ getUserProfile }) {
   const classes = useStyles();
 
   const profileDetails = userData.profileDetails;
@@ -61,7 +62,7 @@ export default function BasicProfile({getUserProfile}) {
       link: websites[0],
       contentClass: "webLink",
       path_d:
-        "M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1 0 1.71-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z"
+        "M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1 0 1.71-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z",
     },
     {
       cName: "locationContainer",
@@ -69,7 +70,7 @@ export default function BasicProfile({getUserProfile}) {
       content: countryName,
       contentClass: "location",
       path_d:
-        "M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"
+        "M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z",
     },
     {
       cName: "locationContainer",
@@ -77,7 +78,7 @@ export default function BasicProfile({getUserProfile}) {
       content: company,
       contentClass: "location",
       path_d:
-        "M15.588 11.412a3.648 3.648 0 0 1-1.588-.37 5.76 5.76 0 0 0 1.059-3.336A5.76 5.76 0 0 0 14 4.37 3.648 3.648 0 0 1 15.588 4a3.71 3.71 0 0 1 3.706 3.706 3.71 3.71 0 0 1-3.706 3.706zm1.101 2.916c2.605.286 6.311 1.504 6.311 3.643v1.853h-4.235V17.97c0-1.567-.847-2.753-2.076-3.643zM9 13c3.916 0 8 1.56 8 4.667V20H1v-2.333C1 14.56 5.084 13 9 13zm-6 5h12v-.333C15 16.297 12.484 15 9 15s-6 1.296-6 2.667V18zm6-7c-2.206 0-4-1.794-4-4s1.794-4 4-4 4 1.794 4 4-1.794 4-4 4zm0-2c1.101 0 2-.899 2-2s-.899-2-2-2-2 .899-2 2 .899 2 2 2z"
+        "M15.588 11.412a3.648 3.648 0 0 1-1.588-.37 5.76 5.76 0 0 0 1.059-3.336A5.76 5.76 0 0 0 14 4.37 3.648 3.648 0 0 1 15.588 4a3.71 3.71 0 0 1 3.706 3.706 3.71 3.71 0 0 1-3.706 3.706zm1.101 2.916c2.605.286 6.311 1.504 6.311 3.643v1.853h-4.235V17.97c0-1.567-.847-2.753-2.076-3.643zM9 13c3.916 0 8 1.56 8 4.667V20H1v-2.333C1 14.56 5.084 13 9 13zm-6 5h12v-.333C15 16.297 12.484 15 9 15s-6 1.296-6 2.667V18zm6-7c-2.206 0-4-1.794-4-4s1.794-4 4-4 4 1.794 4 4-1.794 4-4 4zm0-2c1.101 0 2-.899 2-2s-.899-2-2-2-2 .899-2 2 .899 2 2 2z",
     },
     {
       cName: "locationContainer",
@@ -85,31 +86,31 @@ export default function BasicProfile({getUserProfile}) {
       content: school,
       contentClass: "location",
       path_d:
-        "M622.34 153.2L343.4 67.5c-15.2-4.67-31.6-4.67-46.79 0L17.66 153.2c-23.54 7.23-23.54 38.36 0 45.59l48.63 14.94c-10.67 13.19-17.23 29.28-17.88 46.9C38.78 266.15 32 276.11 32 288c0 10.78 5.68 19.85 13.86 25.65L20.33 428.53C18.11 438.52 25.71 448 35.94 448h56.11c10.24 0 17.84-9.48 15.62-19.47L82.14 313.65C90.32 307.85 96 298.78 96 288c0-11.57-6.47-21.25-15.66-26.87.76-15.02 8.44-28.3 20.69-36.72L296.6 284.5c9.06 2.78 26.44 6.25 46.79 0l278.95-85.7c23.55-7.24 23.55-38.36 0-45.6zM352.79 315.09c-28.53 8.76-52.84 3.92-65.59 0l-145.02-44.55L128 384c0 35.35 85.96 64 192 64s192-28.65 192-64l-14.18-113.47-145.03 44.56z"
-    }
+        "M5 13.18v4L12 21l7-3.82v-4L12 17l-7-3.82zM12 3L1 9l11 6 9-4.91V17h2V9L12 3z",
+    },
   ];
 
-// if(websites.length == 0 && countryName === null) {
-//    items.splice(0, 2);
-// } else if(countryName === null){
-//     items.pop();
-// } else if(websites.length == 0){
-//   items.shift();   
-// }
+  // if(websites.length == 0 && countryName === null) {
+  //    items.splice(0, 2);
+  // } else if(countryName === null){
+  //     items.pop();
+  // } else if(websites.length == 0){
+  //   items.shift();
+  // }
 
-let items2 = [];
-if(websites.length !== 0){
-  items2.push(items[0]);
-}
-if(countryName !== null){
-  items2.push(items[1]);
-}
-if(company !== null){
-  items2.push(items[2]);
-}
-if(school !== null){
-  items2.push(items[3]);
-}
+  let items2 = [];
+  if (websites.length !== 0) {
+    items2.push(items[0]);
+  }
+  if (countryName !== null) {
+    items2.push(items[1]);
+  }
+  if (company !== null) {
+    items2.push(items[2]);
+  }
+  if (school !== null) {
+    items2.push(items[3]);
+  }
 
   return (
     <Card className={classes.profileCard}>
@@ -125,25 +126,29 @@ if(school !== null){
 
       <div style={{ padding: "12px 12px 0px 12px", zoom: "1" }}>
         {profileDetails.map((item, index) => {
-
           var githubTopMargin = "12px";
-          var githubOpacity = "1"
-          if (githubUrl == null){
+          var githubOpacity = "1";
+          if (githubUrl == null) {
             githubTopMargin = "0px";
-            githubOpacity = "50%"
+            githubOpacity = "50%";
           }
 
           var aboutMeVisibility = "visible";
-          if (aboutMe.length == 0){
+          if (aboutMe.length == 0) {
             aboutMeVisibility = "hidden";
           }
-          
+
           return (
             <div style={{ display: "flex" }} key={index}>
               <img
                 src={userAvatar}
                 alt="Profile"
-                style={{ height: "80px", borderRadius: "6px", alignSelf: "flex-start", flexShrink: "0" }}
+                style={{
+                  height: "80px",
+                  borderRadius: "6px",
+                  alignSelf: "flex-start",
+                  flexShrink: "0",
+                }}
               />
 
               <div
@@ -158,7 +163,7 @@ if(school !== null){
                     fontWeight: 600,
                     fontSize: "18px",
                     color: "rgba(0, 0, 0, 0.65)",
-                    whiteSpace: "nowrap"
+                    whiteSpace: "nowrap",
                   }}
                 >
                   {" "}
@@ -177,7 +182,7 @@ if(school !== null){
                         color: "#337ab7",
                         margin: "3px 0px 0px 4px",
                         position: "absolute",
-                        visibility: aboutMeVisibility
+                        visibility: aboutMeVisibility,
                       }}
                       fill="currentColor"
                     >
@@ -187,7 +192,7 @@ if(school !== null){
                 </span>
 
                 {/* <Tooltip title={ranking} arrow> */}
-                <Rating getUserProfile={getUserProfile}/>
+                <Rating getUserProfile={getUserProfile} />
                 {/* </Tooltip> */}
               </div>
 
@@ -197,7 +202,11 @@ if(school !== null){
                     viewBox="0 0 24 24"
                     width="32px"
                     height="32px"
-                    style = {{ marginTop: githubTopMargin, color: "rgba(0, 0, 0, 0.65)", opacity: githubOpacity }}
+                    style={{
+                      marginTop: githubTopMargin,
+                      color: "rgba(0, 0, 0, 0.65)",
+                      opacity: githubOpacity,
+                    }}
                     fill="currentColor"
                   >
                     <path d={item.github_path_d}></path>
@@ -212,25 +221,28 @@ if(school !== null){
           {items2.map((item, index) => {
             return (
               <div className={item.cName} style={{}} key={index}>
-                <div style={{ display: "flex", alignItems:"center" }}>
-                <svg
-                  viewBox="0 0 24 24"
-                  width="1em"
-                  height="1em"
-                  style={{ marginRight: "4px", color: "rgba(0, 0, 0, 0.65)" }}
-                  fill="currentColor"
-                >
-                  <path d={item.path_d}></path>
-                </svg>
-                <span
-                  style={{
-                    fontWeight: 400,
-                    fontSize: "14px",
-                    color: "rgba(0, 0, 0, 0.65)"
-                  }}
-                >
-                  {item.title}
-                </span>
+                <div style={{ display: "flex", alignItems: "center" }}>
+                  <svg
+                    viewBox="0 0 24 24"
+                    width="1em"
+                    height="1em"
+                    style={{
+                      marginRight: "4px",
+                      color: "rgba(0, 0, 0, 0.65)",
+                    }}
+                    fill="currentColor"
+                  >
+                    <path d={item.path_d}></path>
+                  </svg>
+                  <span
+                    style={{
+                      fontWeight: 400,
+                      fontSize: "14px",
+                      color: "rgba(0, 0, 0, 0.65)",
+                    }}
+                  >
+                    {item.title}
+                  </span>
                 </div>
                 <span
                   style={{
