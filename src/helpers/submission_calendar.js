@@ -48,7 +48,7 @@ function Heatmap({ getUserProfile }) {
       count++;
     });
 
-    return total / count;
+    return count;
   }
 
   console.log(calculateAverage(countValues));

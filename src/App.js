@@ -101,7 +101,7 @@ export default function App(props) {
     let a = await fetchData(username);
     // console.log(a);
     set_getUserProfile(a);
-    document.title = `${realName} - Leetcode Profile`;
+    // document.title = `${realName} - Leetcode Profile`;
   }, [username]);
 
   let matchedUser = getUserProfile.data.matchedUser;
