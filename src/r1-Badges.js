@@ -31,6 +31,7 @@ export default function Badges({ getUserProfile }) {
   var badgeOpacity = "1";
   var badgeDetailHeading;
   var badgeDetail;
+  var badgeButton;
   if (badgesCount === 0) {
     badge = (
       <img src={badgeIcon} alt="Jul LeetCoding Challenge" height="72px" />
@@ -38,6 +39,7 @@ export default function Badges({ getUserProfile }) {
     badgeOpacity = "0.2";
     badgeDetailHeading = "Upcoming Badges";
     badgeDetail = badgeUpc;
+    badgeButton = <></>;
   } else {
     let badge1 = badges[0].icon;
     let badge2 = badges[1].icon;
@@ -65,27 +67,49 @@ export default function Badges({ getUserProfile }) {
         />
       </>
     );
+
+    badgeButton = (
+      <svg
+        viewBox="0 0 24 24"
+        width="32px"
+        height="32px"
+        style={{
+          overflow: "hidden",
+          color: "rgba(60, 60, 67, 0.3)",
+          fill: "currentColor",
+        }}
+      >
+        <path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"></path>
+      </svg>
+    );
   }
 
   return (
     <UserDataCard>
-      <div style={{ padding: "0px", height: "45.2px" }}>
-        <div>
-          <span className={classes.eachCardHeading}>
-            Badges{"\n"}
-            <span
-              style={{
-                fontSize: "22px",
-                fontWeight: "600",
-                display: "flex",
-                color: "black",
-              }}
-            >
-              {" "}
-              {badgesCount}
-            </span>
+      <div style={{ display: "flex" }}>
+        <div
+          style={{
+            flex: "1 1 0%",
+            display: "flex",
+            flexDirection: "column",
+            textAlign: "start",
+          }}
+        >
+          <span className={classes.eachCardHeading}>Badges{"\n"}</span>
+          <span
+            style={{
+              fontSize: "22px",
+              fontWeight: "600",
+              whiteSpace: "nowrap",
+              color: "black",
+              lineHeight: "100%",
+            }}
+          >
+            {" "}
+            {badgesCount}
           </span>
         </div>
+        {badgeButton}
       </div>
       <div
         className={classes.badgeImgContainer}
