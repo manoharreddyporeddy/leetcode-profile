@@ -6,6 +6,7 @@ import HighchartsReact from "highcharts-react-official";
 import { getContestRankingData as ContestRankingData } from "../data/getContestRankingData";
 
 function m() {}
+let dynamicRating;
 
 export const highchart_data = {
   chart: {
@@ -45,17 +46,17 @@ export const highchart_data = {
                 .attr({
                   padding: 10,
                   r: 10,
-                  fill: Highcharts.getOptions().colors[1],
+                  fill: "#FFFFFF",
+                  margin: "200px",
                 })
                 .css({
-                  color: "#FFFFFF",
+                  color: "#000000",
                 })
                 .add();
             }
             chart.lbl.show().attr({
               text: "x: " + this.x + ", y: " + this.y,
             });
-            return 0;
           },
           //   h: mouseOver,
         },
@@ -98,6 +99,7 @@ export const highchart_data = {
 };
 
 // getContestRankingData
+console.log(Highcharts.getOptions());
 
 const Highchart = (props) => {
   let { userContestRankingHistory, graphHover, set_graphHover } = props;

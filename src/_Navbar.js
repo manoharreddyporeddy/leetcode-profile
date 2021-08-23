@@ -16,7 +16,8 @@ import StoreIcon from "@material-ui/icons/Store";
 // import Tooltip from "@material-ui/core/Tooltip";
 
 import Popup from "./helpers/Navbar-Popup";
-import { linksList, iconLinks } from "./data/Navbar-data";
+import ProfileMenuDropdown from "./helpers/profileMenuDropdown";
+import { linksList, iconLinks, profileMenuItems } from "./data/Navbar-data";
 
 const useStyles = makeStyles((theme) => ({
   navbarContainer: {
@@ -24,7 +25,7 @@ const useStyles = makeStyles((theme) => ({
     justifyContent: "space-between",
     fontSize: "13px",
     maxWidth: "1230px",
-    width: "100%"
+    width: "100%",
   },
 
   navLinksList: {
@@ -32,7 +33,7 @@ const useStyles = makeStyles((theme) => ({
     flexWrap: "nowrap",
     alignItems: "center",
     listStyle: "none",
-    padding: "0"
+    padding: "0",
   },
 
   storeButton: {
@@ -46,8 +47,8 @@ const useStyles = makeStyles((theme) => ({
     "&:hover": {
       color: "#f07318",
       backgroundColor: "white",
-      transition: "all 0.3s ease-in-out"
-    }
+      transition: "all 0.3s ease-in-out",
+    },
   },
 
   premiumButton: {
@@ -62,8 +63,8 @@ const useStyles = makeStyles((theme) => ({
     "&:hover": {
       color: "white",
       backgroundColor: "#f9a825",
-      transition: "all 0.3s ease-in-out"
-    }
+      transition: "all 0.3s ease-in-out",
+    },
   },
 
   navIcons: {
@@ -72,57 +73,16 @@ const useStyles = makeStyles((theme) => ({
     "&:hover": {
       color: "#546e7a",
       backgroundColor: "white",
-      transition: "all 0.3s ease-in-out"
-    }
-  }
+      transition: "all 0.3s ease-in-out",
+    },
+  },
 }));
 
 export default function Navbar() {
   const classes = useStyles();
 
   const [buttonPopup, setbuttonPopup] = React.useState(false);
-  const [open, setOpen] = React.useState(false);
-  const anchorRef = React.useRef(null);
-  const [drop, setDrop] = React.useState(false);
-
-  const handleToggle = () => {
-    setOpen((prevOpen) => !prevOpen);
-  };
-
-  const handleClose = () => {
-    // if (anchorRef.current && anchorRef.current.contains(event.target)) {
-    //   return;
-    // }
-
-    setOpen(false);
-  };
-
-  function handleListKeyDown(event) {
-    if (event.key === "Tab") {
-      event.preventDefault();
-      setOpen(false);
-    }
-  }
-
-  // return focus to the button when we transitioned from !open -> open
-  const prevOpen = React.useRef(open);
-  React.useEffect(() => {
-    if (prevOpen.current === true && open === false) {
-      anchorRef.current.focus();
-    }
-
-    prevOpen.current = open;
-  }, [open]);
-
-  // let menuRef = useRef();
-
-  // useEffect(() => {
-  //   document.addEventListener("mousedown", (event) => {
-  //     if (!menuRef.current.contains(event.target)) {
-  //     setbuttonPopup(false);
-  //     }
-  //   });
-  // });
+  const [click, setClick] = React.useState(false);
 
   return (
     <div className={classes.navbarContainer}>
@@ -151,78 +111,48 @@ export default function Navbar() {
           );
         })}
         <li>
-          <Button
-            disableTouchRipple
-            ref={anchorRef}
-            className={classes.storeButton}
-            onClick={handleToggle}
-          >
+          <Button disableTouchRipple className={classes.storeButton}>
             <StoreIcon style={{ height: "18px" }} />
             Store
           </Button>
-          <Popper
-            open={open}
-            anchorEl={anchorRef.current}
-            role={undefined}
-            transition
-            disablePortal
-            style={{ zIndex: 1 }}
-          >
-            {({ TransitionProps, placement }) => (
-              <Grow
-                {...TransitionProps}
-                style={{
-                  transformOrigin:
-                    placement === "bottom" ? "center top" : "center bottom"
-                }}
-              >
-                <Paper style={{ margin: "10px" }}>
-                  <ClickAwayListener onClickAway={handleClose}>
-                    <MenuList
-                      autoFocusItem={open}
-                      id="menu-list-grow"
-                      onKeyDown={handleListKeyDown}
-                    >
-                      <MenuItem
-                        style={{ color: "#f9a825", fontSize: "14px" }}
-                        onClick={handleClose}
-                      >
-                        Redeem
-                      </MenuItem>
-                      <MenuItem
-                        style={{ color: "#f9a825", fontSize: "14px" }}
-                        onClick={handleClose}
-                      >
-                        Premium
-                      </MenuItem>
-                    </MenuList>
-                  </ClickAwayListener>
-                </Paper>
-              </Grow>
-            )}
-          </Popper>
         </li>
       </ul>
 
       <ul className={classes.navLinksList}>
         <li>
-          <Button
-            variant="outlined"
-            className={classes.premiumButton}
-            onClick={() => setDrop(true)}
-          >
+          <Button variant="outlined" className={classes.premiumButton}>
             <StarOutlineIcon style={{ height: "14px", width: "14px" }} />{" "}
             Premium{" "}
           </Button>
         </li>
 
         {iconLinks.map((item, index) => {
+          const handleClick = () => {
+            if (index === 0) {
+              setbuttonPopup(true);
+            }
+            if (index === 2) {
+              setClick(!click);
+            }
+          };
+
+          function profileDropdown() {
+            if (index === 2) {
+              return (
+                <ProfileMenuDropdown
+                  click={click}
+                  setClick={setClick}
+                ></ProfileMenuDropdown>
+              );
+            }
+          }
+
           return (
             <li key={index}>
               <IconButton
                 className={classes.navIcons}
                 disableRipple
-                onClick={() => setbuttonPopup(false)}
+                onClick={handleClick}
               >
                 <svg
                   viewBox={item.viewBox}
@@ -233,6 +163,7 @@ export default function Navbar() {
                   <path d={item.path_d}></path>
                 </svg>
               </IconButton>
+              {profileDropdown()}
             </li>
           );
         })}

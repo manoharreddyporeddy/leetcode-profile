@@ -11,6 +11,7 @@ import Navbar from "./_Navbar";
 import LeftContentPanel from "./_LeftContentPanel";
 import RightContentPanel from "./_RightContentPanel";
 import Footer from "./_Footer";
+import PageTitle from "./pageTitle";
 
 const useStyles = makeStyles((theme) => ({
   navbarWrapper: {
@@ -110,6 +111,7 @@ export default function App(props) {
 
   return (
     <>
+      <PageTitle title={`${realName} - LeetCode Profile`} />
       <div className={classes.navbarWrapper}>
         <Navbar />
       </div>

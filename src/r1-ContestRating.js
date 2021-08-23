@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import { makeStyles } from "@material-ui/core/styles";
 
 import Highchart from "./helpers/contestRating_graph";
+import { highchart_data } from "./helpers/contestRating_graph";
 import UserDataCard from "./_SquareCard";
 
 import { getContestRankingData as getContestRankingDataDefault } from "./data/getContestRankingData";
@@ -59,6 +60,8 @@ const fetchData = async (username) => {
   return resp;
 };
 
+// export const dynamicRating = 0;
+
 export default function ContestRating(props) {
   const classes = useStyles();
 
@@ -102,13 +105,17 @@ export default function ContestRating(props) {
   rating = rating.toLocaleString();
   globalRanking = globalRanking.toLocaleString();
 
-  function dyna() {
-    if (graphHover) {
-      return "11";
-    } else {
-      return rating;
-    }
-  }
+  // function dyna() {
+  //   if (graphHover) {
+  //     return highchart_data.plotOptions.series.point.events.mouseOver;
+  //   } else {
+  //     return rating;
+  //   }
+  // }
+
+  // let dyna = highchart_data.plotOptions.series.point.events.mouseOver();
+
+  // console.log(dyna);
 
   if (getContestRankingData.data.userContestRanking != null) {
     return (
@@ -117,7 +124,7 @@ export default function ContestRating(props) {
           <span className={classes.eachCardHeading}>Contest Rating{"\n"}</span>
           <span id="dyna" style={{ fontSize: "22px", fontWeight: "600" }}>
             {" "}
-            {dyna()}{" "}
+            {rating}{" "}
           </span>
           <span style={{ fontSize: "12px", fontWeight: "600" }}>pt</span>
         </div>

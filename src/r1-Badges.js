@@ -19,7 +19,12 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function Badges({ getUserProfile }) {
+export default function Badges({
+  getUserProfile,
+  badgeButtonClick,
+  set_badgeButtonClick,
+  handleBadgeButtonClick,
+}) {
   const classes = useStyles();
   let badges = getUserProfile.data.matchedUser.badges;
   let badgesCount = badges === [] ? 0 : badges.length;
@@ -68,6 +73,7 @@ export default function Badges({ getUserProfile }) {
       </>
     );
 
+    // const handleBadgeButtonClick = () => set_badgeButton(!badgeButton);
     badgeButton = (
       <svg
         viewBox="0 0 24 24"
@@ -77,69 +83,138 @@ export default function Badges({ getUserProfile }) {
           overflow: "hidden",
           color: "rgba(60, 60, 67, 0.3)",
           fill: "currentColor",
+          transform: `scaleX(${badgeButtonClick ? -1 : 1})`,
         }}
+        cursor="pointer"
+        onClick={handleBadgeButtonClick}
       >
         <path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"></path>
       </svg>
     );
   }
-
-  return (
-    <UserDataCard>
-      <div style={{ display: "flex" }}>
-        <div
-          style={{
-            flex: "1 1 0%",
-            display: "flex",
-            flexDirection: "column",
-            textAlign: "start",
-          }}
-        >
-          <span className={classes.eachCardHeading}>Badges{"\n"}</span>
-          <span
+  if (!badgeButtonClick) {
+    return (
+      <UserDataCard>
+        <div style={{ display: "flex" }}>
+          <div
             style={{
-              fontSize: "22px",
-              fontWeight: "600",
-              whiteSpace: "nowrap",
-              color: "black",
-              lineHeight: "100%",
+              flex: "1 1 0%",
+              display: "flex",
+              flexDirection: "column",
+              textAlign: "start",
             }}
           >
-            {" "}
-            {badgesCount}
-          </span>
-        </div>
-        {badgeButton}
-      </div>
-      <div
-        className={classes.badgeImgContainer}
-        style={{ opacity: badgeOpacity }}
-      >
-        {badge}
-      </div>
-      <div style={{ display: "flex", justifyContent: "space-between" }}>
-        <div>
-          <span
-            style={{
-              fontSize: "12px",
-              color: "rgba(60, 60, 67, 0.6)",
-              whiteSpace: "pre-wrap",
-            }}
-          >
-            {badgeDetailHeading}
-            {"\n"}
+            <span className={classes.eachCardHeading}>Badges{"\n"}</span>
             <span
               style={{
-                fontSize: "14px",
-                color: "rgba(38, 38, 38, 0.75)",
+                fontSize: "22px",
                 fontWeight: "600",
+                whiteSpace: "nowrap",
+                color: "black",
+                lineHeight: "100%",
               }}
             >
-              {badgeDetail}
+              {" "}
+              {badgesCount}
             </span>
-          </span>
+          </div>
+          {badgeButton}
         </div>
-      </div>
-    </UserDataCard>
-  );
+        <div
+          className={classes.badgeImgContainer}
+          style={{ opacity: badgeOpacity }}
+        >
+          {badge}
+        </div>
+        <div style={{ display: "flex", justifyContent: "space-between" }}>
+          <div>
+            <span
+              style={{
+                fontSize: "12px",
+                color: "rgba(60, 60, 67, 0.6)",
+                whiteSpace: "pre-wrap",
+              }}
+            >
+              {badgeDetailHeading}
+              {"\n"}
+              <span
+                style={{
+                  fontSize: "14px",
+                  color: "rgba(38, 38, 38, 0.75)",
+                  fontWeight: "600",
+                }}
+              >
+                {badgeDetail}
+              </span>
+            </span>
+          </div>
+        </div>
+      </UserDataCard>
+    );
+  } else {
+    return (
+      <UserDataCard>
+        <div style={{ display: "flex" }}>
+          <div
+            style={{
+              flex: "1 1 0%",
+              display: "flex",
+              flexDirection: "column",
+              textAlign: "start",
+            }}
+          >
+            <span className={classes.eachCardHeading}>Badges{"\n"}</span>
+          </div>
+          {badgeButton}
+        </div>
+
+        <div style={{ display: "flex", flexWrap: "wrap" }}>
+          {badges.map((item, index) => {
+            return (
+              <div style={{ position: "relative" }}>
+                <div
+                  style={{
+                    position: "relative",
+                    textAlign: "center",
+                    margin: "20px 15px 0",
+                  }}
+                >
+                  <img
+                    src={`https://leetcode.com${item.icon}`}
+                    alt="Jul LeetCoding Challenge"
+                    height="60px"
+                    style={{ marginLeft: "0 auto", position: "relative" }}
+                  />
+                  <b
+                    style={{
+                      color: "rgba(38, 38, 38, 0.75)",
+                      marginTop: "10px",
+                      fontSize: "14px",
+                      fontWeight: "500",
+                      width: "105px",
+                      display: "block",
+                    }}
+                  >
+                    {item.displayName}
+                  </b>
+                  <span
+                    style={{
+                      display: "block",
+                      fontSize: "12px",
+                      color: "rgba(60, 60, 67, 0.6)",
+                      maxWidth: "86px",
+                      margin: "4px auto 0",
+                      whiteSpace: "nowrap",
+                    }}
+                  >
+                    {item.creationDate}
+                  </span>
+                </div>
+              </div>
+            );
+          })}
+        </div>
+      </UserDataCard>
+    );
+  }
 }

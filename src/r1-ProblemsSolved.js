@@ -36,24 +36,29 @@ export default function ProblemsSolved({ getUserProfile }) {
   return (
     <UserDataCard>
       <div style={{ display: "flex", justifyContent: "space-between" }}>
-        <div style={{ padding: "0px", height: "45.2px" }}>
+        <div
+          style={{
+            display: "flex",
+            flexDirection: "column",
+            textAlign: "start",
+            flex: "1",
+          }}
+        >
           <span className={classes.eachCardHeading}>Problems Solved{"\n"}</span>
           <span style={{ fontSize: "22px", fontWeight: "600" }}>
             {" "}
             {totalCount}
           </span>
         </div>
-        <div style={{ margin: "12px 0px 15px 0px" }}>
-          <Percentage_circle
-            getUserProfile={getUserProfile}
-            easyPercentHover={easyPercentHover}
-            set_easyPercentHover={set_easyPercentHover}
-            mediumPercentHover={mediumPercentHover}
-            set_mediumPercentHover={set_mediumPercentHover}
-            hardPercentHover={hardPercentHover}
-            set_hardPercentHover={set_hardPercentHover}
-          />
-        </div>
+        <Percentage_circle
+          getUserProfile={getUserProfile}
+          easyPercentHover={easyPercentHover}
+          set_easyPercentHover={set_easyPercentHover}
+          mediumPercentHover={mediumPercentHover}
+          set_mediumPercentHover={set_mediumPercentHover}
+          hardPercentHover={hardPercentHover}
+          set_hardPercentHover={set_hardPercentHover}
+        />
       </div>
       <div style={{ display: "flex", justifyContent: "space-between" }}>
         <div

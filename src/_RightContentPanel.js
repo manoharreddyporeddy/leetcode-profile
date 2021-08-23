@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 
 import Badges from "./r1-Badges";
@@ -11,25 +11,52 @@ import MostRecentSubmissions from "./r4-MostRecentSubmissions";
 // import { userData } from "./data/akshay";
 
 const useStyles = makeStyles((theme) => ({
-    threeCardsFlexWrapper: {
-        display: "flex",
-        flexWrap: "wrap",
-        marginLeft: "-12px",
-    },
+  threeCardsFlexWrapper: {
+    display: "flex",
+    flexWrap: "wrap",
+    marginLeft: "-12px",
+  },
 }));
-export default function App({getUserProfile}) {
-    const classes = useStyles();
+export default function App({ getUserProfile }) {
+  const classes = useStyles();
+  const [badgeButtonClick, set_badgeButtonClick] = useState(false);
 
-    return (
+  const handleBadgeButtonClick = () => set_badgeButtonClick(!badgeButtonClick);
+
+  function badge() {
+    if (!badgeButtonClick) {
+      return (
         <>
-            <div className={classes.threeCardsFlexWrapper}>
-                <ContestRating />
-                <ProblemsSolved getUserProfile={getUserProfile}/>
-                <Badges getUserProfile={getUserProfile}/>
-            </div>
-            <NoOfSubmissions getUserProfile={getUserProfile}/>
-            <RecentPosts />
-            <MostRecentSubmissions />
+          <ContestRating />
+          <ProblemsSolved getUserProfile={getUserProfile} />
+          <Badges
+            getUserProfile={getUserProfile}
+            badgeButtonClick={badgeButtonClick}
+            set_badgeButtonClick={set_badgeButtonClick}
+            handleBadgeButtonClick={handleBadgeButtonClick}
+          />
         </>
-    );
+      );
+    } else {
+      return (
+        <>
+          <Badges
+            getUserProfile={getUserProfile}
+            badgeButtonClick={badgeButtonClick}
+            set_badgeButtonClick={set_badgeButtonClick}
+            handleBadgeButtonClick={handleBadgeButtonClick}
+          />
+        </>
+      );
+    }
+  }
+
+  return (
+    <>
+      <div className={classes.threeCardsFlexWrapper}>{badge()}</div>
+      <NoOfSubmissions getUserProfile={getUserProfile} />
+      <RecentPosts />
+      <MostRecentSubmissions />
+    </>
+  );
 }

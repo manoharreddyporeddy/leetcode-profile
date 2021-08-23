@@ -7,6 +7,7 @@
   position: relative;
   color: rgb(158, 158, 158);
   font-size: 13.5px;
+  margin: 12px 0px 15px 0px;
 }
 
 .backgroundCircle {
@@ -22,6 +23,8 @@
   transform: rotate(-90deg);
   overflow: visible;
   z-index: 0;
+  fill: transparent;
+  transform-origin: 54px 54px;
 }
 
 .easyCircle {
@@ -29,8 +32,7 @@
   fill: none;
   stroke: rgb(67, 160, 71);
   stroke-linecap: round;
-  z-index: 1;
-  position: absolute;
+  z-index: 2;
 }
 
 .mediumCircle {
@@ -38,8 +40,7 @@
   fill: none;
   stroke: rgb(251, 140, 0);
   stroke-linecap: round;
-  position: absolute;
-  z-index: 1;
+  z-index: 2;
 }
 
 .hardCircle {
@@ -47,7 +48,7 @@
   fill: none;
   stroke: rgb(233, 30, 99);
   stroke-linecap: round;
-  position: relative;
+  z-index: 2;
 }
 
 .circleTextContainer {
