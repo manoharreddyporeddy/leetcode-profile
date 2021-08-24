@@ -37,25 +37,30 @@
   margin-right: 25px;
   z-index: 1;
 } */
-.profileMenuContainer {
+
+.profileMenuWrapper {
+  top: 32px;
+  right: 140px;
+  color: rgba(0, 0, 0, 0.65);
   position: absolute;
-  margin: 0;
-  text-align: left;
-  list-style-type: none;
+  z-index: 1050;
+}
+
+.profileMenuArrow {
+  position: absolute;
+  left: 227px;
+  color: transparent;
+  z-index: 1;
+}
+
+.profileMenuContainer {
+  position: relative;
   background-color: #fff;
-  background-clip: padding-box;
   border-radius: 4px;
-  outline: none;
   box-shadow: 0 2px 8px rgb(0 0 0 / 15%);
   width: 270px;
   padding: 10px 0;
   margin-block-start: 1em;
-  margin-block-end: 1em;
-  margin-inline-start: 0px;
-  margin-inline-end: 0px;
-  right: 140px;
-  top: 35px;
-  z-index: 1;
 }
 
 .profileMenuItem {
@@ -66,31 +71,29 @@
   position: relative;
   padding: 0 15px;
   display: flex;
-  align-items: center;
   line-height: 22px;
   white-space: nowrap;
   cursor: pointer;
-  clear: both;
-  margin: 0;
 }
 
 .profile-links {
   display: flex;
   flex: 1 1 auto;
-  align-items: center;
   padding: 0 15px;
   margin: 0 -15px;
   transition: all 0.3s;
   text-decoration: none;
-  background-color: transparent;
-  outline: none;
   cursor: pointer;
-  height: 100%;
+  color: #90a4ae;
+}
+
+.profile-links:hover {
+  color: #455a64;
+  background-color: #eceff1;
 }
 
 .profileMenuItemIcon {
   flex: 0 0 auto;
-  color: #90a4ae;
   font-size: 24px;
   margin-right: 15px;
   width: 1em;
@@ -99,10 +102,56 @@
   fill: currentColor;
 }
 
+.usernameIcon {
+  color: #e0e0e0;
+  transition: color 0.3s;
+}
+
+.usernameIcon:hover {
+  color: #455a64;
+}
+
 .profileMenuItemText {
   transition: color 0.18s ease-in-out;
   display: flex;
-  color: #546e7a;
   align-items: center;
   flex: 1 1 auto;
+  color: #546e7a;
+}
+
+.dropdownContainer {
+  position: relative;
+  width: auto;
+  text-align: left;
+  list-style-type: none;
+  background-color: #fff;
+  border-radius: 4px;
+  box-shadow: 0 2px 8px rgb(0 0 0 / 15%);
+  padding: 10px 0;
+  margin-block-start: 1em;
+}
+
+.dropdownMenuItem {
+  color: #f9a825;
+  display: flex;
+  align-items: center;
+  padding: 0 15px;
+  margin: 0 -15px;
+  flex: 1 1 auto;
+  height: 30px;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.dropdownMenuItem:hover {
+  background-color: #eceff1;
+}
+
+.store:hover {
+  color: #f07318;
+}
+
+.interview:hover {
+  color: #263238;
 }

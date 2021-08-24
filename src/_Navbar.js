@@ -1,22 +1,17 @@
 import "./css/Navbar.css";
 import { makeStyles } from "@material-ui/core/styles";
 
-import React from "react";
+import React, { useState } from "react";
 
 import Button from "@material-ui/core/Button";
-import ClickAwayListener from "@material-ui/core/ClickAwayListener";
-import Grow from "@material-ui/core/Grow";
 import IconButton from "@material-ui/core/IconButton";
-import MenuItem from "@material-ui/core/MenuItem";
-import MenuList from "@material-ui/core/MenuList";
-import Paper from "@material-ui/core/Paper";
-import Popper from "@material-ui/core/Popper";
 import StarOutlineIcon from "@material-ui/icons/StarOutline";
 import StoreIcon from "@material-ui/icons/Store";
 // import Tooltip from "@material-ui/core/Tooltip";
 
 import Popup from "./helpers/Navbar-Popup";
 import ProfileMenuDropdown from "./helpers/profileMenuDropdown";
+import Dropdown from "./helpers/Dropdown";
 import { linksList, iconLinks, profileMenuItems } from "./data/Navbar-data";
 
 const useStyles = makeStyles((theme) => ({
@@ -81,8 +76,32 @@ const useStyles = makeStyles((theme) => ({
 export default function Navbar() {
   const classes = useStyles();
 
-  const [buttonPopup, setbuttonPopup] = React.useState(false);
-  const [click, setClick] = React.useState(false);
+  const [buttonPopup, setbuttonPopup] = useState(false);
+  const [click, setClick] = useState(false);
+  const [dropdown, setDropdown] = useState(false);
+  const [interviewDrop, setInterviewDrop] = useState(false);
+  const [store, setStore] = useState(false);
+  const [interview, setInterview] = useState(false);
+
+  const onMouseEnter = () => {
+    setDropdown(true);
+    setStore(true);
+  };
+
+  const onMouseLeave = () => {
+    setDropdown(false);
+    setStore(false);
+  };
+
+  const onMouseEnterInt = () => {
+    setInterviewDrop(true);
+    setInterview(true);
+  };
+
+  const onMouseLeaveInt = () => {
+    setInterviewDrop(false);
+    setInterview(false);
+  };
 
   return (
     <div className={classes.navbarContainer}>
@@ -97,24 +116,47 @@ export default function Navbar() {
           </a>
         </li>
         {linksList.map((item, index) => {
-          return (
-            <li key={index}>
-              <a
-                className={
-                  item.cName + " " + item.afterCName + " " + item.contentCName
-                }
-                href={item.url}
+          if (index !== 2) {
+            return (
+              <li key={index}>
+                <a
+                  className={
+                    item.cName + " " + item.afterCName + " " + item.contentCName
+                  }
+                  href={item.url}
+                >
+                  {item.title}
+                </a>
+              </li>
+            );
+          } else {
+            return (
+              <li
+                key={index}
+                onMouseEnter={onMouseEnterInt}
+                onMouseLeave={onMouseLeaveInt}
               >
-                {item.title}
-              </a>
-            </li>
-          );
+                <a
+                  className={
+                    item.cName + " " + item.afterCName + " " + item.contentCName
+                  }
+                  href={item.url}
+                >
+                  {item.title}
+                </a>
+                {interviewDrop && (
+                  <Dropdown store={store} interview={interview} />
+                )}
+              </li>
+            );
+          }
         })}
-        <li>
+        <li onMouseEnter={onMouseEnter} onMouseLeave={onMouseLeave}>
           <Button disableTouchRipple className={classes.storeButton}>
             <StoreIcon style={{ height: "18px" }} />
             Store
           </Button>
+          {dropdown && <Dropdown store={store} interview={interview} />}
         </li>
       </ul>
 
@@ -139,10 +181,13 @@ export default function Navbar() {
           function profileDropdown() {
             if (index === 2) {
               return (
-                <ProfileMenuDropdown
-                  click={click}
-                  setClick={setClick}
-                ></ProfileMenuDropdown>
+                <div className="profileMenuWrapper">
+                  <div className="profileMenuArrow"></div>
+                  <ProfileMenuDropdown
+                    click={click}
+                    setClick={setClick}
+                  ></ProfileMenuDropdown>
+                </div>
               );
             }
           }

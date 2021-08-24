@@ -71,6 +71,12 @@ export const iconLinks = [
 
 export const profileMenuItems = [
   {
+    title: "pgmreddy",
+    url: "https://leetcode.com/explore/",
+    cName: "profile-links username",
+    svg: "M17 3c1.1 0 2 .9 2 2v16l-7-3-7 3 .01-16c0-1.1.89-2 1.99-2h10zm-5 10.43L14.472 15l-.656-2.96L16 10.048l-2.876-.256L12 7l-1.124 2.792L8 10.048l2.184 1.992L9.528 15 12 13.43z",
+  },
+  {
     title: "My List",
     url: "https://leetcode.com/explore/",
     cName: "profile-links",
@@ -129,5 +135,33 @@ export const profileMenuItems = [
     url: "https://leetcode.com/explore/",
     cName: "profile-links",
     svg: "M21 3.01a2 2 0 0 1 2 2v14c0 1.1-.9 1.98-2 1.98H10c-1.1 0-2-.88-2-1.98V15h2v4.02h11V4.99H10V9H8V5.01c0-1.1.9-2 2-2h11zM5 16l-4-4 4-4v3h10v2H5v3z",
+  },
+];
+
+export const storeMenuItems = [
+  {
+    title: "Redeem",
+    url: "https://leetcode.com/explore/",
+    cName: "store-links",
+  },
+  {
+    title: "Premium",
+    url: "https://leetcode.com/explore/",
+    cName: "store-links",
+  },
+];
+
+export const InterviewMenuItem = [
+  {
+    title: "Online Interview",
+    url: "https://leetcode.com/explore/",
+    cName: "interview-links",
+    src: "https://assets.leetcode.com/static_assets/public/webpack_bundles/images/online-interview.bdc7e113a.png",
+  },
+  {
+    title: "Assessment",
+    url: "https://leetcode.com/explore/",
+    cName: "interview-links",
+    src: "https://assets.leetcode.com/static_assets/public/webpack_bundles/images/mock-assessment.b7bc636b4.png",
   },
 ];

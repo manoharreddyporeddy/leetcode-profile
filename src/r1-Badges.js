@@ -45,6 +45,17 @@ export default function Badges({
     badgeDetailHeading = "Upcoming Badges";
     badgeDetail = badgeUpc;
     badgeButton = <></>;
+  } else if (badges[0].displayName === "Guardian") {
+    badge = (
+      <img
+        src={`https://leetcode.com${badges[0].icon}`}
+        alt="logo"
+        height="72px"
+      />
+    );
+    badgeDetailHeading = "Most Recent Badge";
+    badgeDetail = badges[0].displayName;
+    badgeButton = <></>;
   } else {
     let badge1 = badges[0].icon;
     let badge2 = badges[1].icon;
