@@ -1,14 +1,27 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { profileMenuItems } from "../data/Navbar-data";
 
 import "../css/Navbar.css";
 
-function ProfileMenuDropdown({ click, setClick }) {
+function ProfileMenuDropdown({ click, setClick, profileIconRef }) {
   const handleClick = () => setClick(!click);
+
+  let iconRef = useRef();
+
+  useEffect(() => {
+    document.addEventListener("mousedown", (event) => {
+      if (
+        profileIconRef.current &&
+        !profileIconRef.current.contains(event.target)
+      ) {
+        setClick(false);
+      }
+    });
+  });
 
   return click ? (
     <>
-      <ul onClick={handleClick} className="profileMenuContainer">
+      <ul ref={iconRef} onClick={handleClick} className="profileMenuContainerT">
         {profileMenuItems.map((item, index) => {
           if (index === 0) {
             return (

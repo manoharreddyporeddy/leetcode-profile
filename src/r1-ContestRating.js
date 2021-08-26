@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { useParams } from "react-router-dom";
 import { makeStyles } from "@material-ui/core/styles";
 
@@ -8,11 +8,6 @@ import UserDataCard from "./_SquareCard";
 
 import { getContestRankingData as getContestRankingDataDefault } from "./data/getContestRankingData";
 import { requests } from "./services/requests";
-
-// let getContestRankingData = getContestRankingDataDefault || {};
-// console.log(url, method, headers, body);
-
-// console.log(requests);
 
 const useStyles = makeStyles((theme) => ({
   eachCardHeading: {
@@ -30,7 +25,6 @@ const fetchData = async (username) => {
 
   body.username = body.username.replace("{USER_NAME}", username || "pgmreddy");
 
-  // console.log("100");
   const response = await fetch(
     url, //
     {
@@ -53,28 +47,17 @@ const fetchData = async (username) => {
   );
 
   let resp = await response.json();
-  // console.log("101", resp);
-  // console.log(resp); // parses JSON response into native JavaScript objects
-  // console.log(getContestRankingData?.data?.userContestRanking?.rating);
-  // console.log(resp?.data?.userContestRanking?.rating);
   return resp;
 };
-
-// export const dynamicRating = 0;
 
 export default function ContestRating(props) {
   const classes = useStyles();
 
   let { username } = useParams();
-  // alert(username);
 
   const [getContestRankingData, set_getContestRankingData] = useState(
     getContestRankingDataDefault
   );
-  const [graphHover, set_graphHover] = useState(false);
-  // const [rating, set_rating] = useState(""); //
-  // const [globalRanking, set_globalRanking] = useState(""); //
-  // const [attendedContestsCount, set_attendedContestsCount] = useState(""); //
 
   useEffect(async () => {
     let a = await fetchData(username);
@@ -105,41 +88,45 @@ export default function ContestRating(props) {
   rating = rating.toLocaleString();
   globalRanking = globalRanking.toLocaleString();
 
-  // function dyna() {
-  //   if (graphHover) {
-  //     return highchart_data.plotOptions.series.point.events.mouseOver;
-  //   } else {
-  //     return rating;
-  //   }
-  // }
-
-  // let dyna = highchart_data.plotOptions.series.point.events.mouseOver();
-
-  // console.log(dyna);
+  let contestRatingRef = useRef();
+  let constestDateRef = useRef();
+  let contestNameRef = useRef();
+  let rankedTitleRef = useRef();
+  let rankingRef = useRef();
 
   if (getContestRankingData.data.userContestRanking != null) {
     return (
       <UserDataCard>
         <div style={{ padding: "0px", height: "45.2px" }}>
           <span className={classes.eachCardHeading}>Contest Rating{"\n"}</span>
-          <span id="dyna" style={{ fontSize: "22px", fontWeight: "600" }}>
+          <span
+            ref={contestRatingRef}
+            style={{ fontSize: "22px", fontWeight: "600" }}
+          >
             {" "}
             {rating}{" "}
           </span>
           <span style={{ fontSize: "12px", fontWeight: "600" }}>pt</span>
         </div>
 
-        <div>
+        <div style={{ height: "90px" }}>
           <Highchart
             userContestRankingHistory={userContestRankingHistory}
-            graphHover={graphHover}
-            set_graphHover={set_graphHover}
+            contestRatingRef={contestRatingRef}
+            constestDateRef={constestDateRef}
+            contestNameRef={contestNameRef}
+            rankedTitleRef={rankedTitleRef}
+            rankingRef={rankingRef}
+            rating={rating}
+            globalRanking={globalRanking}
+            attendedContestsCount={attendedContestsCount}
           />
         </div>
 
         <div style={{ display: "flex", justifyContent: "space-between" }}>
           <div>
             <span
+              ref={constestDateRef}
               style={{
                 fontSize: "12px",
                 color: "rgba(60, 60, 67, 0.6)",
@@ -149,6 +136,7 @@ export default function ContestRating(props) {
               Ranking{"\n"}
             </span>
             <span
+              ref={contestNameRef}
               style={{
                 fontSize: "14px",
                 color: "rgba(38, 38, 38, 0.75)",
@@ -160,6 +148,7 @@ export default function ContestRating(props) {
           </div>
           <div>
             <span
+              ref={rankedTitleRef}
               style={{
                 fontSize: "12px",
                 color: "rgba(60, 60, 67, 0.6)",
@@ -169,6 +158,7 @@ export default function ContestRating(props) {
               Attended{"\n"}
             </span>
             <span
+              ref={rankingRef}
               style={{
                 fontSize: "14px",
                 color: "rgba(38, 38, 38, 0.75)",

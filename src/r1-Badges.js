@@ -1,5 +1,7 @@
 import React from "react";
-import { makeStyles } from "@material-ui/core/styles";
+import { makeStyles, withStyles } from "@material-ui/core/styles";
+
+import { Tooltip } from "@material-ui/core";
 
 import UserDataCard from "./_SquareCard";
 
@@ -18,6 +20,22 @@ const useStyles = makeStyles((theme) => ({
     alignItems: "center",
   },
 }));
+
+const BlackTooltip = withStyles((theme) => ({
+  tooltip: {
+    backgroundColor: "rgba(33, 33, 33, 0.9)",
+    color: "#fff",
+    fontSize: "12px",
+    padding: "10px",
+    borderRadius: "3px",
+    lineHeight: "1",
+    borderColor: "rgba(33, 33, 33, 0.9)",
+  },
+  arrow: {
+    color: "rgba(33, 33, 33, 0.9)",
+    borderColor: "rgba(33, 33, 33, 0.9)",
+  },
+}))(Tooltip);
 
 export default function Badges({
   getUserProfile,
@@ -39,19 +57,23 @@ export default function Badges({
   var badgeButton;
   if (badgesCount === 0) {
     badge = (
-      <img src={badgeIcon} alt="Jul LeetCoding Challenge" height="72px" />
+      <BlackTooltip title={badgeUpc} placement="top" arrow>
+        <img src={badgeIcon} alt="Jul LeetCoding Challenge" height="72px" />
+      </BlackTooltip>
     );
     badgeOpacity = "0.2";
-    badgeDetailHeading = "Upcoming Badges";
+    badgeDetailHeading = "Upcoming Badge";
     badgeDetail = badgeUpc;
     badgeButton = <></>;
   } else if (badges[0].displayName === "Guardian") {
     badge = (
-      <img
-        src={`https://leetcode.com${badges[0].icon}`}
-        alt="logo"
-        height="72px"
-      />
+      <BlackTooltip title={badges[0].displayName} placement="top" arrow>
+        <img
+          src={`https://leetcode.com${badges[0].icon}`}
+          alt="logo"
+          height="72px"
+        />
+      </BlackTooltip>
     );
     badgeDetailHeading = "Most Recent Badge";
     badgeDetail = badges[0].displayName;
@@ -68,19 +90,27 @@ export default function Badges({
 
     badge = (
       <>
-        <img src={badge2Icon} alt="JuN LeetCoding Challenge" height="46px" />
-        <img
-          src={badge1Icon}
-          alt="Jul LeetCoding Challenge"
-          height="72px"
-          style={{ marginLeft: "20px" }}
-        />
-        <img
-          src={badge3Icon}
-          alt="JuN LeetCoding Challenge"
-          height="46px"
-          style={{ marginLeft: "20px" }}
-        />
+        <BlackTooltip title={badges[1].displayName} placement="top" arrow>
+          <img src={badge2Icon} alt="JuN LeetCoding Challenge" height="46px" />
+        </BlackTooltip>
+
+        <BlackTooltip title={badges[0].displayName} placement="top" arrow>
+          <img
+            src={badge1Icon}
+            alt="Jul LeetCoding Challenge"
+            height="72px"
+            style={{ marginLeft: "20px" }}
+          />
+        </BlackTooltip>
+
+        <BlackTooltip title={badges[2].displayName} placement="top" arrow>
+          <img
+            src={badge3Icon}
+            alt="JuN LeetCoding Challenge"
+            height="46px"
+            style={{ marginLeft: "20px" }}
+          />
+        </BlackTooltip>
       </>
     );
 

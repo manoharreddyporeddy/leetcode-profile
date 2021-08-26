@@ -1,9 +1,17 @@
 .dimensions {
-  height: 90px;
+  height: 70px;
   width: 100%;
+}
+
+g {
+  /* transform: "translate(10, 10)"; */
 }
 /* 
 .highcharts-label {
   padding: 10px;
   margin-bottom: 20px;
-} */
+}
+*/
+.highcharts-spline-series {
+  transform: "translate(0, 0)";
+}

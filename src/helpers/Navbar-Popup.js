@@ -1,12 +1,22 @@
-import React from "react";
+import React, { useState, useEffect, useRef } from "react";
 import "../css/Navbar-Popup.css";
 import Divider from "@material-ui/core/Divider";
 import Card from "@material-ui/core/Card";
 
 function Popup(props) {
+  let popupRef = useRef();
+
+  useEffect(() => {
+    document.addEventListener("mousedown", (event) => {
+      if (popupRef.current && !popupRef.current.contains(event.target)) {
+        props.setTrigger(false);
+      }
+    });
+  });
+
   return props.trigger ? (
     <div className="popupBackground">
-      <div className="popupForeground">
+      <div ref={popupRef} className="popupForeground">
         <div className="header">
           <h2> Playground </h2>
           <button
@@ -58,7 +68,7 @@ function Popup(props) {
                     style={{
                       marginTop: "10px",
                       fontSize: "14px",
-                      color: "black"
+                      color: "black",
                     }}
                   >
                     New
@@ -80,7 +90,7 @@ function Popup(props) {
                     style={{
                       marginTop: "10px",
                       fontSize: "14px",
-                      color: "black"
+                      color: "black",
                     }}
                   >
                     Linked List
@@ -102,7 +112,7 @@ function Popup(props) {
                     style={{
                       marginTop: "10px",
                       fontSize: "14px",
-                      color: "black"
+                      color: "black",
                     }}
                   >
                     Binary Tree
@@ -129,7 +139,7 @@ function Popup(props) {
                   style={{
                     marginTop: "10px",
                     fontSize: "14px",
-                    color: "black"
+                    color: "black",
                   }}
                 >
                   React

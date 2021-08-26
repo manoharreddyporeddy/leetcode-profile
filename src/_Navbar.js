@@ -1,13 +1,13 @@
 import "./css/Navbar.css";
-import { makeStyles } from "@material-ui/core/styles";
+import { makeStyles, withStyles } from "@material-ui/core/styles";
 
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 
 import Button from "@material-ui/core/Button";
 import IconButton from "@material-ui/core/IconButton";
 import StarOutlineIcon from "@material-ui/icons/StarOutline";
 import StoreIcon from "@material-ui/icons/Store";
-// import Tooltip from "@material-ui/core/Tooltip";
+import { Tooltip } from "@material-ui/core";
 
 import Popup from "./helpers/Navbar-Popup";
 import ProfileMenuDropdown from "./helpers/profileMenuDropdown";
@@ -34,7 +34,6 @@ const useStyles = makeStyles((theme) => ({
   storeButton: {
     height: "18px",
     padding: "0px",
-    marginLeft: "15px",
     fontSize: "13px",
     textTransform: "none",
     color: "#f9a825",
@@ -64,6 +63,7 @@ const useStyles = makeStyles((theme) => ({
 
   navIcons: {
     color: "#90a4ae",
+    padding: "0px 12px",
 
     "&:hover": {
       color: "#546e7a",
@@ -72,6 +72,22 @@ const useStyles = makeStyles((theme) => ({
     },
   },
 }));
+
+const BlackTooltip = withStyles((theme) => ({
+  tooltip: {
+    backgroundColor: "rgba(33, 33, 33, 0.9)",
+    color: "#fff",
+    fontSize: "12px",
+    padding: "10px",
+    borderRadius: "3px",
+    lineHeight: "1",
+    borderColor: "rgba(33, 33, 33, 0.9)",
+  },
+  arrow: {
+    color: "rgba(33, 33, 33, 0.9)",
+    borderColor: "rgba(33, 33, 33, 0.9)",
+  },
+}))(Tooltip);
 
 export default function Navbar() {
   const classes = useStyles();
@@ -82,6 +98,9 @@ export default function Navbar() {
   const [interviewDrop, setInterviewDrop] = useState(false);
   const [store, setStore] = useState(false);
   const [interview, setInterview] = useState(false);
+
+  let iconRef = useRef();
+  let profileIconRef;
 
   const onMouseEnter = () => {
     setDropdown(true);
@@ -118,7 +137,7 @@ export default function Navbar() {
         {linksList.map((item, index) => {
           if (index !== 2) {
             return (
-              <li key={index}>
+              <li key={index} style={{ marginLeft: "20px" }}>
                 <a
                   className={
                     item.cName + " " + item.afterCName + " " + item.contentCName
@@ -133,6 +152,7 @@ export default function Navbar() {
             return (
               <li
                 key={index}
+                style={{ marginLeft: "20px" }}
                 onMouseEnter={onMouseEnterInt}
                 onMouseLeave={onMouseLeaveInt}
               >
@@ -151,7 +171,11 @@ export default function Navbar() {
             );
           }
         })}
-        <li onMouseEnter={onMouseEnter} onMouseLeave={onMouseLeave}>
+        <li
+          style={{ marginLeft: "15px" }}
+          onMouseEnter={onMouseEnter}
+          onMouseLeave={onMouseLeave}
+        >
           <Button disableTouchRipple className={classes.storeButton}>
             <StoreIcon style={{ height: "18px" }} />
             Store
@@ -162,7 +186,11 @@ export default function Navbar() {
 
       <ul className={classes.navLinksList}>
         <li>
-          <Button variant="outlined" className={classes.premiumButton}>
+          <Button
+            variant="outlined"
+            className={classes.premiumButton}
+            href="https://leetcode.com/subscribe/?ref=nb_npl"
+          >
             <StarOutlineIcon style={{ height: "14px", width: "14px" }} />{" "}
             Premium{" "}
           </Button>
@@ -180,41 +208,53 @@ export default function Navbar() {
 
           function profileDropdown() {
             if (index === 2) {
+              profileIconRef = iconRef;
               return (
-                <div className="profileMenuWrapper">
-                  <div className="profileMenuArrow"></div>
-                  <ProfileMenuDropdown
-                    click={click}
-                    setClick={setClick}
-                  ></ProfileMenuDropdown>
-                </div>
+                <>
+                  <div className="profileMenuWrapperT">
+                    <ProfileMenuDropdown
+                      click={click}
+                      setClick={setClick}
+                      profileIconRef={profileIconRef}
+                    ></ProfileMenuDropdown>
+                  </div>
+                </>
               );
             }
           }
 
+          let warningText = null;
+          if (index === 0) {
+            warningText = "New Playground";
+          }
+
           return (
-            <li key={index}>
-              <IconButton
-                className={classes.navIcons}
-                disableRipple
-                onClick={handleClick}
+            <li ref={iconRef} key={index}>
+              <BlackTooltip
+                title={warningText == null ? "" : warningText}
+                placement="bottom"
+                visibility="hidden"
+                arrow
               >
-                <svg
-                  viewBox={item.viewBox}
-                  width={item.width}
-                  height={item.height}
-                  fill="currentColor"
+                <IconButton
+                  className={classes.navIcons}
+                  disableRipple
+                  onClick={handleClick}
                 >
-                  <path d={item.path_d}></path>
-                </svg>
-              </IconButton>
+                  <svg
+                    viewBox={item.viewBox}
+                    width={item.width}
+                    height={item.height}
+                    fill="currentColor"
+                  >
+                    <path d={item.path_d}></path>
+                  </svg>
+                </IconButton>
+              </BlackTooltip>
               {profileDropdown()}
             </li>
           );
         })}
-        {/* 
-          <Tooltip title="New Playground" arrow>
-          </Tooltip>*/}
       </ul>
       <Popup trigger={buttonPopup} setTrigger={setbuttonPopup}></Popup>
     </div>

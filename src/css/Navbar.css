@@ -2,7 +2,7 @@
   text-decoration: none;
   color: #546e7a;
   padding-top: 0.5rem;
-  margin-left: 20px;
+  /* margin-left: 20px; */
 }
 
 .navLinks:hover {
@@ -39,22 +39,37 @@
 } */
 
 .profileMenuWrapper {
-  top: 32px;
-  right: 140px;
+  color: rgba(0, 0, 0, 0.65);
+  position: absolute;
+  z-index: 1050;
+}
+.profileMenuWrapperT {
   color: rgba(0, 0, 0, 0.65);
   position: absolute;
   z-index: 1050;
 }
 
 .profileMenuArrow {
+  border: solid 10px transparent;
+  border-right-color: black;
   position: absolute;
-  left: 227px;
-  color: transparent;
+  margin: -85px 0 0 -20px;
   z-index: 1;
 }
 
 .profileMenuContainer {
-  position: relative;
+  position: absolute;
+  right: -50px;
+  background-color: #fff;
+  border-radius: 4px;
+  box-shadow: 0 2px 8px rgb(0 0 0 / 15%);
+  width: 270px;
+  padding: 10px 0;
+  margin-block-start: 1em;
+}
+.profileMenuContainerT {
+  position: absolute;
+  right: -60px;
   background-color: #fff;
   border-radius: 4px;
   box-shadow: 0 2px 8px rgb(0 0 0 / 15%);
@@ -63,12 +78,24 @@
   margin-block-start: 1em;
 }
 
+.profileMenuContainerT::before {
+  content: " ";
+  position: absolute;
+  right: 28px;
+  top: -8px;
+  border-top: none;
+  border-right: 8px solid transparent;
+  border-left: 8px solid transparent;
+  border-bottom: 8px solid #fff;
+}
+
 .profileMenuItem {
   font-size: 14px;
   color: #607d8b;
   transition: 0.18s color ease-in-out;
   height: 46px;
-  position: relative;
+  /* position: relative;
+   */
   padding: 0 15px;
   display: flex;
   line-height: 22px;
@@ -120,7 +147,7 @@
 }
 
 .dropdownContainer {
-  position: relative;
+  /* position: relative; */
   width: auto;
   text-align: left;
   list-style-type: none;

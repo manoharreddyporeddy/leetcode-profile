@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
-import { makeStyles } from "@material-ui/core/styles";
+import { makeStyles, withStyles } from "@material-ui/core/styles";
 import Card from "@material-ui/core/Card";
 import Divider from "@material-ui/core/Divider";
 import { Tooltip } from "@material-ui/core";
@@ -37,6 +37,22 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
+const BlackTooltip = withStyles((theme) => ({
+  tooltip: {
+    backgroundColor: "rgba(33, 33, 33, 0.9)",
+    color: "#fff",
+    fontSize: "12px",
+    padding: "10px",
+    borderRadius: "3px",
+    lineHeight: "1",
+    borderColor: "rgba(33, 33, 33, 0.9)",
+  },
+  arrow: {
+    color: "rgba(33, 33, 33, 0.9)",
+    borderColor: "rgba(33, 33, 33, 0.9)",
+  },
+}))(Tooltip);
+
 export default function BasicProfile({ getUserProfile }) {
   const classes = useStyles();
 
@@ -47,8 +63,6 @@ export default function BasicProfile({ getUserProfile }) {
   let githubUrl = matchedUser.githubUrl;
   let userAvatar = matchedUser.profile.userAvatar;
   let aboutMe = matchedUser.profile.aboutMe;
-  // let ranking = matchedUser.profile.ranking;
-  // ranking = `Ranking: ${ranking}`;
   let websites = matchedUser.profile.websites;
   let countryName = matchedUser.profile.countryName;
   let company = matchedUser.profile.company;
@@ -57,7 +71,7 @@ export default function BasicProfile({ getUserProfile }) {
   let items = [
     {
       cName: "linkContainer",
-      title: "Websites",
+      title: "Website",
       content: websites[0],
       link: websites[0],
       contentClass: "webLink",
@@ -173,7 +187,7 @@ export default function BasicProfile({ getUserProfile }) {
                   style={{ fontSize: "14px", color: "rgba(0, 0, 0, 0.65)" }}
                 >
                   {usernameID}
-                  <Tooltip title={aboutMe} placement="top" arrow>
+                  <BlackTooltip title={aboutMe} placement="top" arrow>
                     <svg
                       viewBox="0 0 24 24"
                       width="16px"
@@ -188,7 +202,7 @@ export default function BasicProfile({ getUserProfile }) {
                     >
                       <path d={item.i_path_d}></path>
                     </svg>
-                  </Tooltip>
+                  </BlackTooltip>
                 </span>
 
                 {/* <Tooltip title={ranking} arrow> */}
