@@ -94,13 +94,17 @@ export default function Navbar() {
 
   const [buttonPopup, setbuttonPopup] = useState(false);
   const [click, setClick] = useState(false);
+  const [notificationClick, setNotificationClick] = useState(false);
   const [dropdown, setDropdown] = useState(false);
   const [interviewDrop, setInterviewDrop] = useState(false);
   const [store, setStore] = useState(false);
   const [interview, setInterview] = useState(false);
 
-  let iconRef = useRef();
+  let iconRefProfile = useRef();
+  let iconRefNotification = useRef();
+  let iconRef;
   let profileIconRef;
+  let notificationIconRef;
 
   const onMouseEnter = () => {
     setDropdown(true);
@@ -152,7 +156,7 @@ export default function Navbar() {
             return (
               <li
                 key={index}
-                style={{ marginLeft: "20px" }}
+                style={{ marginLeft: "20px", transitionDelay: "10s" }}
                 onMouseEnter={onMouseEnterInt}
                 onMouseLeave={onMouseLeaveInt}
               >
@@ -197,29 +201,71 @@ export default function Navbar() {
         </li>
 
         {iconLinks.map((item, index) => {
+          let notificationPlacement;
           const handleClick = () => {
             if (index === 0) {
               setbuttonPopup(true);
+            }
+            if (index === 1) {
+              setNotificationClick(!notificationClick);
+              notificationPlacement = "200px";
             }
             if (index === 2) {
               setClick(!click);
             }
           };
 
+          if (index === 1) {
+            iconRef = iconRefNotification;
+          } else if (index === 2) {
+            iconRef = iconRefProfile;
+          }
+
           function profileDropdown() {
             if (index === 2) {
               profileIconRef = iconRef;
+              notificationIconRef = iconRef;
               return (
                 <>
-                  <div className="profileMenuWrapperT">
+                  <div
+                    className="profileMenuWrapperT"
+                    style={{ right: notificationPlacement }}
+                  >
                     <ProfileMenuDropdown
                       click={click}
                       setClick={setClick}
                       profileIconRef={profileIconRef}
+                      notificationIconRef={notificationIconRef}
+                      notificationClick={notificationClick}
+                      setNotificationClick={setNotificationClick}
+                      iconRefProfile={iconRefProfile}
+                      iconRefNotification={iconRefNotification}
                     ></ProfileMenuDropdown>
                   </div>
                 </>
               );
+              // } else if (index === 2) {
+              //   profileIconRef = iconRef;
+              //   notificationIconRef = iconRef;
+              //   return (
+              //     <>
+              //       <div
+              //         className="profileMenuWrapperT"
+              //         style={{ right: notificationPlacement }}
+              //       >
+              //         <ProfileMenuDropdown
+              //           click={click}
+              //           setClick={setClick}
+              //           profileIconRef={profileIconRef}
+              //           notificationIconRef={notificationIconRef}
+              //           notificationClick={notificationClick}
+              //           setNotificationClick={setNotificationClick}
+              //           iconRefProfile={iconRefProfile}
+              //           iconRefNotification={iconRefNotification}
+              //         ></ProfileMenuDropdown>
+              //       </div>
+              //     </>
+              //   );
             }
           }
 
@@ -256,6 +302,7 @@ export default function Navbar() {
           );
         })}
       </ul>
+
       <Popup trigger={buttonPopup} setTrigger={setbuttonPopup}></Popup>
     </div>
   );

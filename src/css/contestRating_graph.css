@@ -1,17 +1,13 @@
 .dimensions {
-  height: 70px;
-  width: 100%;
+  position: relative;
+  overflow: hidden;
+  height: 90px;
+  text-align: left;
+  line-height: normal;
+  z-index: 0;
+  top: 5px;
 }
 
-g {
-  /* transform: "translate(10, 10)"; */
-}
-/* 
-.highcharts-label {
-  padding: 10px;
-  margin-bottom: 20px;
-}
-*/
 .highcharts-spline-series {
   transform: "translate(0, 0)";
 }

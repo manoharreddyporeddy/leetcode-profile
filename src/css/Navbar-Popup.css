@@ -45,6 +45,7 @@
 
 .playgroundButton {
   height: 56px;
+  line-height: 56px;
   background-color: white;
   width: 100%;
   text-align: start;
@@ -86,24 +87,30 @@
 }
 
 .newPlayground {
-  border-style: dashed;
-  border-color: #90a4ae;
-  border-width: 1px;
+  border: 1px dashed #b0bec5;
   height: 100px;
   width: 150px;
   background-color: #fafafa;
-  box-shadow: none;
+  box-shadow: 0px;
   align-items: center;
   cursor: pointer;
 }
 
 .plusImg {
   /* height: 100px; */
-  font-size: 24px;
+  background-color: #fafafa;
   color: #90a4ae;
-  padding-top: 32px;
-  padding-bottom: 32px;
-  text-align: center;
+  border-radius: 3px;
+  width: 100%;
+  height: 100%;
+
+  display: flex;
+
+  justify-content: center;
+  align-items: center;
+  font-size: 24px;
+  transition: 0.18s color ease-in-out;
+  cursor: pointer;
 }
 
 .plusImg:hover {

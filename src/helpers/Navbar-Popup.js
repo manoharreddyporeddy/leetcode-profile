@@ -38,7 +38,10 @@ function Popup(props) {
           </button>
         </div>
         <div>
-          <button className="playgroundButton">
+          <a
+            className="playgroundButton"
+            href="https://leetcode.com/playground/"
+          >
             {" "}
             My Playgrounds{" "}
             <svg
@@ -52,16 +55,19 @@ function Popup(props) {
                 d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"
               ></path>
             </svg>
-          </button>
-          <Divider />
+          </a>
         </div>
+        <Divider />
+
         <div>
           <div className="console1">
             <h3> Console Application </h3>
             <div className="consoleApplicationContent">
               <div>
                 <Card className="newPlayground">
-                  <div className="plusImg">+</div>
+                  <a href="https://leetcode.com/playground/new/empty">
+                    <div className="plusImg">+</div>
+                  </a>
                 </Card>
                 <div className="itemHeader">
                   <div

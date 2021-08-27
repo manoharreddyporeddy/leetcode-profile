@@ -52,6 +52,7 @@ export default function Rating({ getUserProfile }) {
           position: "relative",
           width: "100px",
           height: "15px",
+          cursor: "pointer",
         }}
       >
         <div className={classes.ratingListBackground}>

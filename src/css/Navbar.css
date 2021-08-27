@@ -18,7 +18,7 @@
   font-size: 12px;
   font-weight: 500;
   top: 0.2rem;
-  margin-left: 40px;
+  margin-left: 20px;
   transform: scale(0.6);
   color: white;
   background: rgb(236, 64, 122);
@@ -30,7 +30,7 @@
 
 .interviewBtn::after {
   content: "New";
-  margin-left: 54px;
+  margin-left: 34px;
 }
 
 /* ul.rightItemList li {
@@ -67,6 +67,19 @@
   padding: 10px 0;
   margin-block-start: 1em;
 }
+
+@keyframes growDown {
+  0% {
+    transform: scaleY(0.9);
+  }
+  /* 20% {
+    transform: scaleY(1.1); */
+  /* } */
+  100% {
+    transform: scaleY(1);
+  }
+}
+
 .profileMenuContainerT {
   position: absolute;
   right: -60px;
@@ -76,6 +89,10 @@
   width: 270px;
   padding: 10px 0;
   margin-block-start: 1em;
+  animation: growDown 200ms ease-in-out forwards;
+  transform-origin: top center;
+  transition-duration: 0.4s, 0s;
+  transition-delay: 0s, 0.4s;
 }
 
 .profileMenuContainerT::before {
@@ -87,6 +104,27 @@
   border-right: 8px solid transparent;
   border-left: 8px solid transparent;
   border-bottom: 8px solid #fff;
+}
+
+.notificationContainer {
+  animation: growDown 200ms ease-in-out forwards;
+  transform-origin: top center;
+}
+
+.notificationContainer::before {
+  content: " ";
+  position: absolute;
+  right: 75.7px;
+  top: -8px;
+  border-top: none;
+  border-right: 8px solid transparent;
+  border-left: 8px solid transparent;
+  border-bottom: 8px solid #fff;
+}
+
+.profileMenuContainerN {
+  position: relative;
+  padding: 0;
 }
 
 .profileMenuItem {
@@ -103,6 +141,26 @@
   cursor: pointer;
 }
 
+.notificationMenuItem {
+  height: auto;
+  background: white;
+  display: block;
+  padding: 0 20px;
+  position: relative;
+  align-items: center;
+  font-size: 12px;
+  color: #424242;
+  line-height: 22px;
+  white-space: nowrap;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.notificationMenuItem:hover {
+  background: linear-gradient(180deg, white, #fafafa);
+  /* transition: 0.18s ease-in-out; */
+}
+
 .profile-links {
   display: flex;
   flex: 1 1 auto;
@@ -117,6 +175,20 @@
 .profile-links:hover {
   color: #455a64;
   background-color: #eceff1;
+}
+
+.notification-links {
+  display: flex;
+  flex: 1 1 auto;
+  padding: 0 15px;
+  margin: 0 -15px;
+  transition: all 0.3s;
+  text-decoration: none;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
 }
 
 .profileMenuItemIcon {
@@ -156,6 +228,8 @@
   box-shadow: 0 2px 8px rgb(0 0 0 / 15%);
   padding: 10px 0;
   margin-block-start: 1em;
+  animation: growDown 100ms ease-in-out forwards;
+  transform-origin: top center;
 }
 
 .dropdownMenuItem {
@@ -181,4 +255,40 @@
 
 .interview:hover {
   color: #263238;
+}
+
+a {
+  text-decoration: none;
+}
+
+img {
+  vertical-align: middle;
+}
+
+.ntfLink:hover {
+  text-decoration: underline;
+  color: #263238;
+}
+
+.ntfSettings:hover {
+  color: #455a64;
+  transition: color 0.3s ease-in-out;
+}
+
+.notificationListContainer {
+  overflow: hidden;
+}
+
+.notificationListContainer:hover {
+  overflow: scroll overlay;
+  overflow-x: hidden;
+}
+
+.notificationListContainer::-webkit-scrollbar {
+  width: 10px;
+  transition: background-color 0.2s linear, opacity 0.2s linear;
+}
+
+.notificationListContainer::-webkit-scrollbar-thumb {
+  background-color: #9e9e9e transparent;
 }

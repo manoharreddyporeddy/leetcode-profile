@@ -35,6 +35,17 @@ const useStyles = makeStyles((theme) => ({
     background: "rgb(250, 250, 250)",
     fontSize: "12px",
   },
+
+  aboutMe: {
+    color: "#337ab7",
+    margin: "3px 0px 0px 4px",
+    position: "absolute",
+    cursor: "pointer",
+
+    "&:hover": {
+      color: "#193d5b",
+    },
+  },
 }));
 
 const BlackTooltip = withStyles((theme) => ({
@@ -103,14 +114,6 @@ export default function BasicProfile({ getUserProfile }) {
         "M5 13.18v4L12 21l7-3.82v-4L12 17l-7-3.82zM12 3L1 9l11 6 9-4.91V17h2V9L12 3z",
     },
   ];
-
-  // if(websites.length == 0 && countryName === null) {
-  //    items.splice(0, 2);
-  // } else if(countryName === null){
-  //     items.pop();
-  // } else if(websites.length == 0){
-  //   items.shift();
-  // }
 
   let items2 = [];
   if (websites.length !== 0) {
@@ -192,10 +195,8 @@ export default function BasicProfile({ getUserProfile }) {
                       viewBox="0 0 24 24"
                       width="16px"
                       height="16px"
+                      className={classes.aboutMe}
                       style={{
-                        color: "#337ab7",
-                        margin: "3px 0px 0px 4px",
-                        position: "absolute",
                         visibility: aboutMeVisibility,
                       }}
                       fill="currentColor"
