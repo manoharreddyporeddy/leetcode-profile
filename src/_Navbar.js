@@ -13,6 +13,7 @@ import Popup from "./helpers/Navbar-Popup";
 import ProfileMenuDropdown from "./helpers/profileMenuDropdown";
 import Dropdown from "./helpers/Dropdown";
 import { linksList, iconLinks, profileMenuItems } from "./data/Navbar-data";
+import NavSidebar from "./helpers/navbarMobileMenu";
 
 const useStyles = makeStyles((theme) => ({
   navbarContainer: {
@@ -99,6 +100,8 @@ export default function Navbar() {
   const [interviewDrop, setInterviewDrop] = useState(false);
   const [store, setStore] = useState(false);
   const [interview, setInterview] = useState(false);
+  const [mobileMenu, setMobileMenu] = useState(false);
+  const mobileMenuRef = useRef();
 
   let iconRefProfile = useRef();
   let iconRefNotification = useRef();
@@ -127,8 +130,8 @@ export default function Navbar() {
   };
 
   return (
-    <div className={classes.navbarContainer}>
-      <ul className={classes.navLinksList}>
+    <div className={`${classes.navbarContainer} mobileNBC`}>
+      <ul className={`${classes.navLinksList} mobileNLL`}>
         <li>
           <a href="/">
             <img
@@ -188,7 +191,7 @@ export default function Navbar() {
         </li>
       </ul>
 
-      <ul className={classes.navLinksList}>
+      <ul className={`${classes.navLinksList} mobileNLL`}>
         <li>
           <Button
             variant="outlined"
@@ -244,28 +247,6 @@ export default function Navbar() {
                   </div>
                 </>
               );
-              // } else if (index === 2) {
-              //   profileIconRef = iconRef;
-              //   notificationIconRef = iconRef;
-              //   return (
-              //     <>
-              //       <div
-              //         className="profileMenuWrapperT"
-              //         style={{ right: notificationPlacement }}
-              //       >
-              //         <ProfileMenuDropdown
-              //           click={click}
-              //           setClick={setClick}
-              //           profileIconRef={profileIconRef}
-              //           notificationIconRef={notificationIconRef}
-              //           notificationClick={notificationClick}
-              //           setNotificationClick={setNotificationClick}
-              //           iconRefProfile={iconRefProfile}
-              //           iconRefNotification={iconRefNotification}
-              //         ></ProfileMenuDropdown>
-              //       </div>
-              //     </>
-              //   );
             }
           }
 
@@ -304,6 +285,48 @@ export default function Navbar() {
       </ul>
 
       <Popup trigger={buttonPopup} setTrigger={setbuttonPopup}></Popup>
+
+      {/* mobile view */}
+      <div class="navbarItem">
+        <svg
+          viewBox="0 0 24 24"
+          width="24px"
+          height="24px"
+          fill="currentColor"
+          style={{ marginLeft: "10px", verticalAlign: "middle" }}
+          onClick={() => setMobileMenu(!mobileMenu)}
+        >
+          <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"></path>
+        </svg>
+        <NavSidebar
+          trigger={mobileMenu}
+          setTrigger={setMobileMenu}
+          ref={mobileMenuRef}
+          mobileMenuRef={mobileMenuRef}
+        ></NavSidebar>
+      </div>
+      <a href="/" className="navbarItem">
+        <img
+          className="mobileLogo"
+          src="https://assets.leetcode.com/static_assets/public/webpack_bundles/images/logo-dark.e99485d9b.svg"
+          alt="logo"
+        />
+      </a>
+      <a class="navbarItem" href="/akshayvarmamit">
+        <svg
+          viewBox="0 0 24 24"
+          width="24px"
+          height="24px"
+          fill="currentColor"
+          style={{
+            marginLeft: "auto",
+            marginRight: "10px",
+            verticalAlign: "middle",
+          }}
+        >
+          <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 3c1.66 0 3 1.34 3 3s-1.34 3-3 3-3-1.34-3-3 1.34-3 3-3zm0 14.2a7.2 7.2 0 0 1-6-3.22c.03-1.99 4-3.08 6-3.08 1.99 0 5.97 1.09 6 3.08a7.2 7.2 0 0 1-6 3.22z"></path>
+        </svg>
+      </a>
     </div>
   );
 }

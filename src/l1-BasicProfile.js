@@ -15,7 +15,6 @@ const useStyles = makeStyles((theme) => ({
     borderRadius: "8px",
     marginBottom: "15px",
     boxShadow: "rgb(0 0 0 / 10%) 0px 1px 2px, rgb(0 0 0 / 8%) 0px 2px 8px",
-    minWidth: "370px",
   },
 
   cardTitleContainer: {

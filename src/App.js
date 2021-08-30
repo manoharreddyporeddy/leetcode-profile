@@ -115,9 +115,9 @@ export default function App(props) {
       <div className={classes.navbarWrapper}>
         <Navbar />
       </div>
-      <div className={classes.mainContentContainer}>
+      <div className={`${classes.mainContentContainer} mobileMCP`}>
         <div className={classes.flexWrapper}>
-          <div className={classes.leftPanelContainer}>
+          <div className={`${classes.leftPanelContainer} mobileLPC`}>
             <LeftContentPanel getUserProfile={getUserProfile} />
           </div>
           <div className={classes.rightPanelContainer}>

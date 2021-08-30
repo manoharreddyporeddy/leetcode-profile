@@ -5,23 +5,23 @@ import React, { useState, useEffect } from "react";
 import Card from "@material-ui/core/Card";
 import Divider from "@material-ui/core/Divider";
 
-
 const useStyles = makeStyles((theme) => ({
   profileCard: {
     borderRadius: "8px",
-    marginBottom: "15px"
+    marginBottom: "15px",
+    boxShadow: "rgb(0 0 0 / 10%) 0px 1px 2px, rgb(0 0 0 / 8%) 0px 2px 8px",
   },
 
   cardTitleContainer: {
     padding: "0.5625rem 0.75rem 0rem",
-    height: "27.8px"
+    height: "27.8px",
   },
 
   cardItem: {
     paddingBottom: "12px",
     display: "flex",
     justifyContent: "space-between",
-    alignItems: "center"
+    alignItems: "center",
   },
 
   chip: {
@@ -30,11 +30,11 @@ const useStyles = makeStyles((theme) => ({
     padding: "0px 7px",
     fontWeight: "700",
     color: "rgb(255, 255, 255)",
-    fontSize: "12px"
-  }
+    fontSize: "12px",
+  },
 }));
 
-export default function Contributions({getUserProfile}) {
+export default function Contributions({ getUserProfile }) {
   const classes = useStyles();
 
   let contributions = getUserProfile.data.matchedUser.contributions || 0;
@@ -58,7 +58,7 @@ export default function Contributions({getUserProfile}) {
               fontWeight: 400,
               display: "flex",
               alignItems: "center",
-              height: "20.8px"
+              height: "20.8px",
             }}
           >
             <svg
@@ -85,7 +85,7 @@ export default function Contributions({getUserProfile}) {
               fontWeight: 400,
               display: "flex",
               alignItems: "center",
-              height: "20.8px"
+              height: "20.8px",
             }}
           >
             <svg
@@ -110,7 +110,7 @@ export default function Contributions({getUserProfile}) {
               fontWeight: 400,
               display: "flex",
               alignItems: "center",
-              height: "20.8px"
+              height: "20.8px",
             }}
           >
             <svg
