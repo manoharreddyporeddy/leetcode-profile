@@ -10,28 +10,12 @@ import StoreIcon from "@material-ui/icons/Store";
 import { Tooltip } from "@material-ui/core";
 
 import Popup from "./helpers/Navbar-Popup";
-import ProfileMenuDropdown from "./helpers/profileMenuDropdown";
+import ProfileOrNotificationDropdown from "./helpers/profile&ntfDropdown";
 import Dropdown from "./helpers/Dropdown";
-import { linksList, iconLinks, profileMenuItems } from "./data/Navbar-data";
+import { leftLinksList, iconLinks, profileMenuItems } from "./data/Navbar-data";
 import NavSidebar from "./helpers/navbarMobileMenu";
 
 const useStyles = makeStyles((theme) => ({
-  navbarContainer: {
-    display: "flex",
-    justifyContent: "space-between",
-    fontSize: "13px",
-    maxWidth: "1230px",
-    width: "100%",
-  },
-
-  navLinksList: {
-    display: "flex",
-    flexWrap: "nowrap",
-    alignItems: "center",
-    listStyle: "none",
-    padding: "0",
-  },
-
   storeButton: {
     height: "18px",
     padding: "0px",
@@ -93,105 +77,82 @@ const BlackTooltip = withStyles((theme) => ({
 export default function Navbar() {
   const classes = useStyles();
 
-  const [buttonPopup, setbuttonPopup] = useState(false);
-  const [click, setClick] = useState(false);
-  const [notificationClick, setNotificationClick] = useState(false);
-  const [dropdown, setDropdown] = useState(false);
   const [interviewDrop, setInterviewDrop] = useState(false);
-  const [store, setStore] = useState(false);
-  const [interview, setInterview] = useState(false);
+  const [storeDrop, setStoreDrop] = useState(false);
+  const [playgroundClick, setPlaygroundClick] = useState(false);
+  const [profileClick, setProfileClick] = useState(false);
+  const [notificationClick, setNotificationClick] = useState(false);
   const [mobileMenu, setMobileMenu] = useState(false);
   const mobileMenuRef = useRef();
 
-  let iconRefProfile = useRef();
-  let iconRefNotification = useRef();
-  let iconRef;
-  let profileIconRef;
-  let notificationIconRef;
+  let conditionalIconRef;
+  let profileRef = useRef();
+  let notificationRef = useRef();
 
-  const onMouseEnter = () => {
-    setDropdown(true);
-    setStore(true);
+  const onMouseEnterStore = () => {
+    setStoreDrop(true);
   };
 
-  const onMouseLeave = () => {
-    setDropdown(false);
-    setStore(false);
-  };
-
-  const onMouseEnterInt = () => {
-    setInterviewDrop(true);
-    setInterview(true);
-  };
-
-  const onMouseLeaveInt = () => {
-    setInterviewDrop(false);
-    setInterview(false);
+  const onMouseLeaveStore = () => {
+    setStoreDrop(false);
   };
 
   return (
-    <div className={`${classes.navbarContainer} mobileNBC`}>
-      <ul className={`${classes.navLinksList} mobileNLL`}>
+    <div className="navbarContainer mobileNBC">
+      <ul className="navLinksList mobileNLL">
         <li>
-          <a href="/">
-            <img
-              style={{ marginLeft: "20px", cursor: "pointer", height: "20px" }}
-              src="https://assets.leetcode.com/static_assets/public/webpack_bundles/images/logo-dark.e99485d9b.svg"
-              alt="Logo"
-            />
-          </a>
+          <img
+            style={{ cursor: "pointer", height: "20px" }}
+            src="https://assets.leetcode.com/static_assets/public/webpack_bundles/images/logo-dark.e99485d9b.svg"
+            alt="LeetCode Logo"
+          />
         </li>
-        {linksList.map((item, index) => {
-          if (index !== 2) {
-            return (
-              <li key={index} style={{ marginLeft: "20px" }}>
-                <a
-                  className={
-                    item.cName + " " + item.afterCName + " " + item.contentCName
-                  }
-                  href={item.url}
-                >
-                  {item.title}
-                </a>
-              </li>
-            );
-          } else {
-            return (
-              <li
-                key={index}
-                style={{ marginLeft: "20px", transitionDelay: "10s" }}
-                onMouseEnter={onMouseEnterInt}
-                onMouseLeave={onMouseLeaveInt}
+        {leftLinksList.map((item, index) => {
+          const onMouseEnterInterview = () => {
+            if (index === 2) setInterviewDrop(true);
+          };
+
+          const onMouseLeaveInterview = () => {
+            if (index === 2) setInterviewDrop(false);
+          };
+
+          return (
+            <li
+              key={index}
+              style={{ marginLeft: "20px" }}
+              onMouseEnter={onMouseEnterInterview}
+              onMouseLeave={onMouseLeaveInterview}
+            >
+              <a
+                className={
+                  item.cName +
+                  " " +
+                  item.afterLinkClass +
+                  " " +
+                  item.chipContent
+                }
+                href={item.url}
               >
-                <a
-                  className={
-                    item.cName + " " + item.afterCName + " " + item.contentCName
-                  }
-                  href={item.url}
-                >
-                  {item.title}
-                </a>
-                {interviewDrop && (
-                  <Dropdown store={store} interview={interview} />
-                )}
-              </li>
-            );
-          }
+                {item.title}
+              </a>
+              {index === 2 && <Dropdown interview={interviewDrop} />}
+            </li>
+          );
         })}
         <li
           style={{ marginLeft: "15px" }}
-          onMouseEnter={onMouseEnter}
-          onMouseLeave={onMouseLeave}
+          onMouseEnter={onMouseEnterStore}
+          onMouseLeave={onMouseLeaveStore}
         >
           <Button disableTouchRipple className={classes.storeButton}>
             <StoreIcon style={{ height: "18px" }} />
             Store
           </Button>
-          {dropdown && <Dropdown store={store} interview={interview} />}
+          <Dropdown store={storeDrop} />
         </li>
       </ul>
 
-      <ul className={`${classes.navLinksList} mobileNLL`}>
+      <ul className={"navLinksList mobileNLL"}>
         <li>
           <Button
             variant="outlined"
@@ -204,46 +165,42 @@ export default function Navbar() {
         </li>
 
         {iconLinks.map((item, index) => {
-          let notificationPlacement;
-          const handleClick = () => {
+          let ntfDropdownRightDistance;
+          const handleIconClick = () => {
             if (index === 0) {
-              setbuttonPopup(true);
+              setPlaygroundClick(true);
             }
             if (index === 1) {
               setNotificationClick(!notificationClick);
-              notificationPlacement = "200px";
+              ntfDropdownRightDistance = "200px";
             }
             if (index === 2) {
-              setClick(!click);
+              setProfileClick(!profileClick);
             }
           };
 
           if (index === 1) {
-            iconRef = iconRefNotification;
+            conditionalIconRef = notificationRef;
           } else if (index === 2) {
-            iconRef = iconRefProfile;
+            conditionalIconRef = profileRef;
           }
 
-          function profileDropdown() {
+          function profileOrNotificationDropdown() {
             if (index === 2) {
-              profileIconRef = iconRef;
-              notificationIconRef = iconRef;
               return (
                 <>
                   <div
-                    className="profileMenuWrapperT"
-                    style={{ right: notificationPlacement }}
+                    className="dropdownWrapper"
+                    style={{ right: ntfDropdownRightDistance }}
                   >
-                    <ProfileMenuDropdown
-                      click={click}
-                      setClick={setClick}
-                      profileIconRef={profileIconRef}
-                      notificationIconRef={notificationIconRef}
+                    <ProfileOrNotificationDropdown
+                      profileClick={profileClick}
+                      setProfileClick={setProfileClick}
                       notificationClick={notificationClick}
                       setNotificationClick={setNotificationClick}
-                      iconRefProfile={iconRefProfile}
-                      iconRefNotification={iconRefNotification}
-                    ></ProfileMenuDropdown>
+                      profileRef={profileRef}
+                      notificationRef={notificationRef}
+                    ></ProfileOrNotificationDropdown>
                   </div>
                 </>
               );
@@ -256,7 +213,7 @@ export default function Navbar() {
           }
 
           return (
-            <li ref={iconRef} key={index}>
+            <li ref={conditionalIconRef} key={index}>
               <BlackTooltip
                 title={warningText == null ? "" : warningText}
                 placement="bottom"
@@ -266,7 +223,7 @@ export default function Navbar() {
                 <IconButton
                   className={classes.navIcons}
                   disableRipple
-                  onClick={handleClick}
+                  onClick={handleIconClick}
                 >
                   <svg
                     viewBox={item.viewBox}
@@ -278,13 +235,13 @@ export default function Navbar() {
                   </svg>
                 </IconButton>
               </BlackTooltip>
-              {profileDropdown()}
+              {profileOrNotificationDropdown()}
             </li>
           );
         })}
       </ul>
 
-      <Popup trigger={buttonPopup} setTrigger={setbuttonPopup}></Popup>
+      <Popup trigger={playgroundClick} setTrigger={setPlaygroundClick}></Popup>
 
       {/* mobile view */}
       <div class="navbarItem">

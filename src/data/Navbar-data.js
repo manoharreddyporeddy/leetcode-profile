@@ -1,10 +1,10 @@
-export const linksList = [
+export const leftLinksList = [
   {
     title: "Explore",
     url: "https://leetcode.com/explore/",
     cName: "navLinks",
-    afterCName: "linkChip",
-    contentCName: "exploreBtn",
+    afterLinkClass: "navLinkChip",
+    chipContent: "exploreBtn",
   },
 
   {
@@ -17,8 +17,8 @@ export const linksList = [
     title: "Interview",
     url: "",
     cName: "navLinks",
-    afterCName: "linkChip",
-    contentCName: "interviewBtn",
+    afterLinkClass: "navLinkChip",
+    chipContent: "interviewBtn",
   },
 
   {
@@ -67,7 +67,7 @@ export const profileMenuItems = [
   {
     title: "pgmreddy",
     url: "https://leetcode.com/pgmreddy/",
-    cName: "profile-links username",
+    cName: "profile-links usernameIcon",
     svg: "M17 3c1.1 0 2 .9 2 2v16l-7-3-7 3 .01-16c0-1.1.89-2 1.99-2h10zm-5 10.43L14.472 15l-.656-2.96L16 10.048l-2.876-.256L12 7l-1.124 2.792L8 10.048l2.184 1.992L9.528 15 12 13.43z",
   },
   {

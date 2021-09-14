@@ -10,7 +10,7 @@ function Dropdown({ store, interview }) {
 
   if (store) {
     return (
-      <div className="profileMenuWrapper" style={{ display: "flex" }}>
+      <div className="dropdownWrapper" style={{ display: "flex" }}>
         <ul
           onClick={handleClick}
           className="dropdownContainer"
@@ -40,7 +40,7 @@ function Dropdown({ store, interview }) {
 
   if (interview) {
     return (
-      <div className="profileMenuWrapper" style={{ display: "flex" }}>
+      <div className="dropdownWrapper" style={{ display: "flex" }}>
         <ul
           onClick={handleClick}
           className="dropdownContainer"
@@ -76,7 +76,7 @@ function Dropdown({ store, interview }) {
         </ul>
       </div>
     );
-  }
+  } else return "";
 }
 
 export default Dropdown;
