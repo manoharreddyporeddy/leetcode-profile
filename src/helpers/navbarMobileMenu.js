@@ -4,7 +4,7 @@ import { makeStyles, withStyles } from "@material-ui/core/styles";
 import React, { useState, useRef, useEffect } from "react";
 
 import {
-  linksList,
+  leftLinksList,
   storeMenuItems,
   profileMenuItems,
   InterviewMenuItem,
@@ -24,9 +24,9 @@ export default function NavSidebar(props) {
 
   let navItems = [];
   navItems.push(storeMenuItems[1]);
-  navItems.push(linksList[0], linksList[1]);
+  navItems.push(leftLinksList[0], leftLinksList[1]);
   navItems.push(InterviewMenuItem[0], InterviewMenuItem[1]);
-  navItems.push(linksList[3], linksList[4]);
+  navItems.push(leftLinksList[3], leftLinksList[4]);
   navItems.push(storeMenuItems[0]);
   for (let i = 1; i < 11; i++) {
     navItems.push(profileMenuItems[i]);
@@ -51,11 +51,7 @@ export default function NavSidebar(props) {
 
   return props.trigger ? (
     <div className="mask">
-      <div
-        ref={mobileMenuRef}
-        className="menu"
-        // style={{ left: slide, transition: "10s" }}
-      >
+      <div ref={mobileMenuRef} className="menu">
         <a class="username" href="/akshayvarmamit">
           <img
             alt="akshayvarmamit's avatar"
@@ -63,14 +59,6 @@ export default function NavSidebar(props) {
             src="https://assets.leetcode.com/users/akshayvarmamit/avatar_1590316229.png"
           />
           <div class="usernameText">
-            {/* <svg
-              viewBox="0 0 24 24"
-              width="1em"
-              height="1em"
-              class="icon__1Md2 icon__35VI"
-            >
-              <path d="M17 3c1.1 0 2 .9 2 2v16l-7-3-7 3 .01-16c0-1.1.89-2 1.99-2h10zm-5 10.43L14.472 15l-.656-2.96L16 10.048l-2.876-.256L12 7l-1.124 2.792L8 10.048l2.184 1.992L9.528 15 12 13.43z"></path>
-            </svg> */}
             <span>akshayvarmamit</span>
           </div>
         </a>

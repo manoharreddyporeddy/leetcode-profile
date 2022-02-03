@@ -3,27 +3,23 @@ import { profileMenuItems, notificationMenuItems } from "../data/Navbar-data";
 
 import "../css/Navbar.css";
 
-function ProfileMenuDropdown({
-  click,
-  setClick,
-  profileIconRef,
-  notificationIconRef,
-  iconRefProfile,
-  iconRefNotification,
+function ProfileOrNotificationDropdown({
+  profileClick,
+  setProfileClick,
   notificationClick,
   setNotificationClick,
+  profileRef,
+  notificationRef,
 }) {
-  const handleClick = () => setClick(!click);
+  const handleProfileClick = () => setProfileClick(!profileClick);
   const handleNotificationClick = () =>
     setNotificationClick(!notificationClick);
 
+  // CLick outside close effects
   useEffect(() => {
     document.addEventListener("mousedown", (event) => {
-      if (
-        iconRefProfile.current &&
-        !iconRefProfile.current.contains(event.target)
-      ) {
-        setClick(false);
+      if (profileRef.current && !profileRef.current.contains(event.target)) {
+        setProfileClick(false);
       }
     });
   });
@@ -31,18 +27,18 @@ function ProfileMenuDropdown({
   useEffect(() => {
     document.addEventListener("mousedown", (event) => {
       if (
-        iconRefNotification.current &&
-        !iconRefNotification.current.contains(event.target)
+        notificationRef.current &&
+        !notificationRef.current.contains(event.target)
       ) {
         setNotificationClick(false);
       }
     });
   });
 
-  if (click) {
+  if (profileClick) {
     return (
       <>
-        <ul onClick={handleClick} className="profileMenuContainerT">
+        <ul onClick={handleProfileClick} className="profileMenuContainer">
           {profileMenuItems.map((item, index) => {
             if (index === 0) {
               return (
@@ -61,7 +57,6 @@ function ProfileMenuDropdown({
                           display: "flex",
                           alignItems: "center",
                           width: "100%",
-                          height: "100%",
                           borderBottom: "1px solid rgb(224, 224, 224)",
                         }}
                       >
@@ -77,11 +72,8 @@ function ProfileMenuDropdown({
                         </svg>
                         <div
                           style={{
-                            alignItems: "center",
                             paddingLeft: "15px",
-                            alignSelf: "stretch",
                             flex: "1 1 auto",
-                            display: "flex",
                           }}
                         >
                           <div
@@ -97,8 +89,6 @@ function ProfileMenuDropdown({
                               height="24px"
                               fill="currentColor"
                               style={{
-                                flex: "0 0 auto",
-                                marginLeft: "10px",
                                 color: "#cfd8dc",
                               }}
                             >
@@ -147,29 +137,9 @@ function ProfileMenuDropdown({
     );
   } else if (notificationClick) {
     return (
-      <div
-        onClick={handleNotificationClick}
-        className="notificationContainer"
-        style={{
-          boxShadow: "0 2px 8px rgb(0 0 0 / 15%)",
-          right: "-60px",
-          position: "absolute",
-          marginBlockStart: "1em",
-        }}
-      >
-        <div
-          style={{
-            maxHeight: "330px",
-            backgroundColor: "white",
-            position: "relative",
-            width: "500px",
-            borderRadius: "4px",
-            height: "100%",
-            zIndex: "2",
-          }}
-          className="notificationListContainer"
-        >
-          <ul className="profileMenuContainerN">
+      <div onClick={handleNotificationClick} className="notificationContainer">
+        <div className="notificationListContainer">
+          <ul style={{ padding: "0" }}>
             {notificationMenuItems.map((item, index) => {
               let coin = "+10";
               index === 6 ? coin : (coin = "+5");
@@ -205,7 +175,7 @@ function ProfileMenuDropdown({
 
               return (
                 <li key={index} className="notificationMenuItem">
-                  <a href="" className={item.cName}>
+                  <a href="">
                     <div
                       style={{
                         transition: "box-shadow 0.18s ease-in-out",
@@ -311,4 +281,4 @@ function ProfileMenuDropdown({
   } else return "";
 }
 
-export default ProfileMenuDropdown;
+export default ProfileOrNotificationDropdown;
