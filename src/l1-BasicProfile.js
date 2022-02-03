@@ -6,7 +6,7 @@ import Divider from "@material-ui/core/Divider";
 import { Tooltip } from "@material-ui/core";
 import SvgIcon from "@material-ui/core/SvgIcon";
 
-import { userData } from "./data/pgmreddy-lcp";
+import { userData } from "./data/akshayvarmamit-lcp";
 
 import Rating from "./helpers/BasicProfile-rating";
 

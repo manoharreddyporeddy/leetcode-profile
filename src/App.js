@@ -61,7 +61,10 @@ const fetchData = async (username) => {
   );
 
   // console.log(body);
-  body.username = body.username.replace("{USER_NAME}", username || "pgmreddy");
+  body.username = body.username.replace(
+    "{USER_NAME}",
+    username || "akshayvarmamit"
+  );
   // console.log(body);
 
   const response = await fetch(

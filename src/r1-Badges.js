@@ -46,8 +46,8 @@ export default function Badges({
   const classes = useStyles();
   let badges = getUserProfile.data.matchedUser.badges;
   let badgesCount = badges === [] ? 0 : badges.length;
-  let badgeImg = getUserProfile.data.matchedUser.upcomingBadges[0].icon;
-  let badgeUpc = getUserProfile.data.matchedUser.upcomingBadges[0].name;
+  let badgeImg = getUserProfile.data.matchedUser.upcomingBadges[0]?.icon;
+  let badgeUpc = getUserProfile.data.matchedUser.upcomingBadges[0]?.name;
   let badgeIcon = `https://leetcode.com${badgeImg}`;
 
   var badge;

@@ -56,11 +56,11 @@ export default function NavSidebar(props) {
         className="menu"
         // style={{ left: slide, transition: "10s" }}
       >
-        <a class="username" href="/pgmreddy">
+        <a class="username" href="/akshayvarmamit">
           <img
-            alt="pgmreddy's avatar"
+            alt="akshayvarmamit's avatar"
             class="usernameImg"
-            src="https://assets.leetcode.com/users/pgmreddy/avatar_1590316229.png"
+            src="https://assets.leetcode.com/users/akshayvarmamit/avatar_1590316229.png"
           />
           <div class="usernameText">
             {/* <svg
@@ -71,7 +71,7 @@ export default function NavSidebar(props) {
             >
               <path d="M17 3c1.1 0 2 .9 2 2v16l-7-3-7 3 .01-16c0-1.1.89-2 1.99-2h10zm-5 10.43L14.472 15l-.656-2.96L16 10.048l-2.876-.256L12 7l-1.124 2.792L8 10.048l2.184 1.992L9.528 15 12 13.43z"></path>
             </svg> */}
-            <span>pgmreddy</span>
+            <span>akshayvarmamit</span>
           </div>
         </a>
         <div

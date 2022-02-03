@@ -20,7 +20,7 @@ ReactDOM.render(
           <App />
         </Route>
         <Route path="*">
-          <Redirect to="/pgmreddy" />
+          <Redirect to="/akshayvarmamit" />
         </Route>
       </Switch>
     </Router>

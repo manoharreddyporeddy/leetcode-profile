@@ -23,7 +23,10 @@ const fetchData = async (username) => {
     JSON.stringify(requests.getContestRankingData)
   );
 
-  body.username = body.username.replace("{USER_NAME}", username || "pgmreddy");
+  body.username = body.username.replace(
+    "{USER_NAME}",
+    username || "akshayvarmamit"
+  );
 
   const response = await fetch(
     url, //

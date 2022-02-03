@@ -3,7 +3,7 @@ import { makeStyles, withStyles } from "@material-ui/core/styles";
 import StarIcon from "@material-ui/icons/Star";
 import { Tooltip } from "@material-ui/core";
 
-import { userData } from "../data/pgmreddy-lcp";
+import { userData } from "../data/akshayvarmamit-lcp";
 
 const useStyles = makeStyles((theme) => ({
   ratingList: {
