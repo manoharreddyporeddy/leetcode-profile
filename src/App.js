@@ -19,40 +19,40 @@ const useStyles = makeStyles((theme) => ({
     alignItems: "stretch",
     height: "44px",
     justifyContent: "center",
-    borderBottom: "rgb(238, 238, 238) solid 1px",
+    borderBottom: "rgb(238, 238, 238) solid 1px"
   },
 
   mainContentContainer: {
     backgroundColor: "rgb(245, 245, 245)",
     padding: "20px 0px",
     justifyContent: "center",
-    minHeight: "calc(100vh - 93px)",
+    minHeight: "calc(100vh - 93px)"
   },
 
   flexWrapper: {
     display: "flex",
     flexWrap: "wrap",
     maxWidth: "1170px",
-    margin: "0 auto",
+    margin: "0 auto"
   },
 
   leftPanelContainer: {
     width: "100%",
     maxWidth: "370px",
     minWidth: "250px",
-    margin: "0px 15px",
+    margin: "0px 15px"
   },
 
   rightPanelContainer: {
     flex: 1,
-    margin: "0px 15px",
+    margin: "0px 15px"
   },
 
   footerWrapper: {
     maxWidth: "1200px",
     margin: "0 auto",
-    padding: "0 20px",
-  },
+    padding: "0 20px"
+  }
 }));
 
 const fetchData = async (username) => {
@@ -84,7 +84,7 @@ const fetchData = async (username) => {
       // redirect: 'follow', // manual, *follow, error
       // referrerPolicy: 'no-referrer', // no-referrer, *no-referrer-when-downgrade, origin, origin-when-cross-origin, same-origin, strict-origin, strict-origin-when-cross-origin, unsafe-url
       // body: JSON.stringify(data) // body data type must match "Content-Type" header
-      body: JSON.stringify(body), // body data type must match "Content-Type" header
+      body: JSON.stringify(body) // body data type must match "Content-Type" header
     }
   );
 
